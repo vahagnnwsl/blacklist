@@ -6,7 +6,7 @@
             <div class="col-md-10">
                 <h3 class="text-center mt-3 mb-3">Регистрация</h3>
                 @include('includes.registration-header')
-                <form method="POST" action="{{route('register')}}" style="margin-top: 40px" class="row w-100">
+                <form method="POST" action="{{route('register')}}" style="margin-top: 40px" class="row w-100"  enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="type" value="{{$type}}">
 
