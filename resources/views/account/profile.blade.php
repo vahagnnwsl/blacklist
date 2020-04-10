@@ -1,0 +1,13 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <profile-card></profile-card>
+            <profile-content :auth_type="{{Auth::user()->type}}" :basic_data="{{ json_encode(Auth::user()->basicData) }}" :contact_data="{{ json_encode(Auth::user()->contactData) }}" ></profile-content>
+
+        </div>
+    </div>
+@endsection
+
