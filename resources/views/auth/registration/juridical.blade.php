@@ -4,14 +4,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
+
                 <h3 class="text-center mt-3 mb-3">Регистрация</h3>
                 @include('includes.registration-header')
-                <form method="POST" action="{{route('register')}}" style="margin-top: 40px" class="row w-100"  enctype="multipart/form-data">
+                <form method="POST" action="{{route('register')}}" style="margin-top: 40px" class="row w-100"
+                      enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="type" value="{{$type}}">
 
                     <div class="form-group col-sm-12 col-md-6 col-lg-4">
-                        <label for="company_name">Наименование организации  <span class="text-danger">*</span></label>
+                        <label for="company_name">Наименование организации <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="company_name" name="company_name"
                                value="{{old('company_name')}}">
                         @error('company_name')
@@ -31,7 +33,7 @@
                     </div>
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="psrn">ОГРН  <span class="text-danger">*</span></label>
+                        <label for="psrn">ОГРН <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="psrn" name="psrn" value="{{old('psrn')}}">
                         @error('psrn')
                         <span class="invalid-feedback" role="alert">
@@ -98,9 +100,6 @@
                     </div>
 
 
-
-
-
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
                         <label for="web_site">Адрес сайта или соцсети </label>
                         <input type="url" class="form-control" id="web_site" name="web_site"
@@ -113,7 +112,6 @@
                                                     </span>
                         @enderror
                     </div>
-
 
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
@@ -131,9 +129,10 @@
                     </div>
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="document">Подтверждающие документы  <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" id="document" name="document" >
-                        <small class="form-text text-muted text-right">Свидетельство индивидуального предпринимателя в ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
+                        <label for="document">Подтверждающие документы <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="document" name="document">
+                        <small class="form-text text-muted text-right">Свидетельство индивидуального предпринимателя в
+                            ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
 
                         @error('document')
                         <span class="invalid-feedback" role="alert">
@@ -144,7 +143,8 @@
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
                         <label for="contact_person_full_name">ФИО <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="contact_person_full_name" name="contact_person_full_name"
+                        <input type="text" class="form-control" id="contact_person_full_name"
+                               name="contact_person_full_name"
                                value="{{old('contact_person_full_name')}}">
                         <small class="form-text text-muted text-right">Подставляются автоматом из выше инфы, но может
                             быть изменены</small>
@@ -168,10 +168,12 @@
                         @enderror
                     </div>
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="contact_phone">Адрес электронной почты  <span class="text-danger">*</span></label>
+                        <label for="contact_phone">Адрес электронной почты <span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" name="email"
                                value="{{old('email')}}">
-                        <small class="form-text text-muted text-right"><strong>Внимание:</strong> доступ к сервису будет предоставлен на данный адрес. Убедитесь в правильности адреса, иначе мы не сможем с вами связаться</small>
+                        <small class="form-text text-muted text-right"><strong>Внимание:</strong> доступ к сервису будет
+                            предоставлен на данный адрес. Убедитесь в правильности адреса, иначе мы не сможем с вами
+                            связаться</small>
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -180,16 +182,16 @@
                     </div>
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="position">Должность  <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="position" name="position">
-                        @error('position')
+                        <label for="contact_person_position">Должность <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="contact_person_position" name="contact_person_position" value="{{old('contact_person_position')}}">
+                        @error('contact_person_position')
                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                         @enderror
                     </div>
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="password">Пароль  <span class="text-danger">*</span></label>
+                        <label for="password">Пароль <span class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="password" name="password">
                         <small class="form-text text-muted text-right">Минимум 8 знаков</small>
                         @error('password')
@@ -200,7 +202,8 @@
                     </div>
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
                         <label for="password_confirmation">Пароль еще раз <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                        <input type="password" class="form-control" id="password_confirmation"
+                               name="password_confirmation">
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -210,7 +213,8 @@
 
                     <div class="form-group  col-sm-12 col-md-8 col-lg-8">
                         <label for="about_business">Расскажите коратко о Вашем бизнесе в недвижимости</label>
-                        <textarea class="form-control" name="about_business" id="about_business" style="max-height: 50px">{{old('about_business')}}</textarea>
+                        <textarea class="form-control" name="about_business" id="about_business"
+                                  style="max-height: 50px">{{old('about_business')}}</textarea>
                         @error('about_business')
                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
