@@ -78,8 +78,7 @@
                 this.$validator.validate().then(valid => {
                     if (valid) {
                         axios.post('/account/data/contact', this.form).then(() => {
-                            location.reload();
-
+                            $.toaster({ message : 'Успешно обновлено', title : 'Успешно!', priority : 'success' });
                         })
                     }
                 })

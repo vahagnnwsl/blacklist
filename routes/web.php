@@ -37,10 +37,23 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 
 
+// no_admin_user Routes...
 
-Route::group(['middleware' => ['auth','verified']], function() {
+Route::group(['middleware' => ['auth','verified','can:no_admin_user']], function() {
     Route::get('/account', 'AccountController@index')->name('account.index');
     Route::get('/account/profile', 'AccountController@profile')->name('account.profile');
     Route::post('/account/data/{method}', 'AccountController@updateData');
     Route::post('/account/password', 'AccountController@updatePassword');
+    Route::resource('/arendator','ArendatorController');
+});
+
+
+// admin_user Routes...
+
+Route::group(['middleware' => ['auth','verified','can:admin_user'],'prefix'=>'dashboard'], function() {
+
+    Route::get('/','Admin\UserController@index');
+    Route::resource('/users','Admin\UserController');
+    Route::resource('/arendators','Admin\ArendatorController');
+
 });

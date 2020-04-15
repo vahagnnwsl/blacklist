@@ -56,12 +56,16 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->contact_person_full_name }} <span class="caret"></span>
+                                {{ Auth::user()->email }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('account.index') }}">Моя страница</a>
-                                <a class="dropdown-item" href="{{ route('account.profile') }}">Профиль пользователя</a>
+                                @if(Auth::user()->type === 1)
+                                    <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                @else
+                                    <a class="dropdown-item" href="{{ route('account.index') }}">Моя страница</a>
+                                    <a class="dropdown-item" href="{{ route('account.profile') }}">Профиль пользователя</a>
+                                @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -81,23 +85,16 @@
         </div>
     </nav>
 
-    @if(session()->has('message'))
-        @component('components.toast-component')
-            @slot('class')
-                {{session()->get('message')['status']  }}
-            @endslot
-            @slot('text')
-                {{session()->get('message')['text']}}
-            @endslot
-        @endcomponent
-    @endif
 
     <main class="py-4">
         @yield('content')
     </main>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/jquery.toaster.js') }}"></script>
+<script>
 
+</script>
 @stack('scripts')
 {{--    <script>--}}
 {{--        $('#element').toast('hide')--}}

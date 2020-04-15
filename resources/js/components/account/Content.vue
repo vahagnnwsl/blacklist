@@ -22,7 +22,7 @@
     import SearchArendator from "./tabs/SearchArendator";
 
     export default {
-        name: "IndexContent",
+        name: "Content",
         components: {AddArendator, SearchArendator},
         data() {
             return {

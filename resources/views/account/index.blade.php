@@ -3,9 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-
-            <profile-card></profile-card>
-            <profile-index-content></profile-index-content>
+            <card  :user="{{Auth::user()}}"></card>
+            <account-content></account-content>
         </div>
     </div>
 @endsection

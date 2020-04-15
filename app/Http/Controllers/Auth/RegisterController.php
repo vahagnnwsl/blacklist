@@ -57,7 +57,6 @@ class RegisterController extends Controller
 
     public function __construct()
     {
-
         $this->allowRegistrationRoles = Arr::except(config('constants.user'), ['admin']);
         $this->middleware('guest');
     }
@@ -138,9 +137,6 @@ class RegisterController extends Controller
         if (Arr::exists($data, 'document')){
             $data['document'] = FileUploaderService::document($data['document']);
         }
-
-
-
 
         return User::create($data);
     }

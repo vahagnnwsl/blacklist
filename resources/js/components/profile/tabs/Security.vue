@@ -57,7 +57,7 @@
                 this.$validator.validate().then(valid => {
                     if (valid) {
                         axios.post('/account/password', this.form).then(() => {
-                            location.reload();
+                            $.toaster({ message : 'Успешно обновлено', title : 'Успешно!', priority : 'success' });
                         }).catch(error => {
                             this.backError = error.response.data.error;
                         })

@@ -192,7 +192,7 @@
                                 'Content-Type': 'multipart/form-data'
                             }
                         }).then(() => {
-                            location.reload();
+                            $.toaster({ message : 'Успешно обновлено', title : 'Успешно!', priority : 'success' });
                         })
                     }
                 })

@@ -3,9 +3,8 @@
         <div class="card" >
             <img class="card-img-top" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-<!--                <a href="#" class="btn btn-primary">Go somewhere</a>-->
+                <h5 class="card-title">{{user.email}}</h5>
+                <p class="card-text"></p>
             </div>
         </div>
     </div>
@@ -13,7 +12,8 @@
 
 <script>
     export default {
-       mounted() {}
+        props: ['user'],
+        mounted() {}
     }
 </script>
 

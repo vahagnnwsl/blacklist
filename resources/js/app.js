@@ -24,9 +24,26 @@ Validator.localize('ru', ru);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('profile-card', require('./components/profile/Card').default);
+Vue.component('card', require('./components/Card').default);
 Vue.component('profile-content', require('./components/profile/Content').default);
-Vue.component('profile-index-content', require('./components/profile/IndexContent').default);
+Vue.component('account-content', require('./components/account/Content').default);
+Vue.component('test', require('./components/Test').default);
+
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue').default
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue').default
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

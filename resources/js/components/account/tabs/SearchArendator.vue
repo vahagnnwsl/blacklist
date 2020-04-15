@@ -3,13 +3,7 @@
         <form class="mt-3" @submit.prevent="onSubmit">
             <div class="row">
                 <div class="input-group col-md-3">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option disabled selected>Все регионы</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                    <input type="text" class="form-control" placeholder="Все регионы">
                 </div>
                 <div class="input-group col-md-9">
                     <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">

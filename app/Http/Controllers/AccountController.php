@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class AccountController extends Controller
 {
@@ -25,11 +26,15 @@ class AccountController extends Controller
      */
     public function index()
     {
+
         return view('account.index');
     }
 
     public function profile()
     {
+
+
+// Creating a token with scopes...
         return view('account.profile');
     }
 
@@ -54,7 +59,7 @@ class AccountController extends Controller
 
         Auth::user()->update($data);
 
-        session(['message' => ['text' => 'Успешно обновлено', 'status' => 'success']]);
+//        session(['message' => ['text' => 'Успешно обновлено', 'status' => 'success']]);
 
         return response()->json([], 200);
     }
@@ -75,7 +80,7 @@ class AccountController extends Controller
             Auth::user()->password = Hash::make($request->get('password'));;
             Auth::user()->save();
 
-            session(['message' => ['text' => 'Успешно обновлено', 'status' => 'success']]);
+//            session(['message' => ['text' => 'Успешно обновлено', 'status' => 'success']]);
             return response()->json([], 200);
         }
 
