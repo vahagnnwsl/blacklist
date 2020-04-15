@@ -36,7 +36,7 @@
                                         <td>{{$user->created_at->format('d M  Y')}}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="#" class="btn btn-info mr-2" title="Edit">
+                                                <a href="{{route('users.edit',$user->id)}}" class="btn btn-info mr-2" title="Edit">
                                                     <i class="icon-check"></i>
                                                 </a>
                                                 <a href="#" class="btn btn-danger" title="Delete"> <i class="icon-close"></i></a>

@@ -86,6 +86,8 @@
         </nav>
     </header>
     <section>
+        @include('flash::message')
+
         @yield('content')
     </section>
     <footer class="main-footer">
@@ -110,7 +112,6 @@
 <script src="/admin/vendor/chart.js/Chart.min.js"></script>
 <script src="/admin/vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="/admin/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="/admin/js/charts-home.js"></script>
 <!-- Main File-->
 <script src="/admin/js/front.js"></script>
 </body>

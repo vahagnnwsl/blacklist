@@ -55,5 +55,6 @@ Route::group(['middleware' => ['auth','verified','can:admin_user'],'prefix'=>'da
     Route::get('/','Admin\UserController@index');
     Route::resource('/users','Admin\UserController');
     Route::resource('/arendators','Admin\ArendatorController');
+    Route::resource('/arendators-violations','Admin\ArendatorViolationController');
 
 });

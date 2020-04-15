@@ -10,7 +10,7 @@ use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable,HasApiTokens;
+    use Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -103,7 +103,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return '/storage/documents/' . $this->document;
     }
 
+    public function getTypeNameAttribute()
+    {
+        return array_keys(Arr::where(config('constants.user'), function ($value, $key) {
+           return $value === $this->type;
+        }))[0];
 
+    }
 
 
 }

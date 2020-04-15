@@ -22,8 +22,26 @@ class ArendatorController extends Controller
         return view('admin.arendators.edit', compact('arendator'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'type' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'patronymic' => 'required|string|max:255',
+            'contact_phone' => 'required|string|max:255',
+            'region' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'register' => 'required|string|max:255',
+            'birth_date' => 'required|date',
+            'passport_serial' => 'required|string|max:255',
+            'passport_number' => 'required|string|max:255'
+        ]);
+
+        $arendator = Arendator::findOrFail($id);
+        $arendator->update($request->all());
+        flash()->message('Успешно обновлено!')->success();
+
         return redirect()->back();
     }
 

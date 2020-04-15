@@ -15,9 +15,13 @@ class UserRequest
     }
 
 
-    public static function contact()
+    public static function contact($user = false)
     {
         $type = Auth::user()->type;
+
+        if ($user) {
+            $type = $user->type;
+        }
 
         $rules = [
             'contact_person_full_name' => ['required', 'string', 'max:255'],
@@ -34,9 +38,13 @@ class UserRequest
         return $rules;
     }
 
-    public static function basic()
+    public static function basic($user = false)
     {
         $type = Auth::user()->type;
+
+        if ($user) {
+            $type = $user->type;
+        }
 
         $rules = [
             'inn' => ['required', 'string', 'max:255'],
