@@ -36,25 +36,37 @@ Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('ver
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 
-
 // no_admin_user Routes...
 
-Route::group(['middleware' => ['auth','verified','can:no_admin_user']], function() {
-    Route::get('/account', 'AccountController@index')->name('account.index');
-    Route::get('/account/profile', 'AccountController@profile')->name('account.profile');
-    Route::post('/account/data/{method}', 'AccountController@updateData');
-    Route::post('/account/password', 'AccountController@updatePassword');
-    Route::resource('/arendator','ArendatorController');
-});
+Route::group(['middleware' => ['auth', 'verified', 'can:no_admin_user']], function () {
+    Route::group(['prefix' => 'account'], function () {
+        Route::get('/', 'AccountController@index')->name('account.index');
+        Route::get('/profile', 'AccountController@profile')->name('account.profile');
+        Route::post('/data/{method}', 'AccountController@updateData');
+        Route::post('/password', 'AccountController@updatePassword');
 
+        Route::group(['prefix' => 'arendators'], function () {
+            Route::get('/{id}/violations', 'ArendatorController@violations');
+            Route::post('/', 'ArendatorController@store');
+            Route::get('/', 'ArendatorController@get');
+            Route::get('/search', 'ArendatorController@search');
+            Route::post('/{id}/violation/{violation_id}', 'ArendatorController@updateViolationStatus');
+        });
+
+        Route::group(['prefix' => 'violations'], function () {
+            Route::post('/{id}', 'ViolationController@update');
+
+        });
+    });
+});
 
 // admin_user Routes...
 
-Route::group(['middleware' => ['auth','verified','can:admin_user'],'prefix'=>'dashboard'], function() {
+Route::group(['middleware' => ['auth', 'verified', 'can:admin_user'], 'prefix' => 'dashboard'], function () {
 
-    Route::get('/','Admin\UserController@index');
-    Route::resource('/users','Admin\UserController');
-    Route::resource('/arendators','Admin\ArendatorController');
-    Route::resource('/arendators-violations','Admin\ArendatorViolationController');
+    Route::get('/', 'Admin\UserController@index');
+    Route::resource('/users', 'Admin\UserController');
+    Route::resource('/arendators', 'Admin\ArendatorController');
+    Route::resource('/arendators-violations', 'Admin\ArendatorViolationController');
 
 });

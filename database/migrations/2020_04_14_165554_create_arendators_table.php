@@ -16,14 +16,16 @@ class CreateArendatorsTable extends Migration
         Schema::create('arendators', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('client_id')->nullable();
             $table->tinyInteger('type');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('patronymic')->nullable();
-            $table->string('inn')->nullable();
+            $table->string('inn')->unique()->nullable();
             $table->string('passport_serial')->nullable();
             $table->string('passport_number')->nullable();
             $table->string('contact_phone')->nullable();
+            $table->string('region')->nullable();
             $table->string('city')->nullable();
             $table->string('register')->nullable();
             $table->date('birth_date')->nullable();

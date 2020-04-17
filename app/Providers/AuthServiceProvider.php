@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
+use App\Client;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -33,6 +35,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::personalAccessTokensExpireIn(now()->addMonths(6));
         //
+//        Passport::useClientModel(Client::class);
 
         Gate::define('admin_user', function($user) {
             return $user->type == 1;

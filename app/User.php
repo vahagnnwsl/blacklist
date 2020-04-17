@@ -103,6 +103,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return '/storage/documents/' . $this->document;
     }
 
+    public function arendators()
+    {
+        return $this->hasMany(Arendator::class);
+    }
+
     public function getTypeNameAttribute()
     {
         return array_keys(Arr::where(config('constants.user'), function ($value, $key) {

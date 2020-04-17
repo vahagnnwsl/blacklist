@@ -19,7 +19,9 @@ class CreateArendatorViolationsTable extends Migration
             $table->foreign('arendator_id')->references('id')->on('arendators');
             $table->text('description');
             $table->date('date');
-            $table->string('status');
+            $table->tinyInteger('status');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('client_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

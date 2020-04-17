@@ -6,24 +6,25 @@
                    id="nav-one-tab" href="#"
                    aria-controls="nav-one" aria-selected="true"> ПОИСК АРЕНДАТОРОВ В СЕРВИСЕ</a>
                 <a class="nav-item nav-link " data-toggle="tab" role="tab" id="nav-three-tab"
-                   @click="showTab('AddArendator')" href="#"
-                   aria-controls="nav-three" aria-selected="true"> ДОБАВИТЬ АРЕНДАТОРА</a>
+                   @click="showTab('AddedArendators')" href="#"
+                   aria-controls="nav-three" aria-selected="true"> ДОБАВЛЕННОЙ АРЕНДАТОРИ</a>
             </div>
         </nav>
         <div class="row">
             <SearchArendator v-if="showComponent==='SearchArendator'" ></SearchArendator>
-            <AddArendator v-if="showComponent==='AddArendator'"></AddArendator>
+            <AddedArendators v-if="showComponent==='AddedArendators'" :user_id="user_id"></AddedArendators>
         </div>
     </div>
 </template>
 
 <script>
-    import AddArendator from "./tabs/AddArendator";
+    import AddedArendators from "./tabs/AddedArendators";
     import SearchArendator from "./tabs/SearchArendator";
 
     export default {
         name: "Content",
-        components: {AddArendator, SearchArendator},
+        components: {AddedArendators, SearchArendator},
+        props: ["user_id"],
         data() {
             return {
                 showComponent: 'SearchArendator',
