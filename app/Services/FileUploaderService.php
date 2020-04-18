@@ -19,20 +19,18 @@ class FileUploaderService
 
     }
 
-    public static function arendatorFile($file): array
+    public static function arendatorViolationFile($file): string
     {
 
         $imageFileName = time() . '-' . rand(1, 999999999);
         $mimeType = explode("/", mime_content_type($file))[1];
 
         $s3 = Storage::disk();
-        $filePath = '/public/arendator/' . $imageFileName.'.'.$mimeType;
+        $filePath = '/public/arendatorViolation/' . $imageFileName.'.'.$mimeType;
         $s3->put($filePath, file_get_contents($file), 'public');
 
-        return [
-             'path' => '/arendator/' . $imageFileName.'.'.$mimeType,
-             'mime_type' => $mimeType
-        ];
+        return  '/arendatorViolation/' . $imageFileName.'.'.$mimeType;
+
 
     }
 

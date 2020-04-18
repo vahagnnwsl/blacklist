@@ -12,33 +12,38 @@ class ArendatorRequest
             'last_name' => ['required', 'string', 'max:255'],
             'patronymic' => ['required', 'string', 'max:255'],
             'contact_phone' => ['required', 'string', 'max:255'],
-            'register' => ['max:255'],
             'city' => ['required', 'string', 'max:255'],
             'region' => ['required', 'string', 'max:255'],
-            'inn' => ['max:255'],
-            'birth_date' => ['required', 'date'],
+            'passport_number' => ['required', 'string', 'max:255'],
+            'passport_serial' => ['required', 'string', 'max:255'],
         ];
 
-        if ((int)request()->get('type') === 1) {
-            $rules['passport_serial'] = ['required', 'string', 'max:255'];
-            $rules['passport_number'] = ['required', 'string', 'max:255'];
-        }else {
-            $rules['inn'] = ['required', 'string', 'max:255', 'unique:arendators'];
-        }
-
-        if (request()->has('document') && request()->get('document') !== null) {
-            $rules['document'] = ['required', 'string'];
-        }
-
-
-        if ($action === 'store')
+        if ((int)request()->get('type') === 2)
         {
+            $rules['inn'] = 'required|string|max:255|unique:arendators,inn';
+
+            $rules['company_name'] = ['required', 'string', 'max:255'];
+            $rules['address'] = ['required', 'string', 'max:255'];
+
+            if ($action === 'update'){
+                $rules['inn'] =$rules['inn'] .','.request()->route('arendator');
+            }
+
+        }else{
+            $rules['birth_date'] = ['required', 'date'];
+
+            $rules['register'] = ['required', 'string', 'max:255'];
+        }
+
+        if ($action === 'store') {
 
             $rules['violations.*.description'] = ['required', 'string', 'max:255'];
             $rules['violations.*.status'] = ['required'];
             $rules['violations.*.date'] = ['required', 'date'];
 
         }
+
+
 
         return $rules;
     }

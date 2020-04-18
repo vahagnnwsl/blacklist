@@ -7,13 +7,11 @@
                    aria-controls="nav-one" aria-selected="true"> ПОИСК АРЕНДАТОРОВ В СЕРВИСЕ</a>
                 <a class="nav-item nav-link " data-toggle="tab" role="tab" id="nav-three-tab"
                    @click="showTab('AddedArendators')" href="#"
-                   aria-controls="nav-three" aria-selected="true"> ДОБАВЛЕННОЙ АРЕНДАТОРИ</a>
+                   aria-controls="nav-three" aria-selected="true"> МОИ АРЕНДАТОРЫ</a>
             </div>
         </nav>
-        <div class="row">
-            <SearchArendator v-if="showComponent==='SearchArendator'" ></SearchArendator>
-            <AddedArendators v-if="showComponent==='AddedArendators'" :user_id="user_id"></AddedArendators>
-        </div>
+        <SearchArendator v-if="showComponent==='SearchArendator'" ></SearchArendator>
+        <AddedArendators v-if="showComponent==='AddedArendators'" :user_id="user_id"></AddedArendators>
     </div>
 </template>
 

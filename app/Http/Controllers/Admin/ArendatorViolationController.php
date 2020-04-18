@@ -7,6 +7,7 @@ use App\ArendatorViolation;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ArendatorViolationController extends Controller
 {
@@ -37,7 +38,7 @@ class ArendatorViolationController extends Controller
             'status' => 'required|string',
             'date' => 'required|date',
         ]);
-
+        $request->request->add(['user_id'=>Auth::id()]);
         ArendatorViolation::create($request->all());
 
         flash()->message('Успешно добавлено!')->success();

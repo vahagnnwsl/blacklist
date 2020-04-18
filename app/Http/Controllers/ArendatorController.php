@@ -28,28 +28,10 @@ class ArendatorController extends Controller
             return response()->json($validator->errors(), 411);
         }
 
-        if ((int)$request->get('type') === 1) {
-            $arendator = Arendator::where([
-                'passport_serial' => $request->get('passport_serial'),
-                'passport_number' => $request->get('passport_number')
-            ])->first();
-            if ($arendator) {
-                return response()->json(['passport' => ['Пользователь с этим паспортом уже существует']], 411);
-            }
-        }
+        $fields = Arr::except($req, ['violations']);
 
+        $fields['search'] =  implode(" ",Arr::except($fields, ['user_id','type','birth_date']));
 
-        $fields = Arr::except($req, ['violations', 'document']);
-
-        $fields['search'] = $fields['first_name'] . ' ' . $fields['last_name'] . ' ' . $fields['patronymic'] . ' ' . $fields['contact_phone'];
-
-        if (key_exists('inn', $fields)) {
-            $fields['search'] = $fields['search'] . ' ' . $fields['inn'];
-        }
-
-        if (key_exists('passport_serial', $fields)) {
-            $fields['search'] = $fields['search'] . ' ' . $fields['passport_serial'] . $fields['passport_number'];
-        }
 
         Arendator::create($fields);
 
@@ -59,9 +41,20 @@ class ArendatorController extends Controller
 
     public function get()
     {
-        return response()->json(Auth::user()->arendators()->paginate(10, [
-            'id', 'first_name', 'last_name', 'patronymic', 'region', 'city', 'type'
+        return response()->json(Auth::user()->arendators()->paginate(15, [
+            'id', 'first_name', 'last_name', 'patronymic', 'region', 'city', 'type','address','created_at'
         ]));
+    }
+
+    public function getSingle($id){
+        $arendator = Arendator::whereId($id)->with('violations')->first();
+
+        if(!$arendator){
+            return response()->json([],401);
+
+        }
+
+        return response()->json($arendator->data);
     }
 
     public function violations($id)
@@ -87,25 +80,7 @@ class ArendatorController extends Controller
 
         foreach ($arendators as $arendator) {
 
-            $array = [
-                'id' => $arendator->id,
-                'full_name' => $arendator->fullName,
-                'register' => $arendator->register,
-                'contact_phone' => $arendator->contact_phone,
-                'birth_date' => $arendator->birth_date,
-                'city' => $arendator->city,
-                'date' => $arendator->created_at->format('d/m/Y')
-            ];
-            $array['violations'] = [];
-            foreach ($arendator->violations as $violation) {
-                array_push($array['violations'],[
-                    'full_name' => $violation->user->full_name,
-                    'date' => $violation->date,
-                    'description' => $violation->description,
-                ]);
-            }
-
-            array_push($resp['items'],$array);
+            array_push($resp['items'],$arendator->data);
         }
 
 

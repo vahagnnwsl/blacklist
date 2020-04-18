@@ -17,7 +17,9 @@ class Arendator extends Model
     {
         return $this->first_name . ' ' . $this->last_name . ' ' . $this->patronymic;
     }
-    public function user(){
+
+    public function user()
+    {
         return $this->hasOne(User::class);
     }
 
@@ -26,6 +28,38 @@ class Arendator extends Model
         return $this->hasMany(ArendatorViolation::class);
     }
 
+    public function getDataAttribute()
+    {
+        $array = [
+            'id' => $this->id,
+            'full_name' => $this->fullName,
+            'register' => $this->register,
+            'address' => $this->region . ' ' . $this->city . ' ' . $this->address,
+            'company_name' => $this->company_name,
+            'inn' => $this->inn,
+            'position' => $this->position,
+            'passport' => $this->passport_serial . ' ' . $this->passport_number,
+            'contact_phone' => $this->contact_phone,
+            'birth_date' => $this->birth_date,
+            'city' => $this->city,
+            'date' => $this->created_at->format('d/m/Y')
+        ];
+
+        $array['violations'] = [];
+
+        foreach ($this->violations as $violation) {
+            array_push($array['violations'], [
+                'full_name' => $violation->user->full_name,
+                'date' => $violation->date,
+                'description' => $violation->description,
+                'document' => $violation->document,
+                'status' => $violation->status,
+                'user_id' => $violation->user_id,
+                'id' => $violation->id,
+            ]);
+        }
+        return $array;
+    }
 
 
     public static function boot()
@@ -40,19 +74,18 @@ class Arendator extends Model
                 if (Auth::id()) {
                     $violation['user_id'] = Auth::id();
                 }
-                if (request()->has('client')) {
-                    $violation['client_id'] = request()->get('client')->id;
+
+                if (key_exists('document',$violation) && $violation['document'] !== null)
+                {
+                    $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
                 }
 
+
                 $violation['arendator_id'] = $model->id;
+
                 ArendatorViolation::create($violation);
             }
 
-            if (request()->has('document') && request()->get('document') !== null) {
-                $doc = FileUploaderService::arendatorFile(request()->get('document'));
-                $doc['arendator_id'] = $model->id;
-                ArendatorFile::create($doc);
-            }
 
         });
     }

@@ -4,6 +4,7 @@
 
 use App\Arendator;
 use Faker\Generator as Faker;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 /*
@@ -19,24 +20,55 @@ use Illuminate\Support\Str;
 
 $factory->define(Arendator::class, function (Faker $faker) {
 
-     $first_name = $faker->firstName;
-     $last_name = $faker->lastName;
-     $patronymic = $faker->firstName;
-     $contact_phone = $faker->e164PhoneNumber;
-     $city = $faker->city;
+//     $first_name = $faker->firstName;
+//     $last_name = $faker->lastName;
+//     $patronymic = $faker->firstName;
+//     $contact_phone = $faker->e164PhoneNumber;
+//     $city = $faker->city;
+//     $arr = [
+//         'first_name' => $first_name,
+//         'last_name' => $last_name ,
+//         'type' => 1 ,
+//         'user_id' => 6 ,
+//         'patronymic' => $patronymic,
+//         'contact_phone' => $contact_phone ,
+//         'region' => $faker->state ,
+//         'city' => $city ,
+//         'register' => $faker->address ,
+//         'passport_serial' => $faker->countryCode,
+//         'passport_number' => rand(100000,2000000) ,
+//         'birth_date' => date('Y-m-d H:m:s') ,
+//
+//     ];
 
-    $search = $first_name .' '.$last_name .' '.$patronymic.' '.$contact_phone  ;
-    return [
+
+
+    $first_name = $faker->firstName;
+    $last_name = $faker->lastName;
+    $patronymic = $faker->firstName;
+    $contact_phone = $faker->e164PhoneNumber;
+    $city = $faker->city;
+    $arr = [
         'first_name' => $first_name,
         'last_name' => $last_name ,
-        'type' => 1 ,
+        'company_name' => $faker->company,
+        'inn' => rand(10000000,2222222222222),
+        'type' => 2 ,
+        'user_id' => 6 ,
         'patronymic' => $patronymic,
         'contact_phone' => $contact_phone ,
         'region' => $faker->state ,
         'city' => $city ,
-        'register' => $faker->address ,
-        'birth_date' => date('Y-m-d H:m:s') ,
-        'search' => $search ,
+        'address' => $faker->address ,
+        'passport_serial' => $faker->countryCode,
+        'passport_number' => rand(100000,2000000) ,
 
     ];
+
+
+
+    $arr['search'] =  implode(" ",Arr::except($arr, ['user_id','type','birth_date']));
+
+
+    return $arr;
 });

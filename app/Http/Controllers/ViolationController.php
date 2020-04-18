@@ -12,8 +12,17 @@ class ViolationController extends Controller
     public function update(Request $request, $id)
     {
         $violation = ArendatorViolation::findOrFail($id);
-        $violation->update(['status' => (int)$request->get('status')]);
+        if ((int)$violation->status === 1) {
+            $status = 0;
 
-        return response()->json([]);
+        } else {
+            $status = 1;
+        }
+
+        $violation->update(['status' => $status]);
+
+        $text = $status===1 ? 'Погашено': 'Не погашено';
+
+        return response()->json(['text'=>$text]);
     }
 }

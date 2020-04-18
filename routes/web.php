@@ -46,11 +46,13 @@ Route::group(['middleware' => ['auth', 'verified', 'can:no_admin_user']], functi
         Route::post('/password', 'AccountController@updatePassword');
 
         Route::group(['prefix' => 'arendators'], function () {
-            Route::get('/{id}/violations', 'ArendatorController@violations');
             Route::post('/', 'ArendatorController@store');
             Route::get('/', 'ArendatorController@get');
             Route::get('/search', 'ArendatorController@search');
             Route::post('/{id}/violation/{violation_id}', 'ArendatorController@updateViolationStatus');
+            Route::get('/{id}/violations', 'ArendatorController@violations');
+            Route::get('/{id}', 'ArendatorController@getSingle');
+
         });
 
         Route::group(['prefix' => 'violations'], function () {
