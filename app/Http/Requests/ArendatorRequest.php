@@ -37,7 +37,7 @@ class ArendatorRequest
 
         if ($action === 'store') {
 
-            $rules['violations.*.description'] = ['required', 'string', 'max:255'];
+            $rules['violations.*.description'] = ['required', 'string'];
             $rules['violations.*.status'] = ['required'];
             $rules['violations.*.date'] = ['required', 'date'];
 
