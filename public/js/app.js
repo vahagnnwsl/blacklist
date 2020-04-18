@@ -52942,7 +52942,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-5 col-sm-12" }, [
+                      _c("div", { staticClass: "col-lg-3 col-sm-12" }, [
                         _vm.arendator.register
                           ? _c("h5", [
                               _c("strong", [_vm._v("Прописка:")]),
@@ -53049,7 +53049,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "col-lg-7 col-sm-12" },
+                        { staticClass: "col-lg-9 col-sm-12" },
                         _vm._l(_vm.arendator.violations, function(
                           violation,
                           key

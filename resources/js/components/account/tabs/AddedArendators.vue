@@ -52,7 +52,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-lg-5 col-sm-12">
+                                    <div class="col-lg-3 col-sm-12">
 
                                         <h5 v-if="arendator.register">
                                             <strong>Прописка:</strong><br>
@@ -104,7 +104,7 @@
                                         </h5>
 
                                     </div>
-                                    <div class="col-lg-7 col-sm-12">
+                                    <div class="col-lg-9 col-sm-12">
                                         <div class="row" v-for="(violation,key) in arendator.violations" style="border-bottom: 1px solid lightgray">
                                             <h5 class="mt-3 p-1 w-100" >
                                                 <i>{{violation.full_name}}</i> <small><i>{{violation.date}}</i></small><br>
