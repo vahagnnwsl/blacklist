@@ -74,7 +74,7 @@
                             </div>
 
                             <form method="POST"
-                                  action="{{route('arendators-violations.update',$violation->id)}}">
+                                  action="{{route('arendators-violations.update',$violation->id)}}" enctype='multipart/form-data'>
                                 @csrf
                                 <input name="_method" type="hidden" value="PUT">
                                 <div class="row p-2">
@@ -104,10 +104,14 @@
                                         </div>
                                         <div class="form-group row ">
                                             <label>Документ </label>
-                                            <input type="file"  class="form-control">
+                                            <input type="file"  class="form-control" name="document">
                                         </div>
                                     </div>
+
                                     <div class="col-12 pr-0">
+                                        @if($violation->document)
+                                            <a href="/storage{{$violation->document}}" target="_blank">Документ</a>
+                                        @endif
                                         <button type="submit" class="btn btn-primary ml-2 float-right"><i class="fa fa-check"></i></button>
                                     </div>
                                 </div>
@@ -136,7 +140,7 @@
 
                 <div class="modal-body">
                     <div class="card-body">
-                        <form method="POST" action="{{route('arendators-violations.store')}}" class="w-100">
+                        <form method="POST" action="{{route('arendators-violations.store')}}" class="w-100" enctype='multipart/form-data'>
                             @csrf
                             <input type="hidden" name="arendator_id" value="{{$arendator->id}}">
 
@@ -148,14 +152,19 @@
                             <div class="form-group row p-2">
                                 <label>Статус <span class="text-danger">*</span></label>
                                 <select class="form-control" name="status" required>
-                                    <option value="0" @if($arendator->status=== 0) selected @endif>Не погашено</option>
-                                    <option value="1" @if($arendator->status=== 1) selected @endif>Погашено</option>
+                                    <option value="0" selected >Не погашено</option>
+                                    <option value="1"  selected >Погашено</option>
                                 </select>
                             </div>
 
                             <div class="form-group row p-2">
                                 <label>Дата <span class="text-danger">*</span></label>
                                 <input type="date" required name="date" class="form-control form-control-sm">
+                            </div>
+
+                            <div class="form-group row p-2">
+                                    <label>Документ </label>
+                                    <input type="file"  class="form-control" name="document">
                             </div>
 
                             <div class="form-group row  p-2">

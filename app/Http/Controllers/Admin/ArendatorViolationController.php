@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Services\FileUploaderService;
 
 class ArendatorViolationController extends Controller
 {
@@ -16,7 +17,15 @@ class ArendatorViolationController extends Controller
     public function update(Request $request, $id)
     {
         $arendatorViolation = ArendatorViolation::findOrFail($id);
-        $arendatorViolation->update($request->all());
+
+        $data = $request->all();
+
+        if ($request->hasFile('document')) {
+            $data['document'] = FileUploaderService::arendatorViolationFile($request->file('document'),true);
+
+        }
+
+        $arendatorViolation->update($data);
         flash()->message('Успешно обновлено!')->success();
 
         return redirect()->back()->with('arendatorViolation_id',$arendatorViolation->id);
@@ -39,7 +48,15 @@ class ArendatorViolationController extends Controller
             'date' => 'required|date',
         ]);
         $request->request->add(['user_id'=>Auth::id()]);
-        ArendatorViolation::create($request->all());
+
+        $data = $request->all();
+
+        if ($request->hasFile('document')) {
+            $data['document'] = FileUploaderService::arendatorViolationFile($request->file('document'),true);
+
+        }
+
+        ArendatorViolation::create($data);
 
         flash()->message('Успешно добавлено!')->success();
 
