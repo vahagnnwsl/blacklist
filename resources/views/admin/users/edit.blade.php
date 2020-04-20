@@ -8,7 +8,7 @@
         <header>
             <div class="row ">
                 <div class="col-lg-12">
-                    <h1 class="h3 display">User <span class="text-info">#{{$user->id}}</span>
+                    <h1 class="h3 display">Пользователь <span class="text-info">#{{$user->id}}</span>
                         <a href="{{route('users.index')}}" title="Back" class="btn btn-primary float-right"><i
                                 class="fa fa-arrow-left"></i> </a>
                     </h1>

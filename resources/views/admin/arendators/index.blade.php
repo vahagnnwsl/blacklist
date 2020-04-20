@@ -5,26 +5,44 @@
     <div class="container-fluid">
 
         <header>
-            <h1 class="h3 display">Arendators</h1>
+            <h1 class="h3 display">Арендатори</h1>
         </header>
         <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <form class="form-inline w-100 row" action="{{route('arendators.index')}}" type="GET">
+                            <div class="form-group col-lg-4 col-sm-12">
+                                <input id="inlineFormInput" name="region" type="text" placeholder="Все регионы" value="{{request('region')}}" class="mr-3 form-control w-100">
+                            </div>
+                            <div class="form-group col-lg-7  col-sm-12">
+                                <input id="inlineFormInputGroup"  name="key" type="text" value="{{request('key')}}" placeholder="ФИО, телефон, паспорт, регион, город, прописка" class="mr-3 form-control w-100">
+                            </div>
+                            <div class="form-group  col-sm-12 col-lg-1">
+                                <button type="submit" value="Submit" class="mr-3 btn btn-primary">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-12 table-responsive-lg">
                 <div class="card">
-                    <div class="card-header">
 
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Type</th>
-                                    <th>Full Name</th>
-                                    <th>Region</th>
-                                    <th>City</th>
-                                    <th>Created at</th>
-                                    <th>Actions</th>
+                                    <th>Тип</th>
+                                    <th>ФИО</th>
+                                    <th>Область</th>
+                                    <th>Город</th>
+                                    <th>Дата создан</th>
+                                    <th>Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -57,6 +75,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        {!!$arendators->links()!!}
                     </div>
                 </div>
             </div>

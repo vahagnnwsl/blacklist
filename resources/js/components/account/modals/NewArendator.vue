@@ -18,7 +18,7 @@
                                aria-controls="nav-three" aria-selected="true"> ИП/ООО</a>
                         </div>
                     </nav>
-                    <individual v-if="showComponent==='individual'"></individual>
+                    <individual v-if="showComponent==='individual'" @childEvent=""></individual>
                     <IndividualEntrepreneur v-if="showComponent==='IndividualEntrepreneur'"></IndividualEntrepreneur>
                 </div>
             </div>
@@ -39,6 +39,9 @@
             }
         },
         methods: {
+            getResult: function(arg){
+              console.log(arg)
+            },
             showTab: function (tab) {
                 this.showComponent = tab;
             }

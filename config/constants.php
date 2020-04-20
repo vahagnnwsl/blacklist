@@ -6,5 +6,6 @@ return [
         'individual' => 2,
         'juridical' => 3,
         'individual-entrepreneur' => 4,
+        'api' => 5,
     ]
 ];

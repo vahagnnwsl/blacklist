@@ -14,15 +14,25 @@ use Illuminate\Support\Facades\Validator;
 class ArendatorController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $arendators = Arendator::paginate(20);
+
+        $region = $request->get('region');
+        $key = $request->get('key');
+
+        $arendators = Arendator::when($region, function ($q) use ($region) {
+            return $q->where('region', $region);
+        })->when($key, function ($q) use ($key) {
+            return $q->where('search', 'LIKE', '%' . $key . '%');
+        })->whereHas('user')->paginate(20);
+
         return view('admin.arendators.index', compact('arendators'));
     }
 
     public function edit($id)
     {
         $arendator = Arendator::findOrFail($id);
+
         return view('admin.arendators.edit', compact('arendator'));
     }
 
@@ -33,6 +43,8 @@ class ArendatorController extends Controller
 
 
         $validator = Validator::make($req, $rules);
+
+
 
         if ($validator->fails()) {
 

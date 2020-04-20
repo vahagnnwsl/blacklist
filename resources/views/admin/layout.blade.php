@@ -50,12 +50,12 @@
         <div class="main-menu">
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li class="{{ request()->is('dashboard/users*') || request()->is('dashboard') ? 'active': ''}}"><a
-                        href="{{route('users.index')}}"> <i class="icon-user"></i>Users</a></li>
+                        href="{{route('users.index')}}"> <i class="icon-user"></i>Пользователи</a></li>
             </ul>
 
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li class="{{ request()->is('dashboard/arendators*') ? 'active': ''}}"><a
-                        href="{{route('arendators.index')}}"> <i class="icon-user"></i>Arendators</a></li>
+                        href="{{route('arendators.index')}}"> <i class="icon-user"></i>Арендатори</a></li>
             </ul>
         </div>
 
@@ -74,7 +74,7 @@
                     <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                         <li class="nav-item"><a href="{{ route('logout') }}" class="nav-link logout" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"> <span
-                                    class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a>
+                                    class="d-none d-sm-inline-block">Выйти</span><i class="fa fa-sign-out"></i></a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                   style="display: none;">
                                 @csrf

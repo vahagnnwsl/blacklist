@@ -2097,6 +2097,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getResult: function getResult(arg) {
+      console.log(arg);
+    },
     showTab: function showTab(tab) {
       this.showComponent = tab;
     }
@@ -2257,7 +2260,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2278,11 +2280,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getResults();
+    this.$on("getResult", function (arg) {
+      this.getResults();
+    });
   },
   methods: {
     date: function date(dt) {
-      var dt = new Date(dt);
-      return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+      var date = new Date(dt);
+      return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     },
     openModal: function openModal(id) {
       var _this = this;
@@ -2644,6 +2649,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             });
 
             _this.clear();
+
+            _this.$parent.$parent.$emit("getResult", true);
           })["catch"](function (error) {
             _this.backErrors = error.response.data;
           });
@@ -2683,6 +2690,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+//
+//
+//
+//
 //
 //
 //
@@ -3003,6 +3014,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             });
 
             _this.clear();
+
+            _this.$parent.$parent.$emit("getResult", true);
           })["catch"](function (error) {
             _this.backErrors = error.response.data;
           });
@@ -3041,6 +3054,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modals_Arendator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modals/Arendator */ "./resources/js/components/account/modals/Arendator.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -52777,7 +52802,9 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm.showComponent === "individual" ? _c("individual") : _vm._e(),
+              _vm.showComponent === "individual"
+                ? _c("individual", { on: { childEvent: function($event) {} } })
+                : _vm._e(),
               _vm._v(" "),
               _vm.showComponent === "IndividualEntrepreneur"
                 ? _c("IndividualEntrepreneur")
@@ -54367,6 +54394,58 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
+                        value: _vm.form.address,
+                        expression: "form.address"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|max:200",
+                        expression: "'required|max:200'"
+                      }
+                    ],
+                    staticClass: "form-control  form-control-sm",
+                    attrs: {
+                      type: "text",
+                      name: "address",
+                      id: "register",
+                      "data-vv-as": "Адрес юр лица"
+                    },
+                    domProps: { value: _vm.form.address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "address", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.has("address")
+                    ? _c("small", { staticClass: "text-danger  float-right" }, [
+                        _vm._v(_vm._s(_vm.errors.first("address")))
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "form-group col-xl-3 col-lg-3  col-md-4 col-sm-12"
+                },
+                [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
                         value: _vm.form.last_name,
                         expression: "form.last_name"
                       },
@@ -54410,7 +54489,7 @@ var render = function() {
                     "form-group col-xl-3 col-lg-3  col-md-4 col-sm-12"
                 },
                 [
-                  _vm._m(3),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -54460,7 +54539,7 @@ var render = function() {
                     "form-group col-xl-3 col-lg-3  col-md-4 col-sm-12"
                 },
                 [
-                  _vm._m(4),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -54510,7 +54589,7 @@ var render = function() {
                     "form-group col-xl-3 col-lg-3  col-md-4 col-sm-12"
                 },
                 [
-                  _vm._m(5),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -54560,7 +54639,7 @@ var render = function() {
                     "form-group col-xl-3 col-lg-3  col-md-4 col-sm-12"
                 },
                 [
-                  _vm._m(6),
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -54610,7 +54689,7 @@ var render = function() {
                     "form-group  col-xl-3 col-lg-3  col-md-4 col-sm-12"
                 },
                 [
-                  _vm._m(7),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-5 form-group" }, [
@@ -54737,7 +54816,7 @@ var render = function() {
                     "form-group col-xl-3 col-lg-3  col-md-4 col-sm-12"
                 },
                 [
-                  _vm._m(8),
+                  _vm._m(10),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -54787,7 +54866,7 @@ var render = function() {
                     "form-group col-xl-3 col-lg-3  col-md-4 col-sm-12"
                 },
                 [
-                  _vm._m(9),
+                  _vm._m(11),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -54825,56 +54904,6 @@ var render = function() {
                   _vm.errors.has("city")
                     ? _c("small", { staticClass: "text-danger  float-right" }, [
                         _vm._v(_vm._s(_vm.errors.first("city")))
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "form-group col-xl-3 col-lg-3  col-md-4 col-sm-12"
-                },
-                [
-                  _vm._m(10),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.address,
-                        expression: "form.address"
-                      },
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|max:200",
-                        expression: "'required|max:200'"
-                      }
-                    ],
-                    staticClass: "form-control  form-control-sm",
-                    attrs: {
-                      type: "text",
-                      name: "address",
-                      id: "register",
-                      "data-vv-as": "Адрес юр лица"
-                    },
-                    domProps: { value: _vm.form.address },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "address", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors.has("address")
-                    ? _c("small", { staticClass: "text-danger  float-right" }, [
-                        _vm._v(_vm._s(_vm.errors.first("address")))
                       ])
                     : _vm._e()
                 ]
@@ -54929,7 +54958,7 @@ var render = function() {
                         "div",
                         { staticClass: "col-sm-12 col-md-4 form-group " },
                         [
-                          _vm._m(11, true),
+                          _vm._m(12, true),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -54986,7 +55015,7 @@ var render = function() {
                         "div",
                         { staticClass: "col-sm-12 col-md-4 form-group" },
                         [
-                          _vm._m(12, true),
+                          _vm._m(13, true),
                           _vm._v(" "),
                           _c(
                             "select",
@@ -55253,8 +55282,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "register" } }, [
+      _vm._v("Адрес юр лица: "),
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "form-group col-12 ",
+        staticStyle: { "border-bottom": "1px solid lightgray" }
+      },
+      [_c("h5", [_vm._v("Контактное данные")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "last_name" } }, [
-      _vm._v("Фамилия контактном лице: "),
+      _vm._v("Фамилия: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55263,7 +55314,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "first_name" } }, [
-      _vm._v("Имя контактном лице: "),
+      _vm._v("Имя: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55272,7 +55323,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "patronymic" } }, [
-      _vm._v("Отчество контактном лице: "),
+      _vm._v("Отчество: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55281,7 +55332,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "contact_phone" } }, [
-      _vm._v("Контактный телефон: "),
+      _vm._v("Телефон: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55290,7 +55341,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "position" } }, [
-      _vm._v("Должность контактном лице: "),
+      _vm._v("Должность: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55299,7 +55350,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [
-      _vm._v("Паспорт контактном лице: "),
+      _vm._v("Паспорт: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55318,15 +55369,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "city" } }, [
       _vm._v("Город: "),
-      _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "register" } }, [
-      _vm._v("Адрес юр лица: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55624,6 +55666,36 @@ var render = function() {
                       )
                     ])
                   ]),
+                  _vm._v(" "),
+                  _vm.arendator.region
+                    ? _c("h5", { staticClass: "mt-3" }, [
+                        _c("strong", [_vm._v("Регион :")]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("small", [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(_vm.arendator.region) +
+                              "\n                                "
+                          )
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.arendator.city
+                    ? _c("h5", { staticClass: "mt-3" }, [
+                        _c("strong", [_vm._v("Город :")]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("small", [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(_vm.arendator.city) +
+                              "\n                                "
+                          )
+                        ])
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm.arendator.address
                     ? _c("h5", { staticClass: "mt-3" }, [

@@ -17,6 +17,19 @@
         @enderror
     </div>
 
+    @if(in_array($user->type,[3,4]))
+        <div class="form-group  col-sm-12 col-md-12 col-lg-12">
+            <label for="contact_person_position">Должность <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="contact_person_position" name="contact_person_position"
+                   value="{{$user->contact_person_position}}">
+            @error('contact_person_position')
+            <span class="invalid-feedback  d-block" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+            @enderror
+        </div>
+
+    @endif
     <div class="form-group  col-sm-12 col-md-12 col-lg-12">
         <label for="contact_phone">Контактный номер телефона <span class="text-danger">*</span></label>
         <input type="text" class="form-control" id="contact_phone" name="contact_phone"
@@ -28,6 +41,9 @@
                                                     </span>
         @enderror
     </div>
+
+
+
     <div class="form-group   col-sm-12 col-md-12 col-lg-12">
         <label for="about_business">Расскажите коратко о Вашем бизнесе в недвижимости</label>
         <textarea class="form-control" name="about_business" id="about_business" rows="9">{{$user->about_business}}</textarea>

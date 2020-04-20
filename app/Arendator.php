@@ -20,7 +20,7 @@ class Arendator extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class,'id','user_id');
     }
 
     public function violations()
@@ -71,19 +71,22 @@ class Arendator extends Model
 
             foreach (request()->get('violations') as $violation) {
 
-                if (Auth::id()) {
-                    $violation['user_id'] = Auth::id();
+                if (Auth::check()) {
+                    if (Auth::id()) {
+                        $violation['user_id'] = Auth::id();
+                    }
+
+                    if (key_exists('document',$violation) && $violation['document'] !== null)
+                    {
+                        $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
+                    }
+
+
+                    $violation['arendator_id'] = $model->id;
+
+                    ArendatorViolation::create($violation);
                 }
 
-                if (key_exists('document',$violation) && $violation['document'] !== null)
-                {
-                    $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
-                }
-
-
-                $violation['arendator_id'] = $model->id;
-
-                ArendatorViolation::create($violation);
             }
 
 

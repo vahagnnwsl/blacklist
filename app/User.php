@@ -25,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'city', 'address', 'web_site',
         'advertising_number', 'real_estate_count', 'contact_person_full_name',
         'contact_phone', 'contact_person_position', 'about_business',
-        'password', 'status',
+        'password', 'status','is_api_user','client_id'
     ];
 
     /**

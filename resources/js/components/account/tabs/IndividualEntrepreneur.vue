@@ -25,9 +25,22 @@
                         <small class="text-danger  float-right"
                                v-if="backErrors.inn">{{backErrors.inn[0]}}</small>
                     </div>
+                    <div class="form-group col-xl-3 col-lg-3  col-md-4 col-sm-12">
+                        <label for="register">Адрес юр лица: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control  form-control-sm" name="address"
+                               id="register"
+                               v-model="form.address"
+                               data-vv-as="Адрес юр лица" v-validate="'required|max:200'">
+                        <small class="text-danger  float-right"
+                               v-if="errors.has('address')">{{errors.first('address')}}</small>
+                    </div>
+
+                    <div class="form-group col-12 " style="border-bottom: 1px solid lightgray">
+                        <h5>Контактное данные</h5>
+                    </div>
 
                     <div class="form-group col-xl-3 col-lg-3  col-md-4 col-sm-12">
-                        <label for="last_name">Фамилия контактном лице: <span class="text-danger">*</span></label>
+                        <label for="last_name">Фамилия: <span class="text-danger">*</span></label>
                         <input type="text" id="last_name" class="form-control  form-control-sm"
                                name="last_name"
                                v-model="form.last_name"
@@ -35,9 +48,8 @@
                         <small class="text-danger  float-right"
                                v-if="errors.has('last_name')">{{errors.first('last_name')}}</small>
                     </div>
-
                     <div class="form-group col-xl-3 col-lg-3  col-md-4 col-sm-12">
-                        <label for="first_name">Имя контактном лице: <span class="text-danger">*</span></label>
+                        <label for="first_name">Имя: <span class="text-danger">*</span></label>
                         <input type="text" id="first_name" class="form-control  form-control-sm"
                                name="first_name"
                                v-model="form.first_name"
@@ -47,7 +59,7 @@
                     </div>
 
                     <div class="form-group col-xl-3 col-lg-3  col-md-4 col-sm-12">
-                        <label for="patronymic">Отчество контактном лице: <span class="text-danger">*</span></label>
+                        <label for="patronymic">Отчество: <span class="text-danger">*</span></label>
                         <input type="text" id="patronymic" class="form-control  form-control-sm"
                                name="patronymic"
                                v-model="form.patronymic"
@@ -58,7 +70,7 @@
 
 
                     <div class="form-group col-xl-3 col-lg-3  col-md-4 col-sm-12">
-                        <label for="contact_phone">Контактный телефон: <span
+                        <label for="contact_phone">Телефон: <span
                             class="text-danger">*</span></label>
                         <input type="text" class="form-control  form-control-sm" name="contact_phone"
                                id="contact_phone"
@@ -68,7 +80,7 @@
                                v-if="errors.has('contact_phone')">{{errors.first('contact_phone')}}</small>
                     </div>
                     <div class="form-group col-xl-3 col-lg-3  col-md-4 col-sm-12">
-                        <label for="position">Должность контактном лице: <span
+                        <label for="position">Должность: <span
                             class="text-danger">*</span></label>
                         <input type="text" class="form-control  form-control-sm" name="position"
                                id="position"
@@ -79,7 +91,7 @@
                     </div>
 
                     <div class="form-group  col-xl-3 col-lg-3  col-md-4 col-sm-12">
-                        <label>Паспорт контактном лице: <span class="text-danger">*</span></label>
+                        <label>Паспорт: <span class="text-danger">*</span></label>
                         <div class="row">
                             <div class="col-5 form-group">
                                 <input type="text" class="form-control  form-control-sm"
@@ -128,15 +140,7 @@
                         <small class="text-danger  float-right"
                                v-if="errors.has('city')">{{errors.first('city')}}</small>
                     </div>
-                    <div class="form-group col-xl-3 col-lg-3  col-md-4 col-sm-12">
-                        <label for="register">Адрес юр лица: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control  form-control-sm" name="address"
-                               id="register"
-                               v-model="form.address"
-                               data-vv-as="Адрес юр лица" v-validate="'required|max:200'">
-                        <small class="text-danger  float-right"
-                               v-if="errors.has('address')">{{errors.first('address')}}</small>
-                    </div>
+
                     <div class="col-md-12 ">
                         <h5 class="text-center w-100">Добавить нарушение</h5>
                         <button type="button"
@@ -321,6 +325,7 @@
                             this.$refs['closeModal'].click();
                             $.toaster({message: 'Успешно добавлено', title: 'Успешно!', priority: 'success'});
                             this.clear();
+                            this.$parent.$parent.$emit("getResult", true)
 
                         }).catch((error) => {
                             this.backErrors = error.response.data;

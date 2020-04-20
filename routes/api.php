@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['client']], function() {
-    Route::post('/arendator', 'ArendatorController@store');
+    Route::post('/arendators', 'ArendatorController@store');
+    Route::get('/arendators', 'ArendatorController@index');
 });

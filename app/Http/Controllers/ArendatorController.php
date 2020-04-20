@@ -72,7 +72,7 @@ class ArendatorController extends Controller
             return $q->where('region', $region);
         })->when($key, function ($q) use ($key) {
             return $q->where('search', 'LIKE', '%' . $key . '%');
-        })->with('violations')->paginate(20);
+        })->whereHas('user')->with('violations')->paginate(20);
 
         $resp['total'] = $arendators->total();
         $resp['items'] = [];

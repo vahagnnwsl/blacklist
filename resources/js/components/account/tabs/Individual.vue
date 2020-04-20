@@ -276,6 +276,7 @@
 
             },
             onSubmit: function () {
+
                 this.violationsCountError = '';
                 this.backErrors = {};
 
@@ -293,6 +294,7 @@
                             this.$refs['closeModal'].click();
                             $.toaster({message: 'Успешно добавлено', title: 'Успешно!', priority: 'success'});
                             this.clear();
+                            this.$parent.$parent.$emit("getResult", true)
 
                         }).catch((error) => {
                             this.backErrors = error.response.data;

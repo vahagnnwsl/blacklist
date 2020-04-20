@@ -37,7 +37,6 @@
             <div class="col-md-12 d-flex">
                 <div class="mx-auto">
                     <pagination :data="laravelData" @pagination-change-page="getResults"></pagination>
-
                 </div>
             </div>
 
@@ -159,14 +158,18 @@
         },
         mounted() {
             this.getResults();
+            this.$on("getResult", function (arg) {
+                this.getResults();
+            })
+
         },
 
         methods: {
 
             date: function(dt){
 
-                var dt = new Date(dt);
-                return  dt.getDate()+ "/" +  (dt.getMonth() + 1)  +"/"+ dt.getFullYear();
+                var date = new Date(dt);
+                return  date.getDate()+ "/" +  (date.getMonth() + 1)  +"/"+ date.getFullYear();
             },
 
             openModal: function (id) {
