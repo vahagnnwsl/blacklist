@@ -14,7 +14,6 @@
                     <tr>
                         <th>ФИО:</th>
                         <th>АДРЕС</th>
-                        <th>ДАТА ДОБАВЛЕНИЯ</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -22,7 +21,6 @@
                     <tr v-for="arendator in laravelData.data" :key="arendator.id">
                         <td>{{foolName(arendator)}}</td>
                         <td>{{address(arendator)}}</td>
-                        <td>{{date(arendator.created_at)}}</td>
                         <th>
                             <button class="btn btn-outline-secondary float-right  btn-sm"
                                     @click="openModal(arendator.id)"><i class="fa fa-eye"></i>

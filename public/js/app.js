@@ -2269,8 +2269,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -52906,10 +52904,6 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(_vm.address(arendator)))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(_vm.date(arendator.created_at)))
-                      ]),
-                      _vm._v(" "),
                       _c("th", [
                         _c(
                           "button",
@@ -53244,8 +53238,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("ФИО:")]),
         _vm._v(" "),
         _c("th", [_vm._v("АДРЕС")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("ДАТА ДОБАВЛЕНИЯ")]),
         _vm._v(" "),
         _c("th")
       ])
