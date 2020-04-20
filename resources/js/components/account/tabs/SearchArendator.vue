@@ -32,6 +32,11 @@
                 <h5 class="w-100 text-right text-secondary">
                     Уточните критерии запроса для уменьшения количества результатов
                 </h5>
+            </div>
+        </div>
+        <div class="row mt-3" v-if="less20">
+            <div class="col-md-12">
+                <h6 class="w-100 text-right text-secondary">Найдено <span class="badge badge-secondary">{{less20}}</span></h6>
 
             </div>
         </div>
@@ -167,6 +172,7 @@
                     key: '',
                 },
                 more20: false,
+                less20: false,
                 noResult: false,
                 arendators: {},
                 arendator: {},
@@ -188,6 +194,7 @@
                     return;
                 }
                 this.more20 = false;
+                this.less20 = false;
                 this.noResult = false;
                 axios.get('/account/arendators/search?region=' + this.form.region + '&key=' + this.form.key).then((resp) => {
 
@@ -195,6 +202,8 @@
 
                     if (resp.data.total > 20) {
                         this.more20 = true;
+                    }else {
+                        this.less20 = resp.data.total;
                     }
 
                     if (resp.data.total === 0) {

@@ -3219,6 +3219,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SearchArendator",
@@ -3232,6 +3237,7 @@ __webpack_require__.r(__webpack_exports__);
         key: ''
       },
       more20: false,
+      less20: false,
       noResult: false,
       arendators: {},
       arendator: {}
@@ -3254,12 +3260,15 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.more20 = false;
+      this.less20 = false;
       this.noResult = false;
       axios.get('/account/arendators/search?region=' + this.form.region + '&key=' + this.form.key).then(function (resp) {
         _this2.arendators = resp.data.items;
 
         if (resp.data.total > 20) {
           _this2.more20 = true;
+        } else {
+          _this2.less20 = resp.data.total;
         }
 
         if (resp.data.total === 0) {
@@ -55521,6 +55530,19 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.more20 ? _c("div", { staticClass: "row mt-3" }, [_vm._m(2)]) : _vm._e(),
+    _vm._v(" "),
+    _vm.less20
+      ? _c("div", { staticClass: "row mt-3" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("h6", { staticClass: "w-100 text-right text-secondary" }, [
+              _vm._v("Найдено "),
+              _c("span", { staticClass: "badge badge-secondary" }, [
+                _vm._v(_vm._s(_vm.less20))
+              ])
+            ])
+          ])
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "row mt-3" }, [
       _c(
