@@ -79,7 +79,6 @@ class RegisterController extends Controller
 
         $array = [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'inn' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'address' => ['max:255'],
@@ -97,6 +96,8 @@ class RegisterController extends Controller
             $array = array_merge($array, [
                 'passport' => ['required', 'string', 'max:255'],
                 'full_name' => ['required', 'string', 'max:255'],
+                'inn' => ['max:255'],
+
             ]);
 
         } elseif ($type === 'individual-entrepreneur') {
@@ -106,6 +107,8 @@ class RegisterController extends Controller
                 'brand' => ['required', 'string', 'max:255'],
                 'document' => ['required', 'mimes:pdf', 'max:10000'],
                 'contact_person_position' => ['required', 'string', 'max:255'],
+                'inn' => ['required', 'string', 'max:255'],
+
             ]);
 
         } else {
