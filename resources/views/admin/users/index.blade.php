@@ -59,8 +59,15 @@
                                                    title="Edit">
                                                     <i class="icon-check"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger" title="Delete"> <i
-                                                        class="icon-close"></i></a>
+                                                <form method="POST" action="{{ route('users.destroy',  $user->id) }}" accept-charset="UTF-8"
+                                                      style="display:inline">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger" title="Delete"
+                                                            onclick="return confirm(&quot;Confirm delete?&quot;)"> <i class="icon-close"></i>
+                                                    </button>
+
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

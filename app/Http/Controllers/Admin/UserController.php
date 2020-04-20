@@ -45,6 +45,15 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
+
+    public function destroy($id)
+    {
+        User::destroy($id);
+        flash()->message('Успешно удален!')->success();
+
+        return redirect()->back();
+    }
+
     public function update(Request $request, $id)
     {
 
