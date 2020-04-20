@@ -2260,6 +2260,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -53042,6 +53053,36 @@ var render = function() {
                             )
                           ])
                         ]),
+                        _vm._v(" "),
+                        _vm.arendator.region
+                          ? _c("h5", { staticClass: "mt-3" }, [
+                              _c("strong", [_vm._v("Регион :")]),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("small", [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.arendator.region) +
+                                    "\n                                        "
+                                )
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.arendator.city
+                          ? _c("h5", { staticClass: "mt-3" }, [
+                              _c("strong", [_vm._v("Город :")]),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("small", [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.arendator.city) +
+                                    "\n                                        "
+                                )
+                              ])
+                            ])
+                          : _vm._e(),
                         _vm._v(" "),
                         _vm.arendator.address
                           ? _c("h5", { staticClass: "mt-3" }, [

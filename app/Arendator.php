@@ -34,14 +34,15 @@ class Arendator extends Model
             'id' => $this->id,
             'full_name' => $this->fullName,
             'register' => $this->register,
-            'address' => $this->region . ' ' . $this->city . ' ' . $this->address,
+            'address' => $this->address,
+            'region' => $this->region,
+            'city' => $this->city,
             'company_name' => $this->company_name,
             'inn' => $this->inn,
             'position' => $this->position,
             'passport' => $this->passport_serial . ' ' . $this->passport_number,
             'contact_phone' => $this->contact_phone,
             'birth_date' => $this->birth_date,
-            'city' => $this->city,
             'date' => $this->created_at->format('d/m/Y')
         ];
 

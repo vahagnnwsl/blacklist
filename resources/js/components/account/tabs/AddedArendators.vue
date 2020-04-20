@@ -87,7 +87,18 @@
                                                 {{arendator.contact_phone}}
                                             </small>
                                         </h5>
-
+                                        <h5 class="mt-3" v-if="arendator.region">
+                                            <strong>Регион :</strong><br>
+                                            <small>
+                                                {{arendator.region}}
+                                            </small>
+                                        </h5>
+                                        <h5 class="mt-3" v-if="arendator.city">
+                                            <strong>Город :</strong><br>
+                                            <small>
+                                                {{arendator.city}}
+                                            </small>
+                                        </h5>
                                         <h5 class="mt-3" v-if="arendator.address">
                                             <strong>Адрес :</strong><br>
                                             <small>
