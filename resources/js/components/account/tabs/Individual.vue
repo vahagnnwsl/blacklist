@@ -157,8 +157,8 @@
                             <div class="col-sm-12 col-md-4 form-group">
                                 <label>Документ </label>
                                 <input type="file" :id="'document'+key" :ref="'document'+key"
-                                       class="form-control  form-control-sm"
-                                       name="'violations['+key+'][document]'"
+                                       class="form-control form-control-sm"
+                                       :name="'violations['+key+'][document]'"
                                        data-vv-as="Документ" v-on:change="handleFileUpload(key)"
                                        v-validate="'ext:jpg,png,pdf,jpeg'">
 
@@ -273,9 +273,9 @@
 
                 reader.readAsDataURL(file);
 
-
             },
             onSubmit: function () {
+
 
                 this.violationsCountError = '';
                 this.backErrors = {};

@@ -190,7 +190,7 @@
                                 <label>Документ </label>
                                 <input type="file" :id="'document'+key" :ref="'document'+key"
                                        class="form-control  form-control-sm"
-                                       name="'violations['+key+'][document]'"
+                                       :name="'violations['+key+'][document]'"
                                        data-vv-as="Документ" v-on:change="handleFileUpload(key)"
                                        v-validate="'ext:jpg,png,pdf,jpeg'">
 

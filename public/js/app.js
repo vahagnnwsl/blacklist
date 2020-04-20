@@ -54014,11 +54014,11 @@ var render = function() {
                             ],
                             ref: "document" + key,
                             refInFor: true,
-                            staticClass: "form-control  form-control-sm",
+                            staticClass: "form-control form-control-sm",
                             attrs: {
                               type: "file",
                               id: "document" + key,
-                              name: "'violations['+key+'][document]'",
+                              name: "violations[" + key + "][document]",
                               "data-vv-as": "Документ"
                             },
                             on: {
@@ -55144,7 +55144,7 @@ var render = function() {
                             attrs: {
                               type: "file",
                               id: "document" + key,
-                              name: "'violations['+key+'][document]'",
+                              name: "violations[" + key + "][document]",
                               "data-vv-as": "Документ"
                             },
                             on: {
