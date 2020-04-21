@@ -99,7 +99,7 @@
                 class="text-danger">*</span></label>
         <input type="number" min="" class="form-control" id="real_estate_count" name="real_estate_count"
                value="{{$user->real_estate_count}}">
-        <small class="form-text text-muted text-right">в собственное или управленое</small>
+        <small class="form-text text-muted text-right">в собственности или управлении</small>
 
         @error('real_estate_count')
         <span class="invalid-feedback d-block" role="alert">
@@ -112,13 +112,13 @@
 
 
 
-    <div class="form-group  col-sm-12 col-md-6  col-lg-6">
+    {{--<div class="form-group  col-sm-12 col-md-6  col-lg-6">
         <label>Статус  </label>
         <select class="form-control" name="status" required>
-            <option value="0" @if($user->status == 0) selected @endif>Inactive</option>
-            <option value="1" @if($user->status == 1) selected @endif>Active</option>
+            <option value="0" @if($user->status == 0) selected @endif>Заблокирован</option>
+            <option value="1" @if($user->status == 1) selected @endif>Актив</option>
         </select>
-    </div>
+    </div>--}}
 
 
 

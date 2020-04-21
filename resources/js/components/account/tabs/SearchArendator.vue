@@ -138,15 +138,69 @@
                             </div>
                             <div class="col-lg-7 col-sm-12">
                                 <div class="row" v-for="violation in arendator.violations" style="border-bottom: 1px solid lightgray">
-                                    <h5 class="mt-3 p-1" >
-                                        <i>{{violation.full_name}}</i> <small><i>{{violation.date}}</i></small><br>
+                                    <h5 class="mt-3 p-1 w-100" >
+                                        <i style="cursor: pointer" data-toggle="collapse" :data-target="'#demo'+violation.id">{{violation.full_name}}</i> <small><i>{{violation.date}}</i></small><br>
+                                    </h5>
+                                    <div :id="'demo'+violation.id" class="collapse row form-group  w-100  p-2">
+                                        <div class="row w-100  p-2">
+                                            <div class="col-sm-12 col-md-6">
+
+
+
+                                                <h6 v-if="violation.type === 2">
+                                                    ФИО <br>
+                                                    <small>
+                                                        <i>{{violation.full_name}}</i>
+                                                    </small>
+                                                </h6>
+
+                                                <h6 v-if="violation.type === 5">
+                                                    ФИО<br>
+                                                    <small>
+                                                        <i>{{violation.full_name}}</i>
+                                                    </small>
+                                                </h6>
+
+                                                <h6 v-if="violation.type !== 5">
+                                                    Е-мейл<br>
+                                                    <small>
+                                                        <i>{{violation.contact_email}}</i>
+                                                    </small>
+                                                </h6>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+
+                                                <h6 >
+                                                    Телефон<br>
+                                                    <small>
+                                                        <i> {{violation.contact_phone}}</i>
+                                                    </small>
+                                                </h6>
+                                                <h6 v-if="violation.type === 3">
+                                                    Наименование ИП/ООО <br>
+                                                    <small>
+                                                        <i> {{violation.company_name}}</i>
+                                                    </small>
+                                                </h6>
+
+                                                <h6 v-if="violation.type === 4">
+                                                    Наименование ИП/ООО <br>
+                                                    <small>
+                                                        <i> {{violation.ie_name}}</i>
+                                                    </small>
+                                                </h6>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group w-100  p-2">
                                         <small >
                                             {{violation.description}}
-                                        </small><br>
-                                        <a v-if="violation.document" :href="'/storage'+violation.document" target="_blank"
-                                           class="float-right text-secondary"><small><strong><i>Документ</i></strong></small></a>
-
-                                    </h5>
+                                        </small>
+                                        <br>
+                                        <a v-if="violation.document" :href="'/storage'+violation.document" target="_blank" class="float-right text-secondary"><small><strong><i>Документ</i></strong></small></a>
+                                    </div>
 
                                 </div>
 

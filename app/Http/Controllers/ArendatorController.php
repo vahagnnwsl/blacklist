@@ -33,6 +33,17 @@ class ArendatorController extends Controller
         $fields['search'] =  implode(" ",Arr::except($fields, ['user_id','type','birth_date']));
 
 
+
+        if ((int)$request->get('type') === 1) {
+            $arendator = Arendator::where([
+                'passport_serial' => $request->get('passport_serial'),
+                'passport_number' => $request->get('passport_number')
+            ])->first();
+            if ($arendator) {
+                return response()->json(['passport' => ['Пользователь с этим паспортом уже существует']], 411);
+            }
+        }
+
         Arendator::create($fields);
 
         return response()->json();

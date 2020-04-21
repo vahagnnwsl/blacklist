@@ -55,7 +55,7 @@
 
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li class="{{ request()->is('dashboard/arendators*') ? 'active': ''}}"><a
-                        href="{{route('arendators.index')}}"> <i class="icon-user"></i>Арендатори</a></li>
+                        href="{{route('arendators.index')}}"> <i class="icon-user"></i>Арендаторы</a></li>
             </ul>
         </div>
 

@@ -20,7 +20,7 @@ class Arendator extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class,'id','user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
     public function violations()
@@ -49,15 +49,28 @@ class Arendator extends Model
         $array['violations'] = [];
 
         foreach ($this->violations as $violation) {
-            array_push($array['violations'], [
+
+            $arr = [
                 'full_name' => $violation->user->full_name,
+                'contact_person_full_name' => $violation->user->contact_person_full_name,
+                'contact_phone' => $violation->user->contact_phone,
+                'contact_email' => $violation->user->email,
+                'city' => $violation->user->city,
+                'ie_name' => $violation->user->ie_name,
+                'company_name' => $violation->user->company_name,
+                'address' => $violation->user->address,
+                'type' => $violation->user->type,
                 'date' => $violation->date,
                 'description' => $violation->description,
                 'document' => $violation->document,
                 'status' => $violation->status,
                 'user_id' => $violation->user_id,
                 'id' => $violation->id,
-            ]);
+            ];
+
+
+
+            array_push($array['violations'], $arr);
         }
         return $array;
     }
@@ -77,8 +90,7 @@ class Arendator extends Model
                         $violation['user_id'] = Auth::id();
                     }
 
-                    if (key_exists('document',$violation) && $violation['document'] !== null)
-                    {
+                    if (key_exists('document', $violation) && $violation['document'] !== null) {
                         $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
                     }
 

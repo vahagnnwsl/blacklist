@@ -25,7 +25,7 @@
         props: ["user_id"],
         data() {
             return {
-                showComponent: 'SearchArendator',
+                showComponent: 'AddedArendators',
             }
         },
         mounted() {

@@ -110,7 +110,7 @@
                 class="text-danger">*</span></label>
         <input type="number" min="" class="form-control" id="real_estate_count" name="real_estate_count"
                value="{{$user->real_estate_count}}">
-        <small class="form-text text-muted text-right">в собственное или управленое</small>
+        <small class="form-text text-muted text-right">в собственности или управлении</small>
 
         @error('real_estate_count')
         <span class="invalid-feedback d-block" role="alert">

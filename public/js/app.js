@@ -2000,7 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ["user_id"],
   data: function data() {
     return {
-      showComponent: 'SearchArendator'
+      showComponent: 'AddedArendators'
     };
   },
   mounted: function mounted() {},
@@ -2122,6 +2122,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modals_NewArendator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modals/NewArendator */ "./resources/js/components/account/modals/NewArendator.vue");
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3063,6 +3118,60 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modals_Arendator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modals/Arendator */ "./resources/js/components/account/modals/Arendator.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -53135,90 +53244,248 @@ var render = function() {
                             },
                             [
                               _c("h5", { staticClass: "mt-3 p-1 w-100" }, [
-                                _c("i", [_vm._v(_vm._s(violation.full_name))]),
+                                _c(
+                                  "i",
+                                  {
+                                    staticStyle: { cursor: "pointer" },
+                                    attrs: {
+                                      "data-toggle": "collapse",
+                                      "data-target": "#demo" + violation.id
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(violation.full_name))]
+                                ),
                                 _vm._v(" "),
                                 _c("small", [
                                   _c("i", [_vm._v(_vm._s(violation.date))])
                                 ]),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("small", [
-                                  _vm._v(
-                                    "\n                                                " +
-                                      _vm._s(violation.description) +
-                                      "\n                                            "
-                                  )
-                                ]),
-                                _c("br"),
-                                _vm._v(" "),
-                                violation.document
-                                  ? _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "float-right text-secondary",
-                                        attrs: {
-                                          href: "/storage" + violation.document,
-                                          target: "_blank"
-                                        }
-                                      },
-                                      [_vm._m(1, true)]
-                                    )
-                                  : _vm._e()
+                                _c("br")
                               ]),
                               _vm._v(" "),
-                              violation.user_id === _vm.user_id
-                                ? _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "collapse row form-group  w-100  p-2",
+                                  attrs: { id: "demo" + violation.id }
+                                },
+                                [
+                                  _c("div", { staticClass: "row w-100  p-2" }, [
                                     _c(
                                       "div",
-                                      {
-                                        staticClass:
-                                          "custom-control custom-switch"
-                                      },
+                                      { staticClass: "col-sm-12 col-md-6" },
                                       [
-                                        _c("input", {
-                                          staticClass: "custom-control-input",
-                                          attrs: {
-                                            type: "checkbox",
-                                            id: "switch" + key
-                                          },
-                                          domProps: {
-                                            checked:
-                                              Number(violation.status) === 1
-                                          },
-                                          on: {
-                                            change: function($event) {
-                                              return _vm.updateStatus(
-                                                violation.id,
-                                                "switch" + key + violation.id
-                                              )
-                                            }
-                                          }
-                                        }),
+                                        violation.type === 2
+                                          ? _c("h6", [
+                                              _vm._v(
+                                                "\n                                                       ФИО "
+                                              ),
+                                              _c("br"),
+                                              _vm._v(" "),
+                                              _c("small", [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    _vm._s(violation.full_name)
+                                                  )
+                                                ])
+                                              ])
+                                            ])
+                                          : _vm._e(),
                                         _vm._v(" "),
-                                        _c(
-                                          "label",
-                                          {
-                                            ref: "switch" + key + violation.id,
-                                            refInFor: true,
-                                            staticClass: "custom-control-label",
-                                            attrs: { for: "switch" + key }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                    " +
-                                                _vm._s(
-                                                  Number(violation.status) === 1
-                                                    ? "Погашено"
-                                                    : "Не погашено"
-                                                ) +
-                                                "\n                                                "
-                                            )
-                                          ]
-                                        )
+                                        violation.type === 5
+                                          ? _c("h6", [
+                                              _vm._v(
+                                                "\n                                                       ФИО"
+                                              ),
+                                              _c("br"),
+                                              _vm._v(" "),
+                                              _c("small", [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    _vm._s(violation.full_name)
+                                                  )
+                                                ])
+                                              ])
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        violation.type !== 5
+                                          ? _c("h6", [
+                                              _vm._v(
+                                                "\n                                                       Е-мейл"
+                                              ),
+                                              _c("br"),
+                                              _vm._v(" "),
+                                              _c("small", [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      violation.contact_email
+                                                    )
+                                                  )
+                                                ])
+                                              ])
+                                            ])
+                                          : _vm._e()
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-12 col-md-6" },
+                                      [
+                                        _c("h6", [
+                                          _vm._v(
+                                            "\n                                                       Телефон"
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("small", [
+                                            _c("i", [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(
+                                                    violation.contact_phone
+                                                  )
+                                              )
+                                            ])
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        violation.type === 3
+                                          ? _c("h6", [
+                                              _vm._v(
+                                                "\n                                                       Наименование ИП/ООО "
+                                              ),
+                                              _c("br"),
+                                              _vm._v(" "),
+                                              _c("small", [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    " " +
+                                                      _vm._s(
+                                                        violation.company_name
+                                                      )
+                                                  )
+                                                ])
+                                              ])
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        violation.type === 4
+                                          ? _c("h6", [
+                                              _vm._v(
+                                                "\n                                                       Наименование ИП/ООО "
+                                              ),
+                                              _c("br"),
+                                              _vm._v(" "),
+                                              _c("small", [
+                                                _c("i", [
+                                                  _vm._v(
+                                                    " " +
+                                                      _vm._s(violation.ie_name)
+                                                  )
+                                                ])
+                                              ])
+                                            ])
+                                          : _vm._e()
                                       ]
                                     )
                                   ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group w-100  p-2" },
+                                [
+                                  _c("small", [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(violation.description) +
+                                        "\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  violation.document
+                                    ? _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "float-right text-secondary",
+                                          attrs: {
+                                            href:
+                                              "/storage" + violation.document,
+                                            target: "_blank"
+                                          }
+                                        },
+                                        [_vm._m(1, true)]
+                                      )
+                                    : _vm._e()
+                                ]
+                              ),
+                              _vm._v(" "),
+                              violation.user_id === _vm.user_id
+                                ? _c(
+                                    "div",
+                                    { staticClass: "form-group  w-100  p-2" },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "custom-control custom-switch"
+                                        },
+                                        [
+                                          _c("input", {
+                                            staticClass: "custom-control-input",
+                                            attrs: {
+                                              type: "checkbox",
+                                              id: "switch" + key
+                                            },
+                                            domProps: {
+                                              checked:
+                                                Number(violation.status) === 1
+                                            },
+                                            on: {
+                                              change: function($event) {
+                                                return _vm.updateStatus(
+                                                  violation.id,
+                                                  "switch" + key + violation.id
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            {
+                                              ref:
+                                                "switch" + key + violation.id,
+                                              refInFor: true,
+                                              staticClass:
+                                                "custom-control-label",
+                                              attrs: { for: "switch" + key }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(
+                                                    Number(violation.status) ===
+                                                      1
+                                                      ? "Погашено"
+                                                      : "Не погашено"
+                                                  ) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
                                 : _vm._e()
                             ]
                           )
@@ -55794,14 +56061,137 @@ var render = function() {
                         staticStyle: { "border-bottom": "1px solid lightgray" }
                       },
                       [
-                        _c("h5", { staticClass: "mt-3 p-1" }, [
-                          _c("i", [_vm._v(_vm._s(violation.full_name))]),
+                        _c("h5", { staticClass: "mt-3 p-1 w-100" }, [
+                          _c(
+                            "i",
+                            {
+                              staticStyle: { cursor: "pointer" },
+                              attrs: {
+                                "data-toggle": "collapse",
+                                "data-target": "#demo" + violation.id
+                              }
+                            },
+                            [_vm._v(_vm._s(violation.full_name))]
+                          ),
                           _vm._v(" "),
                           _c("small", [
                             _c("i", [_vm._v(_vm._s(violation.date))])
                           ]),
-                          _c("br"),
-                          _vm._v(" "),
+                          _c("br")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "collapse row form-group  w-100  p-2",
+                            attrs: { id: "demo" + violation.id }
+                          },
+                          [
+                            _c("div", { staticClass: "row w-100  p-2" }, [
+                              _c("div", { staticClass: "col-sm-12 col-md-6" }, [
+                                violation.type === 2
+                                  ? _c("h6", [
+                                      _vm._v(
+                                        "\n                                                ФИО "
+                                      ),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c("small", [
+                                        _c("i", [
+                                          _vm._v(_vm._s(violation.full_name))
+                                        ])
+                                      ])
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                violation.type === 5
+                                  ? _c("h6", [
+                                      _vm._v(
+                                        "\n                                                ФИО"
+                                      ),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c("small", [
+                                        _c("i", [
+                                          _vm._v(_vm._s(violation.full_name))
+                                        ])
+                                      ])
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                violation.type !== 5
+                                  ? _c("h6", [
+                                      _vm._v(
+                                        "\n                                                Е-мейл"
+                                      ),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c("small", [
+                                        _c("i", [
+                                          _vm._v(
+                                            _vm._s(violation.contact_email)
+                                          )
+                                        ])
+                                      ])
+                                    ])
+                                  : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-12 col-md-6" }, [
+                                _c("h6", [
+                                  _vm._v(
+                                    "\n                                                Телефон"
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("small", [
+                                    _c("i", [
+                                      _vm._v(
+                                        " " + _vm._s(violation.contact_phone)
+                                      )
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                violation.type === 3
+                                  ? _c("h6", [
+                                      _vm._v(
+                                        "\n                                                Наименование ИП/ООО "
+                                      ),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c("small", [
+                                        _c("i", [
+                                          _vm._v(
+                                            " " + _vm._s(violation.company_name)
+                                          )
+                                        ])
+                                      ])
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                violation.type === 4
+                                  ? _c("h6", [
+                                      _vm._v(
+                                        "\n                                                Наименование ИП/ООО "
+                                      ),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c("small", [
+                                        _c("i", [
+                                          _vm._v(
+                                            " " + _vm._s(violation.ie_name)
+                                          )
+                                        ])
+                                      ])
+                                    ])
+                                  : _vm._e()
+                              ])
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group w-100  p-2" }, [
                           _c("small", [
                             _vm._v(
                               "\n                                        " +
@@ -55809,6 +56199,7 @@ var render = function() {
                                 "\n                                    "
                             )
                           ]),
+                          _vm._v(" "),
                           _c("br"),
                           _vm._v(" "),
                           violation.document

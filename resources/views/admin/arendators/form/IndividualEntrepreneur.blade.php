@@ -129,8 +129,8 @@
     <div class="form-group  col-lg-3 col-md-3 col-sm-12">
         <label>Статус </label>
         <select class="form-control" name="status" required>
-            <option value="0" @if($arendator->status == 0) selected @endif>Inactive</option>
-            <option value="1" @if($arendator->status == 1) selected @endif>Active</option>
+            <option value="0" @if($arendator->status == 0) selected @endif>Заблокирован</option>
+            <option value="1" @if($arendator->status == 1) selected @endif>Актив</option>
         </select>
     </div>
 
