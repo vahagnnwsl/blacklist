@@ -21,7 +21,6 @@ class UserController extends Controller
         $users = User::where('type', '>', 1)->where(function ($query) use ($key) {
             return $query->where('email', 'Like', '%' . $key . '%')
                 ->orWhere('inn', 'Like', '%' . $key . '%')
-                ->orWhere('ie_name', 'Like', '%' . $key . '%')
                 ->orWhere('company_name', 'Like', '%' . $key . '%')
                 ->orWhere('full_name', 'Like', '%' . $key . '%')
                 ->orWhere('psrnie', 'Like', '%' . $key . '%')

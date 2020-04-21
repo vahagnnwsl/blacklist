@@ -131,7 +131,13 @@
                                                     </span>
         @enderror
     </div>
-
+    <div class="form-group  col-lg-6 col-md-6 col-sm-12">
+        <label>Статус </label>
+        <select class="form-control" name="status" required>
+            <option value="0" @if($user->status == 0) selected @endif>Заблокирован</option>
+            <option value="1" @if($user->status == 1) selected @endif>Актив</option>
+        </select>
+    </div>
 
     <div class="form-group   col-12">
         <button type="submit" class="btn btn-primary  float-right" >

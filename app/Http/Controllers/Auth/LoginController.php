@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -33,7 +34,15 @@ class LoginController extends Controller
         }
         return RouteServiceProvider::HOME;
     }
-
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'exists:users,' . $this->username() . ',status,1',
+            'password' => 'required|string',
+        ], [
+            $this->username() . '.exists' => 'The selected email is invalid or the account has been disabled.'
+        ]);
+    }
     /**
      * Create a new controller instance.
      *

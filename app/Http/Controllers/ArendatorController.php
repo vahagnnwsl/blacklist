@@ -75,13 +75,13 @@ class ArendatorController extends Controller
     public function get()
     {
 
-        return response()->json(Arendator::whereIn('id',Auth::user()->arendatorsByViolations())->paginate(15, [
+        return response()->json(Arendator::whereIn('id',Auth::user()->arendatorsByViolations())->where('status',1)->paginate(15, [
             'id', 'first_name', 'last_name', 'patronymic', 'region', 'city', 'type','address','created_at','company_name'
         ]));
     }
 
     public function getSingle($id){
-        $arendator = Arendator::whereId($id)->with('violations')->first();
+        $arendator = Arendator::whereId($id)->where('status',1)->with('violations')->first();
 
         if(!$arendator){
             return response()->json([],401);
@@ -106,7 +106,7 @@ class ArendatorController extends Controller
             return $q->where('region', $region);
         })->when($key, function ($q) use ($key) {
             return $q->where('search', 'LIKE', '%' . $key . '%');
-        })->whereHas('user')->with('violations')->paginate(20);
+        })->whereHas('user')->where('status',1)->with('violations')->paginate(20);
 
         $resp['total'] = $arendators->total();
         $resp['items'] = [];
