@@ -12,14 +12,21 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>ФИО:</th>
+                        <th>АРЕНДАТОР</th>
                         <th>АДРЕС</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="arendator in laravelData.data" :key="arendator.id">
-                        <td>{{foolName(arendator)}}</td>
+                        <td>
+                            <span v-if="arendator.type===1">
+                                    <strong>{{foolName(arendator)}}</strong>
+                                 </span>
+                            <span v-else>
+                                   <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
+                                 </span>
+                        </td>
                         <td>{{address(arendator)}}</td>
                         <th>
                             <button class="btn btn-outline-secondary float-right  btn-sm"
@@ -44,128 +51,150 @@
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title w-100 text-left"><strong>{{arendator.full_name}}</strong></h4>
+                                <h4 class="modal-title w-100 text-left">
+                                 <span v-if="arendator.type===1">
+                                    <strong>{{arendator.full_name}}</strong>
+                                 </span>
+                                    <span v-else>
+                                   <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
+                                 </span>
+
+                                </h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-lg-3 col-sm-12">
+                                    <div class="col-lg-4 col-sm-12">
 
                                         <h5 v-if="arendator.register">
-                                            <strong>Прописка:</strong><br>
+                                            <strong>Прописка</strong><br>
                                             <small>
                                                 {{arendator.register}}
                                             </small>
                                         </h5>
 
                                         <h5 class="mt-3" v-if="arendator.company_name">
-                                            <strong>Наименование организации:</strong><br>
+                                            <strong>Наименование организации</strong><br>
                                             <small>
                                                 {{arendator.company_name}}
                                             </small>
                                         </h5>
 
                                         <h5 class="mt-3" v-if="arendator.inn">
-                                            <strong>ИНН:</strong><br>
+                                            <strong>ИНН</strong><br>
                                             <small>
                                                 {{arendator.inn}}
                                             </small>
                                         </h5>
+                                        <h5 class="mt-3" v-if="arendator.region">
+                                            <strong>Регион </strong><br>
+                                            <small>
+                                                {{arendator.region}}
+                                            </small>
+                                        </h5>
+                                        <h5 class="mt-3" v-if="arendator.city">
+                                            <strong>Город </strong><br>
+                                            <small>
+                                                {{arendator.city}}
+                                            </small>
+                                        </h5>
+                                        <h5 class="mt-3" v-if="arendator.address">
+                                            <strong>Адрес </strong><br>
+                                            <small>
+                                                {{arendator.address}}
+                                            </small>
+                                        </h5>
+
+                                        <h5 v-if="arendator.type===2">
+                                            <hr>
+                                            Контактное данные
+                                        </h5>
 
                                         <h5 class="mt-3">
-                                            <strong>Паспорт:</strong><br>
+                                            <strong>ФИО </strong><br>
+                                            <small>
+                                                {{arendator.full_name}}
+                                            </small>
+                                        </h5>
+
+                                        <h5 class="mt-3">
+                                            <strong>Паспорт </strong><br>
                                             <small>
                                                 {{arendator.passport}}
                                             </small>
                                         </h5>
 
                                         <h5 class="mt-3">
-                                            <strong>Телефон:</strong><br>
+                                            <strong>Телефон</strong><br>
                                             <small>
                                                 {{arendator.contact_phone}}
                                             </small>
                                         </h5>
-                                        <h5 class="mt-3" v-if="arendator.region">
-                                            <strong>Регион :</strong><br>
-                                            <small>
-                                                {{arendator.region}}
-                                            </small>
-                                        </h5>
-                                        <h5 class="mt-3" v-if="arendator.city">
-                                            <strong>Город :</strong><br>
-                                            <small>
-                                                {{arendator.city}}
-                                            </small>
-                                        </h5>
-                                        <h5 class="mt-3" v-if="arendator.address">
-                                            <strong>Адрес :</strong><br>
-                                            <small>
-                                                {{arendator.address}}
-                                            </small>
-                                        </h5>
 
                                         <h5 class="mt-3" v-if="arendator.birth_date">
-                                            <strong>Дата рождения:</strong><br>
+                                            <strong>Дата рождения</strong><br>
                                             <small>
                                                 {{arendator.birth_date}}
                                             </small>
                                         </h5>
 
                                     </div>
-                                    <div class="col-lg-9 col-sm-12">
+                                    <div class="col-lg-8 col-sm-12">
                                         <div class="row" v-for="(violation,key) in arendator.violations" style="border-bottom: 1px solid lightgray">
-                                            <h5 class="mt-3 p-1 w-100" >
-                                                <i style="cursor: pointer" data-toggle="collapse" :data-target="'#demo'+violation.id">{{violation.full_name}}</i> <small><i>{{violation.date}}</i></small><br>
+                                            <h5 class="mt-3 p-2 w-100" >
+                                                <i style="cursor: pointer" data-toggle="collapse" :data-target="'#demo'+violation.id">
+                                                  <span v-if="violation.user.company_name">
+                                                     <small style="font-size: 0.5rem">ИП/ООО</small>   {{violation.user.company_name}}
+                                                  </span>
+                                                    <span v-else>
+                                                       {{violation.user.full_name}}
+                                                  </span>
+                                                </i>
+                                                <small class="float-right">
+                                                    <i>
+                                                        {{violation.date}}
+                                                    </i>
+                                                </small>
+                                                <br>
                                             </h5>
                                             <div :id="'demo'+violation.id" class="collapse row form-group  w-100  p-2">
-                                               <div class="row w-100  p-2">
-                                                   <div class="col-sm-12 col-md-6">
-
-
-
-                                                       <h6 v-if="violation.type === 2">
+                                               <div class="row w-100  p-3">
+                                                   <div class="col-sm-12 col-md-4">
+                                                       <h6>
                                                            ФИО <br>
                                                            <small>
-                                                               <i>{{violation.full_name}}</i>
+                                                               <i>{{violation.user.contact_person_full_name}}</i>
                                                            </small>
                                                        </h6>
-
-                                                       <h6 v-if="violation.type === 5">
-                                                           ФИО<br>
-                                                           <small>
-                                                               <i>{{violation.full_name}}</i>
-                                                           </small>
-                                                       </h6>
-
-                                                       <h6 v-if="violation.type !== 5">
+                                                       <h6>
                                                            Е-мейл<br>
                                                            <small>
-                                                               <i>{{violation.contact_email}}</i>
+                                                               <i>{{violation.user.contact_email}}</i>
                                                            </small>
                                                        </h6>
                                                    </div>
-                                                   <div class="col-sm-12 col-md-6">
-
-                                                       <h6 >
+                                                   <div class="col-sm-12 col-md-4">
+                                                       <h6>
                                                            Телефон<br>
                                                            <small>
-                                                               <i> {{violation.contact_phone}}</i>
+                                                               <i> {{violation.user.contact_phone}}</i>
                                                            </small>
                                                        </h6>
-                                                       <h6 v-if="violation.type === 3">
-                                                           Наименование ИП/ООО <br>
+                                                       <h6>
+                                                           Город <br>
                                                            <small>
-                                                               <i> {{violation.company_name}}</i>
+                                                               <i> {{violation.user.city}}</i>
                                                            </small>
                                                        </h6>
 
-                                                       <h6 v-if="violation.type === 4">
-                                                           Наименование ИП/ООО <br>
+                                                   </div>
+                                                   <div class="col-sm-12 col-md-4">
+                                                       <h6>
+                                                           Адрес <br>
                                                            <small>
-                                                               <i> {{violation.ie_name}}</i>
+                                                               <i> {{violation.user.address}}</i>
                                                            </small>
                                                        </h6>
-
                                                    </div>
                                                </div>
 

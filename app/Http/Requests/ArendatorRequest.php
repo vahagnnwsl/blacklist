@@ -20,7 +20,7 @@ class ArendatorRequest
 
         if ((int)request()->get('type') === 2)
         {
-            $rules['inn'] = 'required|string|max:255|unique:arendators,inn';
+            $rules['inn'] = 'required|string|max:255';
 
             $rules['company_name'] = ['required', 'string', 'max:255'];
             $rules['address'] = ['required', 'string', 'max:255'];

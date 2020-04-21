@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Arendator;
+use App\ArendatorViolation;
 use App\Services\FileUploaderService;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArendatorRequest;
@@ -39,10 +40,28 @@ class ArendatorController extends Controller
                 'passport_serial' => $request->get('passport_serial'),
                 'passport_number' => $request->get('passport_number')
             ])->first();
-            if ($arendator) {
-                return response()->json(['passport' => ['Пользователь с этим паспортом уже существует']], 411);
-            }
+
+            $msg = 'Арендатор с этим паспортом уже существует,добавлено только нарушение';
+
+        }else {
+            $arendator = Arendator::where([
+                'inn' => $request->get('inn')
+            ])->first();
+            $msg = 'Арендатор с этим ИНН уже существует,добавлено только нарушение';
         }
+        if ($arendator) {
+            foreach ($request->get('violations') as $violation) {
+                $violation['user_id'] = Auth::id();
+                if (key_exists('document', $violation) && $violation['document'] !== null) {
+                    $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
+                }
+                $violation['arendator_id'] = $arendator->id;
+                ArendatorViolation::create($violation);
+            }
+
+            return response()->json(['msg'=>$msg]);
+        }
+
 
         Arendator::create($fields);
 
@@ -53,7 +72,7 @@ class ArendatorController extends Controller
     public function get()
     {
         return response()->json(Auth::user()->arendators()->orderBy('id','desc')->paginate(15, [
-            'id', 'first_name', 'last_name', 'patronymic', 'region', 'city', 'type','address','created_at'
+            'id', 'first_name', 'last_name', 'patronymic', 'region', 'city', 'type','address','created_at','company_name'
         ]));
     }
 

@@ -32,6 +32,7 @@ class Arendator extends Model
     {
         $array = [
             'id' => $this->id,
+            'type' => $this->type,
             'full_name' => $this->fullName,
             'register' => $this->register,
             'address' => $this->address,
@@ -51,15 +52,16 @@ class Arendator extends Model
         foreach ($this->violations as $violation) {
 
             $arr = [
-                'full_name' => $violation->user->full_name,
-                'contact_person_full_name' => $violation->user->contact_person_full_name,
-                'contact_phone' => $violation->user->contact_phone,
-                'contact_email' => $violation->user->email,
-                'city' => $violation->user->city,
-                'ie_name' => $violation->user->ie_name,
-                'company_name' => $violation->user->company_name,
-                'address' => $violation->user->address,
-                'type' => $violation->user->type,
+                'user' => [
+                    'full_name' => $violation->user->full_name,
+                    'contact_email' => $violation->user->email,
+                    'city' => $violation->user->city,
+                    'company_name' => $violation->user->company_name,
+                    'contact_phone' => $violation->user->contact_phone,
+                    'contact_person_full_name' => $violation->user->contact_person_full_name,
+                    'address' => $violation->user->address,
+                    'type' => $violation->user->type,
+                ],
                 'date' => $violation->date,
                 'description' => $violation->description,
                 'document' => $violation->document,
@@ -67,7 +69,6 @@ class Arendator extends Model
                 'user_id' => $violation->user_id,
                 'id' => $violation->id,
             ];
-
 
 
             array_push($array['violations'], $arr);

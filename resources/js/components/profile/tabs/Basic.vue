@@ -10,21 +10,12 @@
                            v-if="errors.has('full_name')">{{errors.first('full_name')}}</small>
 
                 </div>
-                <div class="form-group col-md-6" v-if="auth_type===4">
-                    <label for="ie_name">Наименование ИП: <span class="text-danger">*</span></label>
-                    <input type="text" id="ie_name" class="form-control" name="ie_name" v-model="form.ie_name"
-                           data-vv-as="Наименование ИП" v-validate="'required|max:100'">
+                <div class="form-group col-md-6"  v-if="auth_type!==2">
+                    <label for="company_name">Наименование: <span class="text-danger">*</span></label>
+                    <input type="text" id="company_name" class="form-control" name="company_name" v-model="form.company_name"
+                           data-vv-as="Наименование" v-validate="'required|max:100'">
                     <small class="text-danger  float-right"
-                           v-if="errors.has('ie_name')">{{errors.first('ie_name')}}</small>
-
-                </div>
-
-                <div class="form-group col-md-6" v-if="auth_type===3">
-                    <label for="company_name">Наименование организации: <span class="text-danger">*</span></label>
-                    <input type="text" id="company_name" class="form-control" name="company_name"
-                           data-vv-as="Наименование организации" v-model="form.company_name"
-                           v-validate="'required|max:100'">
-                    <small class="text-danger  float-right" v-if="errors.has('company_name')">{{errors.first('company_name')}}</small>
+                           v-if="errors.has('company_name')">{{errors.first('company_name')}}</small>
 
                 </div>
 
@@ -52,13 +43,19 @@
 
                 </div>
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" v-if="auth_type===2">
+                    <label for="inn">ИНН: </label>
+                    <input type="text" id="inn" class="form-control" name="inn" v-model="form.inn" data-vv-as="ИНН"
+                           v-validate="'max:100'">
+                    <small class="text-danger  float-right" v-if="errors.has('inn')">{{errors.first('inn')}}</small>
+                </div>
+                <div class="form-group col-md-6" v-else>
                     <label for="inn">ИНН: <span class="text-danger">*</span></label>
                     <input type="text" id="inn" class="form-control" name="inn" v-model="form.inn" data-vv-as="ИНН"
                            v-validate="'required|max:100'">
                     <small class="text-danger  float-right" v-if="errors.has('inn')">{{errors.first('inn')}}</small>
-
                 </div>
+
                 <div class="form-group col-md-6">
                     <label for="country">Страна: <span class="text-danger">*</span></label>
                     <input type="text" id="country" class="form-control" name="country" v-model="form.country"
@@ -156,7 +153,6 @@
             return {
                 form: {
                     inn: '',
-                    ie_name: '',
                     city: '',
                     country: '',
                     passport: '',

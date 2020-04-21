@@ -12,10 +12,10 @@
                     <input type="hidden" name="type" value="{{$type}}">
 
                     <div class="form-group col-sm-12 col-md-6 col-lg-4">
-                        <label for="ie_name">Наименование ИП  <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="ie_name" name="ie_name"
-                               value="{{old('ie_name')}}">
-                        @error('ie_name')
+                        <label for="company_name">Наименование ИП  <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="company_name" name="company_name"
+                               value="{{old('company_name')}}">
+                        @error('company_name')
                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>

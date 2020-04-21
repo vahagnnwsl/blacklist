@@ -64,7 +64,8 @@ class UserRequest
         } else {
 
             $rules = array_merge($rules, [
-                'brand' => ['required', 'string', 'max:255']
+                'brand' => ['required', 'string', 'max:255'],
+                'company_name' => ['required', 'string', 'max:255'],
             ]);
 
             if (request()->hasFile('document')) {
@@ -75,12 +76,10 @@ class UserRequest
 
             if ($type === 3) {
                 $rules = array_merge($rules, [
-                    'company_name' => ['required', 'string', 'max:255'],
                     'psrn' => ['required', 'string', 'max:255'],
                 ]);
             } else {
                 $rules = array_merge($rules, [
-                    'ie_name' => ['required', 'string', 'max:255'],
                     'psrnie' => ['required', 'string', 'max:255'],
                 ]);
             }

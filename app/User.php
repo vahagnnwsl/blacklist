@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'type', 'email', 'ie_name',
+        'type', 'email',
         'company_name', 'full_name', 'inn',
         'psrnie', 'psrn', 'passport',
         'document', 'brand', 'country',
@@ -77,12 +77,8 @@ class User extends Authenticatable implements MustVerifyEmail
         if ($this->type === 2) {
             $data = array_merge($data, ['passport' => $this->passport, 'full_name' => $this->full_name]);
         } else {
-            $data = array_merge($data, ['brand' => $this->brand]);
-            if ($this->type === 3) {
-                $data = array_merge($data, ['company_name' => $this->company_name, 'psrn' => $this->psrn]);
-            } else {
-                $data = array_merge($data, ['ie_name' => $this->ie_name, 'psrnie' => $this->psrnie]);
-            }
+            $data = array_merge($data, ['brand' => $this->brand,'company_name'=>$this->company_name]);
+           
         }
         return $data;
     }

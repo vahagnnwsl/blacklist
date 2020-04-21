@@ -24,7 +24,7 @@
                         @enderror
                     </div>
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="inn">ИНН <span class="text-danger">*</span></label>
+                        <label for="inn">ИНН </label>
                         <input type="text" class="form-control" id="inn" name="inn" value="{{old('inn')}}">
                         @error('inn')
                         <span class="invalid-feedback" role="alert">

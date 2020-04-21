@@ -102,7 +102,7 @@ class RegisterController extends Controller
 
         } elseif ($type === 'individual-entrepreneur') {
             $array = array_merge($array, [
-                'ie_name' => ['required', 'string', 'max:255'],
+                'company_name' => ['required', 'string', 'max:255'],
                 'psrnie' => ['required', 'string', 'max:255'],
                 'brand' => ['required', 'string', 'max:255'],
                 'document' => ['required', 'mimes:pdf', 'max:10000'],

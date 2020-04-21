@@ -7,7 +7,8 @@
                     <input type="text" class="form-control" placeholder="Все регионы" v-model="form.region">
                 </div>
                 <div class="input-group col-md-9 pr-0">
-                    <input type="text" class="form-control" placeholder="ФИО, телефон, паспорт, регион, город, прописка" v-model="form.key"
+                    <input type="text" class="form-control" placeholder="ФИО, телефон, паспорт, регион, город, прописка"
+                           v-model="form.key"
                            aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" style="border:1px solid #D8DDE3">
@@ -36,7 +37,8 @@
         </div>
         <div class="row mt-3" v-if="less20">
             <div class="col-md-12">
-                <h6 class="w-100 text-right text-secondary">Найдено <span class="badge badge-secondary">{{less20}}</span></h6>
+                <h6 class="w-100 text-right text-secondary">Найдено <span
+                    class="badge badge-secondary">{{less20}}</span></h6>
 
             </div>
         </div>
@@ -45,15 +47,29 @@
             <div class="col-md-12">
                 <div class="row p-2 mb-2" style="border: 1px solid lightgray" v-for="(arendator,key) in arendators">
                     <div class="col-md-3 col-sm-12 text-center" style="vertical-align: middle">
-                        <strong>{{arendator.full_name}}</strong>
+                        <span v-if="arendator.type===1">
+                            <strong>{{arendator.full_name}}</strong>
+                        </span>
+                        <span v-else>
+                            <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
+                        </span>
+
                     </div>
                     <div class="col-md-6 col-sm-12 text-center">
-                        <h6 v-for="(item,key) in arendator.violations">{{item.full_name}} <small><i>{{item.description.substring(1,
-                            25)}}...</i></small></h6>
+                        <h6 v-for="(item,key) in arendator.violations">
+                            <span v-if="item.user.full_name">
+                                {{item.user.full_name}}
+                            </span>
+                            <span v-else> <small style="font-size: 0.6rem"><i>ИП/ООО</i> </small> {{item.user.company_name}}</span>
+                            <small>
+                                <i>{{item.description.substring(1,
+                                    25)}}...
+                                </i>
+                            </small>
+                        </h6>
                     </div>
                     <div class="col-md-3 col-sm-12 text-right" style="position: relative" ref="aa">
                         <h6 class="dateCity">{{arendator.city}} <small><i>{{arendator.date}}</i></small></h6>
-
                         <button class="btn btn-outline-secondary btn-sm  eyeBtn" @click="openModal(arendator.id)">
                             <i class="fa fa-eye"></i>
                         </button>
@@ -64,142 +80,168 @@
         </div>
 
         <div class="modal fade" id="arendatorModal" tabindex="-1" role="dialog" aria-hidden="true" ref="arendatorModal">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title w-100 text-left"><strong>{{arendator.full_name}}</strong></h4>
+                        <h4 class="modal-title w-100 text-left">
+                                 <span v-if="arendator.type===1">
+                                    <strong>{{arendator.full_name}}</strong>
+                                 </span>
+                                 <span v-else>
+                                   <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
+                                 </span>
+
+                        </h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-5 col-sm-12">
+                            <div class="col-lg-4 col-sm-12">
 
                                 <h5 v-if="arendator.register">
-                                    <strong>Прописка:</strong><br>
+                                    <strong>Прописка</strong><br>
                                     <small>
                                         {{arendator.register}}
                                     </small>
                                 </h5>
 
                                 <h5 class="mt-3" v-if="arendator.company_name">
-                                    <strong>Наименование организации:</strong><br>
+                                    <strong>Наименование организации</strong><br>
                                     <small>
                                         {{arendator.company_name}}
                                     </small>
                                 </h5>
 
                                 <h5 class="mt-3" v-if="arendator.inn">
-                                    <strong>ИНН:</strong><br>
+                                    <strong>ИНН</strong><br>
                                     <small>
                                         {{arendator.inn}}
                                     </small>
                                 </h5>
+                                <h5 class="mt-3" v-if="arendator.region">
+                                    <strong>Регион </strong><br>
+                                    <small>
+                                        {{arendator.region}}
+                                    </small>
+                                </h5>
+                                <h5 class="mt-3" v-if="arendator.city">
+                                    <strong>Город </strong><br>
+                                    <small>
+                                        {{arendator.city}}
+                                    </small>
+                                </h5>
+                                <h5 class="mt-3" v-if="arendator.address">
+                                    <strong>Адрес </strong><br>
+                                    <small>
+                                        {{arendator.address}}
+                                    </small>
+                                </h5>
+
+                                 <h5 v-if="arendator.type===2">
+                                     <hr>
+                                     Контактное данные
+                                 </h5>
 
                                 <h5 class="mt-3">
-                                    <strong>Паспорт:</strong><br>
+                                    <strong>ФИО </strong><br>
+                                    <small>
+                                        {{arendator.full_name}}
+                                    </small>
+                                </h5>
+
+                                <h5 class="mt-3">
+                                    <strong>Паспорт </strong><br>
                                     <small>
                                         {{arendator.passport}}
                                     </small>
                                 </h5>
 
                                 <h5 class="mt-3">
-                                    <strong>Телефон:</strong><br>
+                                    <strong>Телефон</strong><br>
                                     <small>
                                         {{arendator.contact_phone}}
                                     </small>
                                 </h5>
 
-                                <h5 class="mt-3" v-if="arendator.region">
-                                    <strong>Регион :</strong><br>
-                                    <small>
-                                        {{arendator.region}}
-                                    </small>
-                                </h5>
-                                <h5 class="mt-3" v-if="arendator.city">
-                                    <strong>Город :</strong><br>
-                                    <small>
-                                        {{arendator.city}}
-                                    </small>
-                                </h5>
-                                <h5 class="mt-3" v-if="arendator.address">
-                                    <strong>Адрес :</strong><br>
-                                    <small>
-                                        {{arendator.address}}
-                                    </small>
-                                </h5>
-
                                 <h5 class="mt-3" v-if="arendator.birth_date">
-                                    <strong>Дата рождения:</strong><br>
+                                    <strong>Дата рождения</strong><br>
                                     <small>
                                         {{arendator.birth_date}}
                                     </small>
                                 </h5>
 
                             </div>
-                            <div class="col-lg-7 col-sm-12">
-                                <div class="row" v-for="violation in arendator.violations" style="border-bottom: 1px solid lightgray">
-                                    <h5 class="mt-3 p-1 w-100" >
-                                        <i style="cursor: pointer" data-toggle="collapse" :data-target="'#demo'+violation.id">{{violation.full_name}}</i> <small><i>{{violation.date}}</i></small><br>
+                            <div class="col-lg-8 col-sm-12">
+                                <div class="row" v-for="violation in arendator.violations"
+                                     style="border-bottom: 1px solid lightgray">
+                                    <h5 class="mt-3 p-2 w-100">
+                                        <i style="cursor: pointer" data-toggle="collapse"
+                                           :data-target="'#demo'+violation.id">
+                                                  <span v-if="violation.user.company_name">
+                                                     <small style="font-size: 0.5rem">ИП/ООО</small>   {{violation.user.company_name}}
+                                                  </span>
+                                            <span v-else>
+                                                       {{violation.user.full_name}}
+                                                  </span>
+                                        </i>
+                                        <small class="float-right">
+                                            <i>
+                                                {{violation.date}}
+                                            </i>
+                                        </small>
+                                        <br>
                                     </h5>
-                                    <div :id="'demo'+violation.id" class="collapse row form-group  w-100  p-2">
-                                        <div class="row w-100  p-2">
-                                            <div class="col-sm-12 col-md-6">
-
-
-
-                                                <h6 v-if="violation.type === 2">
+                                    <div :id="'demo'+violation.id"
+                                         class="collapse row form-group  w-100  pr-2 pl-2 ml-2">
+                                        <div class="row w-100   pr-4 pl-2">
+                                            <div class="col-sm-12 col-md-4 ">
+                                                <h6>
                                                     ФИО <br>
                                                     <small>
-                                                        <i>{{violation.full_name}}</i>
+                                                        <i>{{violation.user.contact_person_full_name}}</i>
                                                     </small>
                                                 </h6>
-
-                                                <h6 v-if="violation.type === 5">
-                                                    ФИО<br>
-                                                    <small>
-                                                        <i>{{violation.full_name}}</i>
-                                                    </small>
-                                                </h6>
-
-                                                <h6 v-if="violation.type !== 5">
+                                                <h6>
                                                     Е-мейл<br>
                                                     <small>
-                                                        <i>{{violation.contact_email}}</i>
+                                                        <i>{{violation.user.contact_email}}</i>
                                                     </small>
                                                 </h6>
                                             </div>
-                                            <div class="col-sm-12 col-md-6">
-
-                                                <h6 >
+                                            <div class="col-sm-12 col-md-4">
+                                                <h6>
                                                     Телефон<br>
                                                     <small>
-                                                        <i> {{violation.contact_phone}}</i>
+                                                        <i> {{violation.user.contact_phone}}</i>
                                                     </small>
                                                 </h6>
-                                                <h6 v-if="violation.type === 3">
-                                                    Наименование ИП/ООО <br>
+                                                <h6>
+                                                    Город <br>
                                                     <small>
-                                                        <i> {{violation.company_name}}</i>
+                                                        <i> {{violation.user.city}}</i>
                                                     </small>
                                                 </h6>
 
-                                                <h6 v-if="violation.type === 4">
-                                                    Наименование ИП/ООО <br>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <h6>
+                                                    Адрес <br>
                                                     <small>
-                                                        <i> {{violation.ie_name}}</i>
+                                                        <i> {{violation.user.address}}</i>
                                                     </small>
                                                 </h6>
-
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="form-group w-100  p-2">
-                                        <small >
+                                    <div class="form-group w-100    pr-2 pl-2">
+                                        <small>
                                             {{violation.description}}
                                         </small>
                                         <br>
-                                        <a v-if="violation.document" :href="'/storage'+violation.document" target="_blank" class="float-right text-secondary"><small><strong><i>Документ</i></strong></small></a>
+                                        <a v-if="violation.document" :href="'/storage'+violation.document"
+                                           target="_blank"
+                                           class="float-right text-secondary"><small><strong><i>Документ</i></strong></small></a>
                                     </div>
 
                                 </div>
@@ -256,7 +298,7 @@
 
                     if (resp.data.total > 20) {
                         this.more20 = true;
-                    }else {
+                    } else {
                         this.less20 = resp.data.total;
                     }
 

@@ -2000,7 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ["user_id"],
   data: function data() {
     return {
-      showComponent: 'AddedArendators'
+      showComponent: 'SearchArendator'
     };
   },
   mounted: function mounted() {},
@@ -2122,6 +2122,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modals_NewArendator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modals/NewArendator */ "./resources/js/components/account/modals/NewArendator.vue");
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2699,7 +2728,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             return;
           }
 
-          axios.post('/account/arendators', _this.form).then(function () {
+          axios.post('/account/arendators', _this.form).then(function (resp) {
+            var msg = 'Успешно добавлено';
+
+            if (resp.data.msg) {
+              msg = resp.data.msg;
+            }
+
             _this.$emit('getResults', 1);
 
             _this.$refs.form.reset();
@@ -2707,7 +2742,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             _this.$refs['closeModal'].click();
 
             $.toaster({
-              message: 'Успешно добавлено',
+              message: msg,
               title: 'Успешно!',
               priority: 'success'
             });
@@ -3118,6 +3153,48 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modals_Arendator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modals/Arendator */ "./resources/js/components/account/modals/Arendator.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4402,9 +4479,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Basic",
@@ -4413,7 +4487,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: {
         inn: '',
-        ie_name: '',
         city: '',
         country: '',
         passport: '',
@@ -53018,7 +53091,21 @@ var render = function() {
                   "tbody",
                   _vm._l(_vm.laravelData.data, function(arendator) {
                     return _c("tr", { key: arendator.id }, [
-                      _c("td", [_vm._v(_vm._s(_vm.foolName(arendator)))]),
+                      _c("td", [
+                        arendator.type === 1
+                          ? _c("span", [
+                              _c("strong", [
+                                _vm._v(_vm._s(_vm.foolName(arendator)))
+                              ])
+                            ])
+                          : _c("span", [
+                              _vm._m(1, true),
+                              _vm._v(" "),
+                              _c("strong", [
+                                _vm._v(_vm._s(arendator.company_name))
+                              ])
+                            ])
+                      ]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(_vm.address(arendator)))]),
                       _vm._v(" "),
@@ -53077,7 +53164,19 @@ var render = function() {
                 _c("div", { staticClass: "modal-content" }, [
                   _c("div", { staticClass: "modal-header" }, [
                     _c("h4", { staticClass: "modal-title w-100 text-left" }, [
-                      _c("strong", [_vm._v(_vm._s(_vm.arendator.full_name))])
+                      _vm.arendator.type === 1
+                        ? _c("span", [
+                            _c("strong", [
+                              _vm._v(_vm._s(_vm.arendator.full_name))
+                            ])
+                          ])
+                        : _c("span", [
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _c("strong", [
+                              _vm._v(_vm._s(_vm.arendator.company_name))
+                            ])
+                          ])
                     ]),
                     _vm._v(" "),
                     _c(
@@ -53092,10 +53191,10 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-3 col-sm-12" }, [
+                      _c("div", { staticClass: "col-lg-4 col-sm-12" }, [
                         _vm.arendator.register
                           ? _c("h5", [
-                              _c("strong", [_vm._v("Прописка:")]),
+                              _c("strong", [_vm._v("Прописка")]),
                               _c("br"),
                               _vm._v(" "),
                               _c("small", [
@@ -53111,7 +53210,7 @@ var render = function() {
                         _vm.arendator.company_name
                           ? _c("h5", { staticClass: "mt-3" }, [
                               _c("strong", [
-                                _vm._v("Наименование организации:")
+                                _vm._v("Наименование организации")
                               ]),
                               _c("br"),
                               _vm._v(" "),
@@ -53127,7 +53226,7 @@ var render = function() {
                         _vm._v(" "),
                         _vm.arendator.inn
                           ? _c("h5", { staticClass: "mt-3" }, [
-                              _c("strong", [_vm._v("ИНН:")]),
+                              _c("strong", [_vm._v("ИНН")]),
                               _c("br"),
                               _vm._v(" "),
                               _c("small", [
@@ -53140,35 +53239,9 @@ var render = function() {
                             ])
                           : _vm._e(),
                         _vm._v(" "),
-                        _c("h5", { staticClass: "mt-3" }, [
-                          _c("strong", [_vm._v("Паспорт:")]),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("small", [
-                            _vm._v(
-                              "\n                                            " +
-                                _vm._s(_vm.arendator.passport) +
-                                "\n                                        "
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("h5", { staticClass: "mt-3" }, [
-                          _c("strong", [_vm._v("Телефон:")]),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("small", [
-                            _vm._v(
-                              "\n                                            " +
-                                _vm._s(_vm.arendator.contact_phone) +
-                                "\n                                        "
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
                         _vm.arendator.region
                           ? _c("h5", { staticClass: "mt-3" }, [
-                              _c("strong", [_vm._v("Регион :")]),
+                              _c("strong", [_vm._v("Регион ")]),
                               _c("br"),
                               _vm._v(" "),
                               _c("small", [
@@ -53183,7 +53256,7 @@ var render = function() {
                         _vm._v(" "),
                         _vm.arendator.city
                           ? _c("h5", { staticClass: "mt-3" }, [
-                              _c("strong", [_vm._v("Город :")]),
+                              _c("strong", [_vm._v("Город ")]),
                               _c("br"),
                               _vm._v(" "),
                               _c("small", [
@@ -53198,7 +53271,7 @@ var render = function() {
                         _vm._v(" "),
                         _vm.arendator.address
                           ? _c("h5", { staticClass: "mt-3" }, [
-                              _c("strong", [_vm._v("Адрес :")]),
+                              _c("strong", [_vm._v("Адрес ")]),
                               _c("br"),
                               _vm._v(" "),
                               _c("small", [
@@ -53211,9 +53284,57 @@ var render = function() {
                             ])
                           : _vm._e(),
                         _vm._v(" "),
+                        _vm.arendator.type === 2
+                          ? _c("h5", [
+                              _c("hr"),
+                              _vm._v(
+                                "\n                                        Контактное данные\n                                    "
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("h5", { staticClass: "mt-3" }, [
+                          _c("strong", [_vm._v("ФИО ")]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("small", [
+                            _vm._v(
+                              "\n                                            " +
+                                _vm._s(_vm.arendator.full_name) +
+                                "\n                                        "
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("h5", { staticClass: "mt-3" }, [
+                          _c("strong", [_vm._v("Паспорт ")]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("small", [
+                            _vm._v(
+                              "\n                                            " +
+                                _vm._s(_vm.arendator.passport) +
+                                "\n                                        "
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("h5", { staticClass: "mt-3" }, [
+                          _c("strong", [_vm._v("Телефон")]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("small", [
+                            _vm._v(
+                              "\n                                            " +
+                                _vm._s(_vm.arendator.contact_phone) +
+                                "\n                                        "
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
                         _vm.arendator.birth_date
                           ? _c("h5", { staticClass: "mt-3" }, [
-                              _c("strong", [_vm._v("Дата рождения:")]),
+                              _c("strong", [_vm._v("Дата рождения")]),
                               _c("br"),
                               _vm._v(" "),
                               _c("small", [
@@ -53229,7 +53350,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "col-lg-9 col-sm-12" },
+                        { staticClass: "col-lg-8 col-sm-12" },
                         _vm._l(_vm.arendator.violations, function(
                           violation,
                           key
@@ -53243,7 +53364,7 @@ var render = function() {
                               }
                             },
                             [
-                              _c("h5", { staticClass: "mt-3 p-1 w-100" }, [
+                              _c("h5", { staticClass: "mt-3 p-2 w-100" }, [
                                 _c(
                                   "i",
                                   {
@@ -53253,12 +53374,46 @@ var render = function() {
                                       "data-target": "#demo" + violation.id
                                     }
                                   },
-                                  [_vm._v(_vm._s(violation.full_name))]
+                                  [
+                                    violation.user.company_name
+                                      ? _c("span", [
+                                          _c(
+                                            "small",
+                                            {
+                                              staticStyle: {
+                                                "font-size": "0.5rem"
+                                              }
+                                            },
+                                            [_vm._v("ИП/ООО")]
+                                          ),
+                                          _vm._v(
+                                            "   " +
+                                              _vm._s(
+                                                violation.user.company_name
+                                              ) +
+                                              "\n                                              "
+                                          )
+                                        ])
+                                      : _c("span", [
+                                          _vm._v(
+                                            "\n                                                   " +
+                                              _vm._s(violation.user.full_name) +
+                                              "\n                                              "
+                                          )
+                                        ])
+                                  ]
                                 ),
                                 _vm._v(" "),
-                                _c("small", [
-                                  _c("i", [_vm._v(_vm._s(violation.date))])
+                                _c("small", { staticClass: "float-right" }, [
+                                  _c("i", [
+                                    _vm._v(
+                                      "\n                                                    " +
+                                        _vm._s(violation.date) +
+                                        "\n                                                "
+                                    )
+                                  ])
                                 ]),
+                                _vm._v(" "),
                                 _c("br")
                               ]),
                               _vm._v(" "),
@@ -53270,69 +53425,51 @@ var render = function() {
                                   attrs: { id: "demo" + violation.id }
                                 },
                                 [
-                                  _c("div", { staticClass: "row w-100  p-2" }, [
+                                  _c("div", { staticClass: "row w-100  p-3" }, [
                                     _c(
                                       "div",
-                                      { staticClass: "col-sm-12 col-md-6" },
+                                      { staticClass: "col-sm-12 col-md-4" },
                                       [
-                                        violation.type === 2
-                                          ? _c("h6", [
+                                        _c("h6", [
+                                          _vm._v(
+                                            "\n                                                       ФИО "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("small", [
+                                            _c("i", [
                                               _vm._v(
-                                                "\n                                                       ФИО "
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c("small", [
-                                                _c("i", [
-                                                  _vm._v(
-                                                    _vm._s(violation.full_name)
-                                                  )
-                                                ])
-                                              ])
+                                                _vm._s(
+                                                  violation.user
+                                                    .contact_person_full_name
+                                                )
+                                              )
                                             ])
-                                          : _vm._e(),
+                                          ])
+                                        ]),
                                         _vm._v(" "),
-                                        violation.type === 5
-                                          ? _c("h6", [
+                                        _c("h6", [
+                                          _vm._v(
+                                            "\n                                                       Е-мейл"
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("small", [
+                                            _c("i", [
                                               _vm._v(
-                                                "\n                                                       ФИО"
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c("small", [
-                                                _c("i", [
-                                                  _vm._v(
-                                                    _vm._s(violation.full_name)
-                                                  )
-                                                ])
-                                              ])
+                                                _vm._s(
+                                                  violation.user.contact_email
+                                                )
+                                              )
                                             ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        violation.type !== 5
-                                          ? _c("h6", [
-                                              _vm._v(
-                                                "\n                                                       Е-мейл"
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c("small", [
-                                                _c("i", [
-                                                  _vm._v(
-                                                    _vm._s(
-                                                      violation.contact_email
-                                                    )
-                                                  )
-                                                ])
-                                              ])
-                                            ])
-                                          : _vm._e()
+                                          ])
+                                        ])
                                       ]
                                     ),
                                     _vm._v(" "),
                                     _c(
                                       "div",
-                                      { staticClass: "col-sm-12 col-md-6" },
+                                      { staticClass: "col-sm-12 col-md-4" },
                                       [
                                         _c("h6", [
                                           _vm._v(
@@ -53345,50 +53482,50 @@ var render = function() {
                                               _vm._v(
                                                 " " +
                                                   _vm._s(
-                                                    violation.contact_phone
+                                                    violation.user.contact_phone
                                                   )
                                               )
                                             ])
                                           ])
                                         ]),
                                         _vm._v(" "),
-                                        violation.type === 3
-                                          ? _c("h6", [
+                                        _c("h6", [
+                                          _vm._v(
+                                            "\n                                                       Город "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("small", [
+                                            _c("i", [
                                               _vm._v(
-                                                "\n                                                       Наименование ИП/ООО "
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c("small", [
-                                                _c("i", [
-                                                  _vm._v(
-                                                    " " +
-                                                      _vm._s(
-                                                        violation.company_name
-                                                      )
-                                                  )
-                                                ])
-                                              ])
+                                                " " +
+                                                  _vm._s(violation.user.city)
+                                              )
                                             ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        violation.type === 4
-                                          ? _c("h6", [
+                                          ])
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-12 col-md-4" },
+                                      [
+                                        _c("h6", [
+                                          _vm._v(
+                                            "\n                                                       Адрес "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("small", [
+                                            _c("i", [
                                               _vm._v(
-                                                "\n                                                       Наименование ИП/ООО "
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c("small", [
-                                                _c("i", [
-                                                  _vm._v(
-                                                    " " +
-                                                      _vm._s(violation.ie_name)
-                                                  )
-                                                ])
-                                              ])
+                                                " " +
+                                                  _vm._s(violation.user.address)
+                                              )
                                             ])
-                                          : _vm._e()
+                                          ])
+                                        ])
                                       ]
                                     )
                                   ])
@@ -53421,7 +53558,7 @@ var render = function() {
                                             target: "_blank"
                                           }
                                         },
-                                        [_vm._m(1, true)]
+                                        [_vm._m(3, true)]
                                       )
                                     : _vm._e()
                                 ]
@@ -53511,12 +53648,28 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("ФИО:")]),
+        _c("th", [_vm._v("АРЕНДАТОР")]),
         _vm._v(" "),
         _c("th", [_vm._v("АДРЕС")]),
         _vm._v(" "),
         _c("th")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", { staticStyle: { "font-size": "0.7rem" } }, [
+      _c("i", [_vm._v("ИП/ООО")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", { staticStyle: { "font-size": "0.7rem" } }, [
+      _c("i", [_vm._v("ИП/ООО")])
     ])
   },
   function() {
@@ -55829,7 +55982,17 @@ var render = function() {
                   staticClass: "col-md-3 col-sm-12 text-center",
                   staticStyle: { "vertical-align": "middle" }
                 },
-                [_c("strong", [_vm._v(_vm._s(arendator.full_name))])]
+                [
+                  arendator.type === 1
+                    ? _c("span", [
+                        _c("strong", [_vm._v(_vm._s(arendator.full_name))])
+                      ])
+                    : _c("span", [
+                        _vm._m(3, true),
+                        _vm._v(" "),
+                        _c("strong", [_vm._v(_vm._s(arendator.company_name))])
+                      ])
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -55837,11 +56000,24 @@ var render = function() {
                 { staticClass: "col-md-6 col-sm-12 text-center" },
                 _vm._l(arendator.violations, function(item, key) {
                   return _c("h6", [
-                    _vm._v(_vm._s(item.full_name) + " "),
+                    item.user.full_name
+                      ? _c("span", [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(item.user.full_name) +
+                              "\n                        "
+                          )
+                        ])
+                      : _c("span", [
+                          _vm._m(4, true),
+                          _vm._v(" " + _vm._s(item.user.company_name))
+                        ]),
+                    _vm._v(" "),
                     _c("small", [
                       _c("i", [
                         _vm._v(
-                          _vm._s(item.description.substring(1, 25)) + "..."
+                          _vm._s(item.description.substring(1, 25)) +
+                            "...\n                            "
                         )
                       ])
                     ])
@@ -55898,11 +56074,19 @@ var render = function() {
         }
       },
       [
-        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+        _c("div", { staticClass: "modal-dialog modal-xl" }, [
           _c("div", { staticClass: "modal-content" }, [
             _c("div", { staticClass: "modal-header" }, [
               _c("h4", { staticClass: "modal-title w-100 text-left" }, [
-                _c("strong", [_vm._v(_vm._s(_vm.arendator.full_name))])
+                _vm.arendator.type === 1
+                  ? _c("span", [
+                      _c("strong", [_vm._v(_vm._s(_vm.arendator.full_name))])
+                    ])
+                  : _c("span", [
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c("strong", [_vm._v(_vm._s(_vm.arendator.company_name))])
+                    ])
               ]),
               _vm._v(" "),
               _c(
@@ -55917,10 +56101,10 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-lg-5 col-sm-12" }, [
+                _c("div", { staticClass: "col-lg-4 col-sm-12" }, [
                   _vm.arendator.register
                     ? _c("h5", [
-                        _c("strong", [_vm._v("Прописка:")]),
+                        _c("strong", [_vm._v("Прописка")]),
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
@@ -55935,7 +56119,7 @@ var render = function() {
                   _vm._v(" "),
                   _vm.arendator.company_name
                     ? _c("h5", { staticClass: "mt-3" }, [
-                        _c("strong", [_vm._v("Наименование организации:")]),
+                        _c("strong", [_vm._v("Наименование организации")]),
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
@@ -55950,7 +56134,7 @@ var render = function() {
                   _vm._v(" "),
                   _vm.arendator.inn
                     ? _c("h5", { staticClass: "mt-3" }, [
-                        _c("strong", [_vm._v("ИНН:")]),
+                        _c("strong", [_vm._v("ИНН")]),
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
@@ -55963,35 +56147,9 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("h5", { staticClass: "mt-3" }, [
-                    _c("strong", [_vm._v("Паспорт:")]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("small", [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(_vm.arendator.passport) +
-                          "\n                                "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "mt-3" }, [
-                    _c("strong", [_vm._v("Телефон:")]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("small", [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(_vm.arendator.contact_phone) +
-                          "\n                                "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
                   _vm.arendator.region
                     ? _c("h5", { staticClass: "mt-3" }, [
-                        _c("strong", [_vm._v("Регион :")]),
+                        _c("strong", [_vm._v("Регион ")]),
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
@@ -56006,7 +56164,7 @@ var render = function() {
                   _vm._v(" "),
                   _vm.arendator.city
                     ? _c("h5", { staticClass: "mt-3" }, [
-                        _c("strong", [_vm._v("Город :")]),
+                        _c("strong", [_vm._v("Город ")]),
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
@@ -56021,7 +56179,7 @@ var render = function() {
                   _vm._v(" "),
                   _vm.arendator.address
                     ? _c("h5", { staticClass: "mt-3" }, [
-                        _c("strong", [_vm._v("Адрес :")]),
+                        _c("strong", [_vm._v("Адрес ")]),
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
@@ -56034,9 +56192,57 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
+                  _vm.arendator.type === 2
+                    ? _c("h5", [
+                        _c("hr"),
+                        _vm._v(
+                          "\n                                 Контактное данные\n                             "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("h5", { staticClass: "mt-3" }, [
+                    _c("strong", [_vm._v("ФИО ")]),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("small", [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(_vm.arendator.full_name) +
+                          "\n                                "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("h5", { staticClass: "mt-3" }, [
+                    _c("strong", [_vm._v("Паспорт ")]),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("small", [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(_vm.arendator.passport) +
+                          "\n                                "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("h5", { staticClass: "mt-3" }, [
+                    _c("strong", [_vm._v("Телефон")]),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("small", [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(_vm.arendator.contact_phone) +
+                          "\n                                "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _vm.arendator.birth_date
                     ? _c("h5", { staticClass: "mt-3" }, [
-                        _c("strong", [_vm._v("Дата рождения:")]),
+                        _c("strong", [_vm._v("Дата рождения")]),
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
@@ -56052,7 +56258,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "col-lg-7 col-sm-12" },
+                  { staticClass: "col-lg-8 col-sm-12" },
                   _vm._l(_vm.arendator.violations, function(violation) {
                     return _c(
                       "div",
@@ -56061,7 +56267,7 @@ var render = function() {
                         staticStyle: { "border-bottom": "1px solid lightgray" }
                       },
                       [
-                        _c("h5", { staticClass: "mt-3 p-1 w-100" }, [
+                        _c("h5", { staticClass: "mt-3 p-2 w-100" }, [
                           _c(
                             "i",
                             {
@@ -56071,26 +56277,62 @@ var render = function() {
                                 "data-target": "#demo" + violation.id
                               }
                             },
-                            [_vm._v(_vm._s(violation.full_name))]
+                            [
+                              violation.user.company_name
+                                ? _c("span", [
+                                    _c(
+                                      "small",
+                                      {
+                                        staticStyle: { "font-size": "0.5rem" }
+                                      },
+                                      [_vm._v("ИП/ООО")]
+                                    ),
+                                    _vm._v(
+                                      "   " +
+                                        _vm._s(violation.user.company_name) +
+                                        "\n                                              "
+                                    )
+                                  ])
+                                : _c("span", [
+                                    _vm._v(
+                                      "\n                                                   " +
+                                        _vm._s(violation.user.full_name) +
+                                        "\n                                              "
+                                    )
+                                  ])
+                            ]
                           ),
                           _vm._v(" "),
-                          _c("small", [
-                            _c("i", [_vm._v(_vm._s(violation.date))])
+                          _c("small", { staticClass: "float-right" }, [
+                            _c("i", [
+                              _vm._v(
+                                "\n                                            " +
+                                  _vm._s(violation.date) +
+                                  "\n                                        "
+                              )
+                            ])
                           ]),
+                          _vm._v(" "),
                           _c("br")
                         ]),
                         _vm._v(" "),
                         _c(
                           "div",
                           {
-                            staticClass: "collapse row form-group  w-100  p-2",
+                            staticClass:
+                              "collapse row form-group  w-100  pr-2 pl-2 ml-2",
                             attrs: { id: "demo" + violation.id }
                           },
                           [
-                            _c("div", { staticClass: "row w-100  p-2" }, [
-                              _c("div", { staticClass: "col-sm-12 col-md-6" }, [
-                                violation.type === 2
-                                  ? _c("h6", [
+                            _c(
+                              "div",
+                              { staticClass: "row w-100   pr-4 pl-2" },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "col-sm-12 col-md-4 " },
+                                  [
+                                    _c("h6", [
                                       _vm._v(
                                         "\n                                                ФИО "
                                       ),
@@ -56098,29 +56340,17 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("small", [
                                         _c("i", [
-                                          _vm._v(_vm._s(violation.full_name))
+                                          _vm._v(
+                                            _vm._s(
+                                              violation.user
+                                                .contact_person_full_name
+                                            )
+                                          )
                                         ])
                                       ])
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                violation.type === 5
-                                  ? _c("h6", [
-                                      _vm._v(
-                                        "\n                                                ФИО"
-                                      ),
-                                      _c("br"),
-                                      _vm._v(" "),
-                                      _c("small", [
-                                        _c("i", [
-                                          _vm._v(_vm._s(violation.full_name))
-                                        ])
-                                      ])
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                violation.type !== 5
-                                  ? _c("h6", [
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("h6", [
                                       _vm._v(
                                         "\n                                                Е-мейл"
                                       ),
@@ -56129,93 +56359,107 @@ var render = function() {
                                       _c("small", [
                                         _c("i", [
                                           _vm._v(
-                                            _vm._s(violation.contact_email)
+                                            _vm._s(violation.user.contact_email)
                                           )
                                         ])
                                       ])
                                     ])
-                                  : _vm._e()
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-sm-12 col-md-6" }, [
-                                _c("h6", [
-                                  _vm._v(
-                                    "\n                                                Телефон"
-                                  ),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c("small", [
-                                    _c("i", [
-                                      _vm._v(
-                                        " " + _vm._s(violation.contact_phone)
-                                      )
-                                    ])
-                                  ])
-                                ]),
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                violation.type === 3
-                                  ? _c("h6", [
+                                _c(
+                                  "div",
+                                  { staticClass: "col-sm-12 col-md-4" },
+                                  [
+                                    _c("h6", [
                                       _vm._v(
-                                        "\n                                                Наименование ИП/ООО "
+                                        "\n                                                Телефон"
                                       ),
                                       _c("br"),
                                       _vm._v(" "),
                                       _c("small", [
                                         _c("i", [
                                           _vm._v(
-                                            " " + _vm._s(violation.company_name)
+                                            " " +
+                                              _vm._s(
+                                                violation.user.contact_phone
+                                              )
                                           )
                                         ])
                                       ])
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                violation.type === 4
-                                  ? _c("h6", [
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("h6", [
                                       _vm._v(
-                                        "\n                                                Наименование ИП/ООО "
+                                        "\n                                                Город "
                                       ),
                                       _c("br"),
                                       _vm._v(" "),
                                       _c("small", [
                                         _c("i", [
                                           _vm._v(
-                                            " " + _vm._s(violation.ie_name)
+                                            " " + _vm._s(violation.user.city)
                                           )
                                         ])
                                       ])
                                     ])
-                                  : _vm._e()
-                              ])
-                            ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-sm-12 col-md-4" },
+                                  [
+                                    _c("h6", [
+                                      _vm._v(
+                                        "\n                                                Адрес "
+                                      ),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c("small", [
+                                        _c("i", [
+                                          _vm._v(
+                                            " " + _vm._s(violation.user.address)
+                                          )
+                                        ])
+                                      ])
+                                    ])
+                                  ]
+                                )
+                              ]
+                            )
                           ]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group w-100  p-2" }, [
-                          _c("small", [
-                            _vm._v(
-                              "\n                                        " +
-                                _vm._s(violation.description) +
-                                "\n                                    "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          violation.document
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass: "float-right text-secondary",
-                                  attrs: {
-                                    href: "/storage" + violation.document,
-                                    target: "_blank"
-                                  }
-                                },
-                                [_vm._m(3, true)]
+                        _c(
+                          "div",
+                          { staticClass: "form-group w-100    pr-2 pl-2" },
+                          [
+                            _c("small", [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(violation.description) +
+                                  "\n                                    "
                               )
-                            : _vm._e()
-                        ])
+                            ]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            violation.document
+                              ? _c(
+                                  "a",
+                                  {
+                                    staticClass: "float-right text-secondary",
+                                    attrs: {
+                                      href: "/storage" + violation.document,
+                                      target: "_blank"
+                                    }
+                                  },
+                                  [_vm._m(6, true)]
+                                )
+                              : _vm._e()
+                          ]
+                        )
                       ]
                     )
                   }),
@@ -56270,6 +56514,30 @@ var staticRenderFns = [
           "\n                Уточните критерии запроса для уменьшения количества результатов\n            "
         )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", { staticStyle: { "font-size": "0.7rem" } }, [
+      _c("i", [_vm._v("ИП/ООО")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", { staticStyle: { "font-size": "0.6rem" } }, [
+      _c("i", [_vm._v("ИП/ООО")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", { staticStyle: { "font-size": "0.7rem" } }, [
+      _c("i", [_vm._v("ИП/ООО")])
     ])
   },
   function() {
@@ -57613,54 +57881,9 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.auth_type === 4
+          _vm.auth_type !== 2
             ? _c("div", { staticClass: "form-group col-md-6" }, [
                 _vm._m(1),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.ie_name,
-                      expression: "form.ie_name"
-                    },
-                    {
-                      name: "validate",
-                      rawName: "v-validate",
-                      value: "required|max:100",
-                      expression: "'required|max:100'"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "ie_name",
-                    name: "ie_name",
-                    "data-vv-as": "Наименование ИП"
-                  },
-                  domProps: { value: _vm.form.ie_name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.form, "ie_name", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm.errors.has("ie_name")
-                  ? _c("small", { staticClass: "text-danger  float-right" }, [
-                      _vm._v(_vm._s(_vm.errors.first("ie_name")))
-                    ])
-                  : _vm._e()
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.auth_type === 3
-            ? _c("div", { staticClass: "form-group col-md-6" }, [
-                _vm._m(2),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -57682,7 +57905,7 @@ var render = function() {
                     type: "text",
                     id: "company_name",
                     name: "company_name",
-                    "data-vv-as": "Наименование организации"
+                    "data-vv-as": "Наименование"
                   },
                   domProps: { value: _vm.form.company_name },
                   on: {
@@ -57705,7 +57928,7 @@ var render = function() {
           _vm._v(" "),
           _vm.auth_type === 3
             ? _c("div", { staticClass: "form-group col-md-6" }, [
-                _vm._m(3),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -57750,7 +57973,7 @@ var render = function() {
           _vm._v(" "),
           _vm.auth_type === 4
             ? _c("div", { staticClass: "form-group col-md-6" }, [
-                _vm._m(4),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -57795,7 +58018,7 @@ var render = function() {
           _vm._v(" "),
           _vm.auth_type !== 2
             ? _c("div", { staticClass: "form-group col-md-6" }, [
-                _vm._m(5),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -57838,51 +58061,94 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group col-md-6" }, [
-            _vm._m(6),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.inn,
-                  expression: "form.inn"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|max:100",
-                  expression: "'required|max:100'"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "inn",
-                name: "inn",
-                "data-vv-as": "ИНН"
-              },
-              domProps: { value: _vm.form.inn },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.auth_type === 2
+            ? _c("div", { staticClass: "form-group col-md-6" }, [
+                _c("label", { attrs: { for: "inn" } }, [_vm._v("ИНН: ")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.inn,
+                      expression: "form.inn"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "max:100",
+                      expression: "'max:100'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "inn",
+                    name: "inn",
+                    "data-vv-as": "ИНН"
+                  },
+                  domProps: { value: _vm.form.inn },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "inn", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.form, "inn", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors.has("inn")
-              ? _c("small", { staticClass: "text-danger  float-right" }, [
-                  _vm._v(_vm._s(_vm.errors.first("inn")))
-                ])
-              : _vm._e()
-          ]),
+                }),
+                _vm._v(" "),
+                _vm.errors.has("inn")
+                  ? _c("small", { staticClass: "text-danger  float-right" }, [
+                      _vm._v(_vm._s(_vm.errors.first("inn")))
+                    ])
+                  : _vm._e()
+              ])
+            : _c("div", { staticClass: "form-group col-md-6" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.inn,
+                      expression: "form.inn"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|max:100",
+                      expression: "'required|max:100'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "inn",
+                    name: "inn",
+                    "data-vv-as": "ИНН"
+                  },
+                  domProps: { value: _vm.form.inn },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "inn", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors.has("inn")
+                  ? _c("small", { staticClass: "text-danger  float-right" }, [
+                      _vm._v(_vm._s(_vm.errors.first("inn")))
+                    ])
+                  : _vm._e()
+              ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group col-md-6" }, [
-            _vm._m(7),
+            _vm._m(6),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -57925,7 +58191,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group col-md-6" }, [
-            _vm._m(8),
+            _vm._m(7),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -57969,7 +58235,7 @@ var render = function() {
           _vm._v(" "),
           _vm.auth_type === 2
             ? _c("div", { staticClass: "form-group col-md-6" }, [
-                _vm._m(9),
+                _vm._m(8),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -58115,7 +58381,7 @@ var render = function() {
           _vm._v(" "),
           _vm.auth_type !== 2
             ? _c("div", { staticClass: "form-group col-md-6" }, [
-                _vm._m(10),
+                _vm._m(9),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -58197,7 +58463,7 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _vm._m(11),
+            _vm._m(10),
             _vm._v(" "),
             _vm.errors.has("web_site")
               ? _c("small", { staticClass: "text-danger  float-right" }, [
@@ -58207,7 +58473,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group col-md-6" }, [
-            _vm._m(12),
+            _vm._m(11),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -58257,7 +58523,7 @@ var render = function() {
               : _vm._e()
           ]),
           _vm._v(" "),
-          _vm._m(13)
+          _vm._m(12)
         ])
       ]
     )
@@ -58277,17 +58543,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "ie_name" } }, [
-      _vm._v("Наименование ИП: "),
-      _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "company_name" } }, [
-      _vm._v("Наименование организации: "),
+      _vm._v("Наименование: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },

@@ -287,12 +287,16 @@
                             this.violationsCountError = 'Вы должны добавить хотя бы один нарушения!';
                             return;
                         }
-                        axios.post('/account/arendators', this.form).then(() => {
+                        axios.post('/account/arendators', this.form).then((resp) => {
+                            var msg= 'Успешно добавлено';
+                            if (resp.data.msg){
+                                msg = resp.data.msg;
+                            }
 
                             this.$emit('getResults', 1);
                             this.$refs.form.reset();
                             this.$refs['closeModal'].click();
-                            $.toaster({message: 'Успешно добавлено', title: 'Успешно!', priority: 'success'});
+                            $.toaster({message: msg, title: 'Успешно!', priority: 'success'});
                             this.clear();
                             this.$parent.$parent.$emit("getResult", true)
 
