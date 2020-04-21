@@ -51,7 +51,8 @@
                             <strong>{{arendator.full_name}}</strong>
                         </span>
                         <span v-else>
-                            <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
+                            <small
+                                style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
                         </span>
 
                     </div>
@@ -87,7 +88,7 @@
                                  <span v-if="arendator.type===1">
                                     <strong>{{arendator.full_name}}</strong>
                                  </span>
-                                 <span v-else>
+                            <span v-else>
                                    <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
                                  </span>
 
@@ -137,10 +138,10 @@
                                     </small>
                                 </h5>
 
-                                 <h5 v-if="arendator.type===2">
-                                     <hr>
-                                     Контактное данные
-                                 </h5>
+                                <h5 v-if="arendator.type===2">
+                                    <hr>
+                                    Контактное данные
+                                </h5>
 
                                 <h5 class="mt-3">
                                     <strong>ФИО </strong><br>
@@ -234,14 +235,26 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-group w-100    pr-2 pl-2">
-                                        <small>
-                                            {{violation.description}}
-                                        </small>
+                                    <div class="form-group w-100  p-2 module">
+                                        <p class="w-100 pCollapse" :ref="'collapse'+violation.id">
+                                            <small :id="'collapse'+violation.id" >
+                                                {{violation.description}}
+                                            </small>
+                                        </p>
+
+
+                                        <p class="w-100 mt-2 text-right">
+                                            <a role="button" class="mt-2 text-secondary" style="cursor: pointer"
+                                               @click="collapse('collapse'+violation.id)">
+                                                Читать дальше
+                                            </a><br>
+                                            <a v-if="violation.document" :href="'/storage'+violation.document"
+                                               target="_blank" class="mt-2 text-secondary">
+                                                <strong>Документ</strong>
+                                            </a>
+
+                                        </p>
                                         <br>
-                                        <a v-if="violation.document" :href="'/storage'+violation.document"
-                                           target="_blank"
-                                           class="float-right text-secondary"><small><strong><i>Документ</i></strong></small></a>
                                     </div>
 
                                 </div>
@@ -272,6 +285,7 @@
                 noResult: false,
                 arendators: {},
                 arendator: {},
+
             }
         },
 
@@ -282,8 +296,14 @@
                     this.arendator = resp.data;
                     $(this.$refs.arendatorModal).modal('show');
                 })
+            },
+            collapse: function (ref) {
 
-
+                if(this.$refs[ref][0].classList.contains("pCollapse")){
+                    this.$refs[ref][0].classList.remove("pCollapse");
+                }else {
+                    this.$refs[ref][0].classList.add("pCollapse");
+                }
             },
             onSubmit: function () {
                 if (this.form.region === '' && this.form.key === '') {
@@ -313,5 +333,11 @@
 </script>
 
 <style scoped>
+    .pCollapse {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
 </style>

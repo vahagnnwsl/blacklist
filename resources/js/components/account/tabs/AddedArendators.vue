@@ -27,7 +27,10 @@
                                    <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
                                  </span>
                         </td>
-                        <td>{{address(arendator)}}</td>
+                        <td>
+                            {{address(arendator)}}
+
+                        </td>
                         <th>
                             <button class="btn btn-outline-secondary float-right  btn-sm"
                                     @click="openModal(arendator.id)"><i class="fa fa-eye"></i>
@@ -199,16 +202,28 @@
                                                </div>
 
                                             </div>
-                                            <div class="form-group w-100  p-2">
-                                                <small >
-                                                    {{violation.description}}
-                                                </small>
-                                                <br>
-                                                <a v-if="violation.document" :href="'/storage'+violation.document" target="_blank" class="float-right text-secondary"><small><strong><i>Документ</i></strong></small></a>
-                                            </div>
-                                            <div class="form-group  w-100  p-2" v-if="violation.user_id===user_id">
+                                            <div class="form-group w-100  p-2 module">
 
-                                                <div class="custom-control custom-switch">
+                                                <p class="w-100 pCollapse" :ref="'collapse'+violation.id">
+                                                    <small :id="'collapse'+violation.id" >
+                                                        {{violation.description}}
+                                                    </small>
+                                                </p>
+                                                <p class="w-100 mt-1 text-right">
+                                                    <a role="button" class="mt-1 text-secondary" style="cursor: pointer"
+                                                       @click="collapse('collapse'+violation.id)">
+                                                        Читать дальше
+                                                    </a><br>
+                                                    <a v-if="violation.document" :href="'/storage'+violation.document"
+                                                       target="_blank" class="mt-1 text-secondary">
+                                                        <strong>Документ</strong>
+                                                    </a>
+
+                                                </p>
+                                            </div>
+                                            <div class="form-group  w-100  pt-0" v-if="violation.user_id===user_id">
+
+                                                <div class="custom-control custom-switch w-100">
                                                     <input type="checkbox" class="custom-control-input" :id="'switch'+key" :checked="Number(violation.status)===1" @change="updateStatus(violation.id,'switch'+key+violation.id)">
                                                     <label class="custom-control-label" :for="'switch'+key" :ref="'switch'+key+violation.id">
                                                         {{Number(violation.status)===1 ? 'Погашено': 'Не погашено'}}
@@ -264,7 +279,14 @@
                 var date = new Date(dt);
                 return  date.getDate()+ "/" +  (date.getMonth() + 1)  +"/"+ date.getFullYear();
             },
+            collapse: function (ref) {
 
+                if(this.$refs[ref][0].classList.contains("pCollapse")){
+                    this.$refs[ref][0].classList.remove("pCollapse");
+                }else {
+                    this.$refs[ref][0].classList.add("pCollapse");
+                }
+            },
             openModal: function (id) {
                 axios.get('/account/arendators/' + id).then((resp) => {
                     this.arendator = resp.data;
@@ -313,8 +335,12 @@
     }
 </script>
 <style scoped>
-
+    .pCollapse {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
 </style>
-
 
