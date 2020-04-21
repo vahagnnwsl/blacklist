@@ -96,171 +96,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-12">
-
-                                <h5 v-if="arendator.register">
-                                    <strong>Прописка</strong><br>
-                                    <small>
-                                        {{arendator.register}}
-                                    </small>
-                                </h5>
-
-                                <h5 class="mt-3" v-if="arendator.company_name">
-                                    <strong>Наименование организации</strong><br>
-                                    <small>
-                                        {{arendator.company_name}}
-                                    </small>
-                                </h5>
-
-                                <h5 class="mt-3" v-if="arendator.inn">
-                                    <strong>ИНН</strong><br>
-                                    <small>
-                                        {{arendator.inn}}
-                                    </small>
-                                </h5>
-                                <h5 class="mt-3" v-if="arendator.region">
-                                    <strong>Регион </strong><br>
-                                    <small>
-                                        {{arendator.region}}
-                                    </small>
-                                </h5>
-                                <h5 class="mt-3" v-if="arendator.city">
-                                    <strong>Город </strong><br>
-                                    <small>
-                                        {{arendator.city}}
-                                    </small>
-                                </h5>
-                                <h5 class="mt-3" v-if="arendator.address">
-                                    <strong>Адрес </strong><br>
-                                    <small>
-                                        {{arendator.address}}
-                                    </small>
-                                </h5>
-
-                                <h5 v-if="arendator.type===2">
-                                    <hr>
-                                    Контактное данные
-                                </h5>
-
-                                <h5 class="mt-3">
-                                    <strong>ФИО </strong><br>
-                                    <small>
-                                        {{arendator.full_name}}
-                                    </small>
-                                </h5>
-
-                                <h5 class="mt-3">
-                                    <strong>Паспорт </strong><br>
-                                    <small>
-                                        {{arendator.passport}}
-                                    </small>
-                                </h5>
-
-                                <h5 class="mt-3">
-                                    <strong>Телефон</strong><br>
-                                    <small>
-                                        {{arendator.contact_phone}}
-                                    </small>
-                                </h5>
-
-                                <h5 class="mt-3" v-if="arendator.birth_date">
-                                    <strong>Дата рождения</strong><br>
-                                    <small>
-                                        {{arendator.birth_date}}
-                                    </small>
-                                </h5>
-
-                            </div>
-                            <div class="col-lg-8 col-sm-12">
-                                <div class="row" v-for="violation in arendator.violations"
-                                     style="border-bottom: 1px solid lightgray">
-                                    <h5 class="mt-3 p-2 w-100">
-                                        <i style="cursor: pointer" data-toggle="collapse"
-                                           :data-target="'#demo'+violation.id">
-                                                  <span v-if="violation.user.company_name">
-                                                     <small style="font-size: 0.5rem">ИП/ООО</small>   {{violation.user.company_name}}
-                                                  </span>
-                                            <span v-else>
-                                                       {{violation.user.full_name}}
-                                                  </span>
-                                        </i>
-                                        <small class="float-right">
-                                            <i>
-                                                {{violation.date}}
-                                            </i>
-                                        </small>
-                                        <br>
-                                    </h5>
-                                    <div :id="'demo'+violation.id"
-                                         class="collapse row form-group  w-100  pr-2 pl-2 ml-2">
-                                        <div class="row w-100   pr-4 pl-2">
-                                            <div class="col-sm-12 col-md-4 ">
-                                                <h6>
-                                                    ФИО <br>
-                                                    <small>
-                                                        <i>{{violation.user.contact_person_full_name}}</i>
-                                                    </small>
-                                                </h6>
-                                                <h6>
-                                                    Е-мейл<br>
-                                                    <small>
-                                                        <i>{{violation.user.contact_email}}</i>
-                                                    </small>
-                                                </h6>
-                                            </div>
-                                            <div class="col-sm-12 col-md-4">
-                                                <h6>
-                                                    Телефон<br>
-                                                    <small>
-                                                        <i> {{violation.user.contact_phone}}</i>
-                                                    </small>
-                                                </h6>
-                                                <h6>
-                                                    Город <br>
-                                                    <small>
-                                                        <i> {{violation.user.city}}</i>
-                                                    </small>
-                                                </h6>
-
-                                            </div>
-                                            <div class="col-sm-12 col-md-4">
-                                                <h6>
-                                                    Адрес <br>
-                                                    <small>
-                                                        <i> {{violation.user.address}}</i>
-                                                    </small>
-                                                </h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group w-100  p-2 module">
-                                        <p class="w-100 pCollapse" :ref="'collapse'+violation.id">
-                                            <small :id="'collapse'+violation.id" >
-                                                {{violation.description}}
-                                            </small>
-                                        </p>
-
-
-                                        <p class="w-100 mt-2 text-right">
-                                            <a role="button" class="mt-2 text-secondary" style="cursor: pointer"
-                                               @click="collapse('collapse'+violation.id)">
-                                                Читать дальше
-                                            </a><br>
-                                            <a v-if="violation.document" :href="'/storage'+violation.document"
-                                               target="_blank" class="mt-2 text-secondary">
-                                                <strong>Документ</strong>
-                                            </a>
-
-                                        </p>
-                                        <br>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
+                        <Arendator :arendator="arendator" :user_id="0"></Arendator>
                     </div>
                 </div>
             </div>
@@ -270,10 +106,11 @@
 
 <script>
     import ArendatorModal from "../modals/Arendator";
+    import Arendator from '../includes/Arendator';
 
     export default {
         name: "SearchArendator",
-        components: {ArendatorModal},
+        components: {ArendatorModal,Arendator},
         data() {
             return {
                 form: {
@@ -297,14 +134,7 @@
                     $(this.$refs.arendatorModal).modal('show');
                 })
             },
-            collapse: function (ref) {
 
-                if(this.$refs[ref][0].classList.contains("pCollapse")){
-                    this.$refs[ref][0].classList.remove("pCollapse");
-                }else {
-                    this.$refs[ref][0].classList.add("pCollapse");
-                }
-            },
             onSubmit: function () {
                 if (this.form.region === '' && this.form.key === '') {
                     return;
@@ -332,12 +162,4 @@
     }
 </script>
 
-<style scoped>
-    .pCollapse {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
 
-</style>

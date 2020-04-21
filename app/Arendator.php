@@ -25,7 +25,7 @@ class Arendator extends Model
 
     public function violations()
     {
-        return $this->hasMany(ArendatorViolation::class);
+        return $this->hasMany(ArendatorViolation::class)->orderBy('created_at', 'desc');
     }
 
     public function getDataAttribute()
@@ -73,8 +73,18 @@ class Arendator extends Model
 
             array_push($array['violations'], $arr);
         }
+
+        if (Auth::check()) {
+            usort($array['violations'], function ($item1, $item2) {
+                if ($item1['user_id'] === Auth::id() && $item2['user_id'] === Auth::id()) return 0;
+                return $item1['user_id'] === Auth::id() && $item2['user_id'] !== Auth::id() ? -1 : 1;
+            });
+        }
+
+
         return $array;
     }
+
 
 
     public static function boot()

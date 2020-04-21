@@ -25,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'city', 'address', 'web_site',
         'advertising_number', 'real_estate_count', 'contact_person_full_name',
         'contact_phone', 'contact_person_position', 'about_business',
-        'password', 'status','is_api_user','client_id'
+        'password', 'status', 'is_api_user', 'client_id'
     ];
 
     /**
@@ -77,11 +77,11 @@ class User extends Authenticatable implements MustVerifyEmail
         if ($this->type === 2) {
             $data = array_merge($data, ['passport' => $this->passport, 'full_name' => $this->full_name]);
         } else {
-            $data = array_merge($data, ['brand' => $this->brand,'company_name'=>$this->company_name]);
+            $data = array_merge($data, ['brand' => $this->brand, 'company_name' => $this->company_name]);
             if ($this->type === 3) {
-                $data = array_merge($data, [ 'psrn' => $this->psrn]);
+                $data = array_merge($data, ['psrn' => $this->psrn]);
             } else {
-                $data = array_merge($data, [ 'psrnie' => $this->psrnie]);
+                $data = array_merge($data, ['psrnie' => $this->psrnie]);
             }
         }
         return $data;
@@ -108,10 +108,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Arendator::class);
     }
 
+    public function arendatorsByViolations()
+    {
+        return array_unique(ArendatorViolation::whereHas('arendator')->where('user_id',$this->id)->orderBy('created_at','desc')->pluck('arendator_id')->toArray());
+
+    }
+
     public function getTypeNameAttribute()
     {
         return array_keys(Arr::where(config('constants.user'), function ($value, $key) {
-           return $value === $this->type;
+            return $value === $this->type;
         }))[0];
 
     }

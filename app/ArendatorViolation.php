@@ -13,5 +13,8 @@ class ArendatorViolation extends Model
     public function user(){
         return $this->hasOne(User::class,'id','user_id');
     }
+    public function arendator(){
+        return $this->hasOne(Arendator::class,'id','arendator_id');
+    }
 
 }

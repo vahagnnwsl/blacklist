@@ -66,173 +66,8 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-4 col-sm-12">
+                                <Arendator :arendator="arendator" :user_id="user_id"></Arendator>
 
-                                        <h5 v-if="arendator.register">
-                                            <strong>Прописка</strong><br>
-                                            <small>
-                                                {{arendator.register}}
-                                            </small>
-                                        </h5>
-
-                                        <h5 class="mt-3" v-if="arendator.company_name">
-                                            <strong>Наименование организации</strong><br>
-                                            <small>
-                                                {{arendator.company_name}}
-                                            </small>
-                                        </h5>
-
-                                        <h5 class="mt-3" v-if="arendator.inn">
-                                            <strong>ИНН</strong><br>
-                                            <small>
-                                                {{arendator.inn}}
-                                            </small>
-                                        </h5>
-                                        <h5 class="mt-3" v-if="arendator.region">
-                                            <strong>Регион </strong><br>
-                                            <small>
-                                                {{arendator.region}}
-                                            </small>
-                                        </h5>
-                                        <h5 class="mt-3" v-if="arendator.city">
-                                            <strong>Город </strong><br>
-                                            <small>
-                                                {{arendator.city}}
-                                            </small>
-                                        </h5>
-                                        <h5 class="mt-3" v-if="arendator.address">
-                                            <strong>Адрес </strong><br>
-                                            <small>
-                                                {{arendator.address}}
-                                            </small>
-                                        </h5>
-
-                                        <h5 v-if="arendator.type===2">
-                                            <hr>
-                                            Контактное данные
-                                        </h5>
-
-                                        <h5 class="mt-3">
-                                            <strong>ФИО </strong><br>
-                                            <small>
-                                                {{arendator.full_name}}
-                                            </small>
-                                        </h5>
-
-                                        <h5 class="mt-3">
-                                            <strong>Паспорт </strong><br>
-                                            <small>
-                                                {{arendator.passport}}
-                                            </small>
-                                        </h5>
-
-                                        <h5 class="mt-3">
-                                            <strong>Телефон</strong><br>
-                                            <small>
-                                                {{arendator.contact_phone}}
-                                            </small>
-                                        </h5>
-
-                                        <h5 class="mt-3" v-if="arendator.birth_date">
-                                            <strong>Дата рождения</strong><br>
-                                            <small>
-                                                {{arendator.birth_date}}
-                                            </small>
-                                        </h5>
-
-                                    </div>
-                                    <div class="col-lg-8 col-sm-12">
-                                        <div class="row" v-for="(violation,key) in arendator.violations" style="border-bottom: 1px solid lightgray">
-                                            <h5 class="mt-3 p-2 w-100" >
-                                                <i style="cursor: pointer" data-toggle="collapse" :data-target="'#demo'+violation.id">
-                                                  <span v-if="violation.user.company_name">
-                                                     <small style="font-size: 0.5rem">ИП/ООО</small>   {{violation.user.company_name}}
-                                                  </span>
-                                                    <span v-else>
-                                                       {{violation.user.full_name}}
-                                                  </span>
-                                                </i>
-                                                <small class="float-right">
-                                                    <i>
-                                                        {{violation.date}}
-                                                    </i>
-                                                </small>
-                                                <br>
-                                            </h5>
-                                            <div :id="'demo'+violation.id" class="collapse row form-group  w-100  p-2">
-                                               <div class="row w-100  p-3">
-                                                   <div class="col-sm-12 col-md-4">
-                                                       <h6>
-                                                           ФИО <br>
-                                                           <small>
-                                                               <i>{{violation.user.contact_person_full_name}}</i>
-                                                           </small>
-                                                       </h6>
-                                                       <h6>
-                                                           Е-мейл<br>
-                                                           <small>
-                                                               <i>{{violation.user.contact_email}}</i>
-                                                           </small>
-                                                       </h6>
-                                                   </div>
-                                                   <div class="col-sm-12 col-md-4">
-                                                       <h6>
-                                                           Телефон<br>
-                                                           <small>
-                                                               <i> {{violation.user.contact_phone}}</i>
-                                                           </small>
-                                                       </h6>
-                                                       <h6>
-                                                           Город <br>
-                                                           <small>
-                                                               <i> {{violation.user.city}}</i>
-                                                           </small>
-                                                       </h6>
-
-                                                   </div>
-                                                   <div class="col-sm-12 col-md-4">
-                                                       <h6>
-                                                           Адрес <br>
-                                                           <small>
-                                                               <i> {{violation.user.address}}</i>
-                                                           </small>
-                                                       </h6>
-                                                   </div>
-                                               </div>
-
-                                            </div>
-                                            <div class="form-group w-100  p-2 module">
-
-                                                <p class="w-100 pCollapse" :ref="'collapse'+violation.id">
-                                                    <small :id="'collapse'+violation.id" >
-                                                        {{violation.description}}
-                                                    </small>
-                                                </p>
-                                                <p class="w-100 mt-1 text-right">
-                                                    <a role="button" class="mt-1 text-secondary" style="cursor: pointer"
-                                                       @click="collapse('collapse'+violation.id)">
-                                                        Читать дальше
-                                                    </a><br>
-                                                    <a v-if="violation.document" :href="'/storage'+violation.document"
-                                                       target="_blank" class="mt-1 text-secondary">
-                                                        <strong>Документ</strong>
-                                                    </a>
-
-                                                </p>
-                                            </div>
-                                            <div class="form-group  w-100  pt-0" v-if="violation.user_id===user_id">
-
-                                                <div class="custom-control custom-switch w-100">
-                                                    <input type="checkbox" class="custom-control-input" :id="'switch'+key" :checked="Number(violation.status)===1" @change="updateStatus(violation.id,'switch'+key+violation.id)">
-                                                    <label class="custom-control-label" :for="'switch'+key" :ref="'switch'+key+violation.id">
-                                                        {{Number(violation.status)===1 ? 'Погашено': 'Не погашено'}}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -250,11 +85,12 @@
     import axios from "axios";
     import NewArendator from "../modals/NewArendator";
     import Pagination from "laravel-vue-pagination";
+    import Arendator from '../includes/Arendator';
 
 
     export default {
         name: "AddArendator",
-        components: {NewArendator, Pagination},
+        components: {NewArendator, Pagination,Arendator},
         props: ['user_id'],
         data() {
             return {
@@ -301,16 +137,6 @@
 
                 })
             },
-
-            updateStatus: function(violationId,ref){
-
-                axios.post('/account/violations/'+violationId).then((resp) => {
-                    $(this.$refs[ref]).text(resp.data.text);
-                    console.log();
-                    $.toaster({message: 'Успешно обновлено', title: 'Успешно!', priority: 'success'});
-                })
-            },
-
             foolName: function (arendator) {
                 return arendator.first_name + ' ' + arendator.last_name + ' ' + arendator.patronymic;
             },
@@ -321,14 +147,6 @@
                     address += ' ' + arendator.address
                 }
                 return address;
-            },
-
-            type: function (arendator) {
-                if (Number(arendator.type) === 1) {
-                    return 'Физлицо';
-                }
-                return 'Компания';
-
             }
         }
 

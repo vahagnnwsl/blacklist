@@ -69,9 +69,13 @@ class ArendatorController extends Controller
 
     }
 
+
+
+
     public function get()
     {
-        return response()->json(Auth::user()->arendators()->orderBy('id','desc')->paginate(15, [
+
+        return response()->json(Arendator::whereIn('id',Auth::user()->arendatorsByViolations())->paginate(15, [
             'id', 'first_name', 'last_name', 'patronymic', 'region', 'city', 'type','address','created_at','company_name'
         ]));
     }
