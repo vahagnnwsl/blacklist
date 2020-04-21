@@ -2672,6 +2672,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Individual",
   props: ['user_id'],
@@ -2811,6 +2812,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+//
+//
+//
 //
 //
 //
@@ -54650,10 +54654,9 @@ var render = function() {
                                   _vm._v(
                                     "\n                                " +
                                       _vm._s(
-                                        _vm.errors.first(
-                                          "violations[" + key + "][document]"
-                                        )
-                                      )
+                                        "Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)"
+                                      ) +
+                                      "\n                            "
                                   )
                                 ]
                               )
@@ -55774,12 +55777,11 @@ var render = function() {
                                 { staticClass: "text-danger  float-right" },
                                 [
                                   _vm._v(
-                                    "\n                                " +
+                                    "\n\n                                " +
                                       _vm._s(
-                                        _vm.errors.first(
-                                          "violations[" + key + "][document]"
-                                        )
-                                      )
+                                        "Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)"
+                                      ) +
+                                      "\n\n                            "
                                   )
                                 ]
                               )
@@ -58605,8 +58607,8 @@ var render = function() {
                     {
                       name: "validate",
                       rawName: "v-validate",
-                      value: "mimes:application/*",
-                      expression: "'mimes:application/*'"
+                      value: "ext:jpg,png,pdf,jpeg",
+                      expression: "'ext:jpg,png,pdf,jpeg'"
                     }
                   ],
                   ref: "document",
@@ -58636,7 +58638,11 @@ var render = function() {
                 _vm._v(" "),
                 _vm.errors.has("document")
                   ? _c("small", { staticClass: "text-danger  float-right" }, [
-                      _vm._v(_vm._s(_vm.errors.first("document")))
+                      _vm._v(
+                        _vm._s(
+                          "Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)"
+                        )
+                      )
                     ])
                   : _vm._e()
               ])

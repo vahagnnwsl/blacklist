@@ -78,7 +78,11 @@ class User extends Authenticatable implements MustVerifyEmail
             $data = array_merge($data, ['passport' => $this->passport, 'full_name' => $this->full_name]);
         } else {
             $data = array_merge($data, ['brand' => $this->brand,'company_name'=>$this->company_name]);
-           
+            if ($this->type === 3) {
+                $data = array_merge($data, [ 'psrn' => $this->psrn]);
+            } else {
+                $data = array_merge($data, [ 'psrnie' => $this->psrnie]);
+            }
         }
         return $data;
     }

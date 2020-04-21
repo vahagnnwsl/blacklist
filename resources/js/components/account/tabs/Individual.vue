@@ -164,7 +164,8 @@
 
                                 <small class="text-danger  float-right"
                                        v-if="errors.has('violations['+key+'][document]')">
-                                    {{errors.first('violations['+key+'][document]')}}</small>
+                                    {{'Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)'}}
+                                </small>
                             </div>
                         </div>
                         <div class="row">

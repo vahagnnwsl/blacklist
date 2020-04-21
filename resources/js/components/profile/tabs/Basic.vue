@@ -106,11 +106,11 @@
                     <label for="document">Подтверждающие документы: <span class="text-danger">*</span></label>
                     <input type="file" id="document" ref="document" class="form-control" name="document"
                            data-vv-as="Подтверждающие документы" v-on:change="handleFileUpload()"
-                           v-validate="'mimes:application/*'">
+                           v-validate="'ext:jpg,png,pdf,jpeg'">
                     <small class="form-text text-muted text-right">Свидетельство индивидуального предпринимателя в
                         ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
                     <small class="text-danger  float-right"
-                           v-if="errors.has('document')">{{errors.first('document')}}</small>
+                           v-if="errors.has('document')">{{'Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)'}}</small>
 
                 </div>
 
