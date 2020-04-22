@@ -38,7 +38,7 @@ class AccountController extends Controller
         return view('account.profile');
     }
 
-    public function updateData(Request $request,$method)
+    public function updateData(Request $request, $method)
     {
 
 
@@ -60,8 +60,13 @@ class AccountController extends Controller
         Auth::user()->update($data);
 
 //        session(['message' => ['text' => 'Успешно обновлено', 'status' => 'success']]);
+        $resp = [];
 
-        return response()->json([], 200);
+        if ($method === 'basic') {
+            $resp = Auth::user()->basicData;
+        }
+
+        return response()->json($resp, 200);
     }
 
     public function updatePassword(Request $request)

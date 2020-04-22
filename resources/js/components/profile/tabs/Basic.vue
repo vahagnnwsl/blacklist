@@ -106,12 +106,13 @@
                     <label for="document">Подтверждающие документы: <span class="text-danger">*</span></label>
                     <input type="file" id="document" ref="document" class="form-control" name="document"
                            data-vv-as="Подтверждающие документы" v-on:change="handleFileUpload()"
-                           v-validate="'ext:jpg,png,pdf,jpeg'">
+                           v-validate="'ext:jpg,png,pdf,jpeg,gif,tiff|size:7000'">
                     <small class="form-text text-muted text-right">Свидетельство индивидуального предпринимателя в
                         ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
                     <small class="text-danger  float-right"
-                           v-if="errors.has('document')">{{'Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)'}}</small>
+                           v-if="errors.has('document')">{{'Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл.'}}</small>
 
+                    <a  v-if='' :href="doc" target="_blank" class="float-right text-secondary"><strong>Документ</strong></a>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -119,7 +120,7 @@
                     <input type="text" class="form-control" name="web_site" id="web_site" v-model="form.web_site"
                            data-vv-as="Адрес сайта или соцсети" v-validate="'url|max:100'">
                     <small
-                        class="form-text text-muted text-right"><strong>Пример</strong>https://www.твой-сайт.ru</small>
+                        class="form-text text-muted text-right"><strong>Пример </strong>https://www.твой-сайт.ru</small>
                     <small class="text-danger  float-right"
                            v-if="errors.has('web_site')">{{errors.first('web_site')}}</small>
 
@@ -130,7 +131,7 @@
                     <input type="number" min="1" id="real_estate_count" class="form-control"
                            data-vv-as="Количество объектов недвижимость" name="real_estate_count"
                            v-model="form.real_estate_count" v-validate="'between:1,10000'">
-                    <small class="form-text text-muted text-right">в собственное или управленое</small>
+                    <small class="form-text text-muted text-right">в собственности или управлении</small>
                     <small class="text-danger  float-right" v-if="errors.has('real_estate_count')">
                         {{errors.first('real_estate_count')}}</small>
                 </div>
@@ -166,11 +167,14 @@
                     brand: '',
                     full_name: '',
                     document: '',
-                }
+                },
+                doc: '',
             }
         },
         mounted() {
             this.form = this.basic_data;
+            this.doc = this.basic_data.doc;
+
         },
         methods: {
             onSubmit: function () {
@@ -187,8 +191,9 @@
                             headers: {
                                 'Content-Type': 'multipart/form-data'
                             }
-                        }).then(() => {
+                        }).then((resp) => {
                             $.toaster({ message : 'Успешно обновлено', title : 'Успешно!', priority : 'success' });
+                            this.doc = resp.data.doc;
                         })
                     }
                 })

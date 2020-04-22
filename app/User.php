@@ -69,6 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'country' => $this->country,
             'city' => $this->city,
             'address' => $this->address,
+            'doc' => $this->doc,
             'web_site' => $this->web_site,
             'advertising_number' => $this->advertising_number,
             'real_estate_count' => $this->real_estate_count,

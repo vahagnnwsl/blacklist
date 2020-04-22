@@ -4398,6 +4398,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Basic",
@@ -4419,11 +4420,13 @@ __webpack_require__.r(__webpack_exports__);
         brand: '',
         full_name: '',
         document: ''
-      }
+      },
+      doc: ''
     };
   },
   mounted: function mounted() {
     this.form = this.basic_data;
+    this.doc = this.basic_data.doc;
   },
   methods: {
     onSubmit: function onSubmit() {
@@ -4440,12 +4443,13 @@ __webpack_require__.r(__webpack_exports__);
             headers: {
               'Content-Type': 'multipart/form-data'
             }
-          }).then(function () {
+          }).then(function (resp) {
             $.toaster({
               message: 'Успешно обновлено',
               title: 'Успешно!',
               priority: 'success'
             });
+            _this.doc = resp.data.doc;
           });
         }
       });
@@ -58021,8 +58025,8 @@ var render = function() {
                     {
                       name: "validate",
                       rawName: "v-validate",
-                      value: "ext:jpg,png,pdf,jpeg",
-                      expression: "'ext:jpg,png,pdf,jpeg'"
+                      value: "ext:jpg,png,pdf,jpeg,gif,tiff|size:7000",
+                      expression: "'ext:jpg,png,pdf,jpeg,gif,tiff|size:7000'"
                     }
                   ],
                   ref: "document",
@@ -58054,11 +58058,20 @@ var render = function() {
                   ? _c("small", { staticClass: "text-danger  float-right" }, [
                       _vm._v(
                         _vm._s(
-                          "Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)"
+                          "Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл."
                         )
                       )
                     ])
-                  : _vm._e()
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "float-right text-secondary",
+                    attrs: { href: _vm.doc, target: "_blank" }
+                  },
+                  [_c("strong", [_vm._v("Документ")])]
+                )
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -58147,7 +58160,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("small", { staticClass: "form-text text-muted text-right" }, [
-              _vm._v("в собственное или управленое")
+              _vm._v("в собственности или управлении")
             ]),
             _vm._v(" "),
             _vm.errors.has("real_estate_count")
@@ -58262,7 +58275,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("small", { staticClass: "form-text text-muted text-right" }, [
-      _c("strong", [_vm._v("Пример")]),
+      _c("strong", [_vm._v("Пример ")]),
       _vm._v("https://www.твой-сайт.ru")
     ])
   },

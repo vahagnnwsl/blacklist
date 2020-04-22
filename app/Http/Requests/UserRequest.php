@@ -70,7 +70,7 @@ class UserRequest
 
             if (request()->hasFile('document')) {
                 $rules = array_merge($rules, [
-                    'document' => ['mimes:pdf', 'max:10000']
+                    'document' => ['mimes:jpg,png,pdf,jpeg,gif,tiff', 'max:7000']
                 ]);
             }
 
