@@ -58275,7 +58275,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("small", { staticClass: "form-text text-muted text-right" }, [
-      _c("strong", [_vm._v("Пример ")]),
+      _c("strong", [_vm._v("Пример: ")]),
       _vm._v("https://www.твой-сайт.ru")
     ])
   },

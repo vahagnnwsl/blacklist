@@ -120,7 +120,7 @@
                     <input type="text" class="form-control" name="web_site" id="web_site" v-model="form.web_site"
                            data-vv-as="Адрес сайта или соцсети" v-validate="'url|max:100'">
                     <small
-                        class="form-text text-muted text-right"><strong>Пример </strong>https://www.твой-сайт.ru</small>
+                        class="form-text text-muted text-right"><strong>Пример: </strong>https://www.твой-сайт.ru</small>
                     <small class="text-danger  float-right"
                            v-if="errors.has('web_site')">{{errors.first('web_site')}}</small>
 
