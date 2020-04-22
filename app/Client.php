@@ -13,4 +13,15 @@ class Client extends BaseClient
     {
         return $this->firstParty();
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($model) {
+
+            $model->tokens()->delete();
+
+        });
+    }
 }

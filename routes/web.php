@@ -69,6 +69,8 @@ Route::group(['middleware' => ['auth', 'verified', 'can:admin_user'], 'prefix' =
     Route::get('/', 'Admin\UserController@index');
     Route::resource('/users', 'Admin\UserController');
     Route::resource('/arendators', 'Admin\ArendatorController');
+    Route::resource('/clients', 'Admin\ClientController');
+    Route::get('/clients/{id}/token', 'Admin\ClientController@generateNewToken')->name('clients.token');
     Route::resource('/arendators-violations', 'Admin\ArendatorViolationController');
 
 });

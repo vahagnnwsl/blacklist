@@ -79,7 +79,7 @@ class ArendatorRequest
            $rules['arendator.birth_date'] = ['required', 'date'];
            $rules['arendator.register'] = ['required', 'string', 'max:255'];
        }else{
-           $rules['arendator.inn'] = 'required|string|max:255|unique:arendators,inn';
+           $rules['arendator.inn'] = 'required|string|max:255';
            $rules['arendator.company_name'] = ['required', 'string', 'max:255'];
            $rules['arendator.address'] = ['required', 'string', 'max:255'];
 

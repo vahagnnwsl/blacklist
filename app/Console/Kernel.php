@@ -12,9 +12,10 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
-    protected $commands = [
-        //
-    ];
+
+    protected $commands = [ 'Laravel\Passport\Console\ClientCommand' ];
+
+
 
     /**
      * Define the application's command schedule.

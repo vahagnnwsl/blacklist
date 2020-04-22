@@ -51,12 +51,13 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li class="{{ request()->is('dashboard/users*') || request()->is('dashboard') ? 'active': ''}}"><a
                         href="{{route('users.index')}}"> <i class="icon-user"></i>Пользователи</a></li>
+                <li class="{{ request()->is('dashboard/arendators*') ? 'active': ''}} mt-1"><a
+                        href="{{route('arendators.index')}}"> <i class="icon-user"></i>Арендаторы</a></li>
+                <li class="{{ request()->is('dashboard/clients*') ? 'active': ''}} mt-1"><a
+                        href="{{route('clients.index')}}"> <i class="icon-user"></i>Клиент</a></li>
             </ul>
 
-            <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li class="{{ request()->is('dashboard/arendators*') ? 'active': ''}}"><a
-                        href="{{route('arendators.index')}}"> <i class="icon-user"></i>Арендаторы</a></li>
-            </ul>
+
         </div>
 
     </div>
@@ -114,5 +115,6 @@
 <script src="/admin/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- Main File-->
 <script src="/admin/js/front.js"></script>
+@stack('scripts')
 </body>
 </html>
