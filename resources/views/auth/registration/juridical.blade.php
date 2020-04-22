@@ -104,7 +104,7 @@
                         <label for="web_site">Адрес сайта или соцсети </label>
                         <input type="url" class="form-control" id="web_site" name="web_site"
                                value="{{old('web_site')}}">
-                        <small class="form-text text-muted text-right"><strong>Пример</strong>
+                        <small class="form-text text-muted text-right"><strong>Пример:</strong>
                             https://www.твой-сайт.ru</small>
                         @error('web_site')
                         <span class="invalid-feedback" role="alert">
@@ -119,7 +119,7 @@
                                 class="text-danger">*</span></label>
                         <input type="number" min="" class="form-control" id="real_estate_count" name="real_estate_count"
                                value="{{old('real_estate_count')}}">
-                        <small class="form-text text-muted text-right">в собственное или управленое</small>
+                        <small class="form-text text-muted text-right">в собственности или управлении</small>
 
                         @error('real_estate_count')
                         <span class="invalid-feedback" role="alert">
