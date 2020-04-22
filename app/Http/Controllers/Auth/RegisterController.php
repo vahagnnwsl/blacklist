@@ -105,7 +105,7 @@ class RegisterController extends Controller
                 'company_name' => ['required', 'string', 'max:255'],
                 'psrnie' => ['required', 'string', 'max:255'],
                 'brand' => ['required', 'string', 'max:255'],
-                'document' => ['required', 'mimes:pdf', 'max:10000'],
+                'document' => ['required', 'mimes:jpg,png,pdf,jpeg,gif,tiff', 'max:7000'],
                 'contact_person_position' => ['required', 'string', 'max:255'],
                 'inn' => ['required', 'string', 'max:255'],
 
@@ -118,6 +118,8 @@ class RegisterController extends Controller
                 'brand' => ['required', 'string', 'max:255'],
                 'document' => ['required', 'mimes:jpg,png,pdf,jpeg,gif,tiff', 'max:7000'],
                 'contact_person_position' => ['required', 'string', 'max:255'],
+                'inn' => ['required', 'string', 'max:255'],
+
             ]);
         }
 
