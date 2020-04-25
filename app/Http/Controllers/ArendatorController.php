@@ -83,7 +83,7 @@ class ArendatorController extends Controller
 
     public function search(Request $request)
     {
-        $arendators = Arendator::searchAll($request->get('region'), $request->get('key'))->take(2)->get();
+        $arendators = Arendator::searchAll($request->get('region'), $request->get('key'))->take(20)->get();
         return response()->json(new ArendatorCollection($arendators));
     }
 
