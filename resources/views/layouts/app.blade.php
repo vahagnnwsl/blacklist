@@ -18,6 +18,16 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('css')
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+        }
+    </style>
 
 </head>
 <body>
@@ -90,6 +100,9 @@
         @yield('content')
 
     </main>
+    <div class="footer bg-dark">
+        <p class="mt-2"><i>©20019-2020 BlackList</i></p>
+    </div>
 
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
