@@ -10,6 +10,8 @@ use App\Http\Requests\ArendatorRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Arr;
+use App\Http\Resources\ArendatorCollection;
+use App\Http\Resources\Arendator as ArendatorJson;
 
 class ArendatorController extends Controller
 {
@@ -17,11 +19,9 @@ class ArendatorController extends Controller
     public function store(Request $request)
     {
 
-
         $rules = ArendatorRequest::rules('store');
         $request->request->add(['user_id' => Auth::id()]);
         $req = $request->all();
-
 
         $validator = Validator::make($req, $rules);
 
@@ -30,96 +30,61 @@ class ArendatorController extends Controller
         }
 
         $fields = Arr::except($req, ['violations']);
+        $fields['search'] = implode(" ", Arr::except($fields, ['user_id', 'type', 'birth_date']));
 
-        $fields['search'] =  implode(" ",Arr::except($fields, ['user_id','type','birth_date']));
+        $arendator = Arendator::exist($fields)->first();
+        $msg = 'Добавлено';
 
-
-
-        if ((int)$request->get('type') === 1) {
-            $arendator = Arendator::where([
-                'passport_serial' => $request->get('passport_serial'),
-                'passport_number' => $request->get('passport_number')
-            ])->first();
-
-            $msg = 'Арендатор с этим паспортом уже существует,добавлено только нарушение';
-
-        }else {
-            $arendator = Arendator::where([
-                'inn' => $request->get('inn')
-            ])->first();
-            $msg = 'Арендатор с этим ИНН уже существует,добавлено только нарушение';
+        if (!$arendator) {
+            $arendator = Arendator::create($fields);
+            $msg = 'Арендатор  уже существует,добавлено только нарушение';
         }
-        if ($arendator) {
-            foreach ($request->get('violations') as $violation) {
-                $violation['user_id'] = Auth::id();
-                if (key_exists('document', $violation) && $violation['document'] !== null) {
-                    $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
-                }
-                $violation['arendator_id'] = $arendator->id;
-                ArendatorViolation::create($violation);
+
+        foreach ($request->get('violations') as $violation) {
+            $violation['user_id'] = Auth::id();
+            if (key_exists('document', $violation) && $violation['document'] !== null) {
+                $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
             }
 
-            return response()->json(['msg'=>$msg]);
+            $violation['arendator_id'] = $arendator->id;
+            ArendatorViolation::create($violation);
         }
 
-
-        Arendator::create($fields);
-
-        return response()->json();
+        return response()->json(['msg' => $msg]);
 
     }
-
-
-
 
     public function get()
     {
+        $arendators = Arendator::whereIn('id', Auth::user()->arendatorsByViolations())->where('status', 1)->get();
 
-        return response()->json(Arendator::whereIn('id',Auth::user()->arendatorsByViolations())->where('status',1)->paginate(15, [
-            'id', 'first_name', 'last_name', 'patronymic', 'region', 'city', 'type','address','created_at','company_name'
-        ]));
+        return response()->json(new ArendatorCollection($arendators,true));
     }
 
-    public function getSingle($id){
-        $arendator = Arendator::whereId($id)->where('status',1)->with('violations')->first();
+    public function getSingle($id)
+    {
+        $arendator = Arendator::whereId($id)->where('status', 1)->with('violations')->first();
 
-        if(!$arendator){
-            return response()->json([],401);
-
+        if (!$arendator) {
+            return response()->json([], 401);
         }
 
-        return response()->json($arendator->data);
-    }
 
-    public function violations($id)
-    {
-        $arendator = Arendator::findOrFail($id);
-        return response()->json($arendator->violations);
+//        if (Auth::check()) {
+//            usort($array['violations'], function ($item1, $item2) {
+//                if ($item1['user_id'] === Auth::id() && $item2['user_id'] === Auth::id()) return 0;
+//                return $item1['user_id'] === Auth::id() && $item2['user_id'] !== Auth::id() ? -1 : 1;
+//            });
+//        }
+
+        return response()->json(new ArendatorJson($arendator));
+
     }
 
     public function search(Request $request)
     {
-        $region = $request->get('region');
-        $key = $request->get('key');
-
-        $arendators = Arendator::when($region, function ($q) use ($region) {
-            return $q->where('region', $region);
-        })->when($key, function ($q) use ($key) {
-            return $q->where('search', 'LIKE', '%' . $key . '%');
-        })->whereHas('user')->where('status',1)->with('violations')->paginate(20);
-
-        $resp['total'] = $arendators->total();
-        $resp['items'] = [];
-
-
-        foreach ($arendators as $arendator) {
-
-            array_push($resp['items'],$arendator->data);
-        }
-
-
-
-        return response()->json($resp);
+        $arendators = Arendator::searchAll($request->get('region'), $request->get('key'))->take(2)->get();
+        return response()->json(new ArendatorCollection($arendators));
     }
 
 

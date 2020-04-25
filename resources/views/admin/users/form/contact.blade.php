@@ -54,8 +54,9 @@
         @enderror
     </div>
 
+
     <div class="form-group   col-sm-12 col-md-12 col-lg-12">
-        <button type="submit" class="btn btn-primary w-25 float-right" >
+        <button type="submit" class="btn btn-primary w-25 float-right" {{$user->type=== 5? 'disabled': ''}}>
             <i class="fa fa-check"></i>
         </button>
     </div>

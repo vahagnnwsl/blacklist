@@ -14,8 +14,8 @@
             </div>
         </nav>
         <div class="row">
-            <Basic v-if="showComponent==='Basic'" :basic_data="basic_data" :auth_type='auth_type'></Basic>
-            <Contact v-if="showComponent==='Contact'" :contact_data="contact_data"  :auth_type='auth_type'></Contact>
+            <Basic v-if="showComponent==='Basic'" :basic_data="user.basic" :auth_type='auth_type'></Basic>
+            <Contact v-if="showComponent==='Contact'" :contact_data="user.contact"  :auth_type='auth_type'></Contact>
             <Security v-if="showComponent==='Security'"></Security>
         </div>
     </div>
@@ -28,15 +28,12 @@
 
     export default {
         name: "Content",
-        props: ['contact_data', 'basic_data', 'auth_type'],
+        props: ['user', 'auth_type'],
         components: {Basic, Contact, Security},
         data() {
             return {
                 showComponent: 'Basic',
             }
-        },
-        mounted() {
-            console.log(this.contact_data,)
         },
         methods: {
             showTab: function (tab) {

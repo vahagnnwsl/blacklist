@@ -8,7 +8,7 @@
 
                 <NewArendator @getResults="getResults"></NewArendator>
             </div>
-            <div class="col-md-12 mt-4" v-if="laravelData.data">
+            <div class="col-md-12 mt-4" v-if="arendators">
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -18,10 +18,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="arendator in laravelData.data" :key="arendator.id">
+                    <tr v-for="arendator in arendators" :key="arendator.id">
                         <td>
                             <span v-if="arendator.type===1">
-                                    <strong>{{foolName(arendator)}}</strong>
+                                    <strong>{{arendator.full_name}}</strong>
                                  </span>
                             <span v-else>
                                    <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
@@ -40,12 +40,6 @@
 
                     </tbody>
                 </table>
-            </div>
-
-            <div class="col-md-12 d-flex">
-                <div class="mx-auto">
-                    <pagination :data="laravelData" @pagination-change-page="getResults"></pagination>
-                </div>
             </div>
 
             <template>
@@ -67,7 +61,6 @@
                             </div>
                             <div class="modal-body">
                                 <Arendator :arendator="arendator" :user_id="user_id"></Arendator>
-
                             </div>
                         </div>
                     </div>
@@ -90,12 +83,12 @@
 
     export default {
         name: "AddArendator",
-        components: {NewArendator, Pagination,Arendator},
+        components: {NewArendator,Arendator},
         props: ['user_id'],
         data() {
             return {
                 showModal: false,
-                laravelData: {},
+                arendators: {},
                 violations: {},
                 arendator: {}
             }
@@ -130,22 +123,19 @@
                 })
             },
 
-            getResults: function (page = 1) {
-                axios.get('/account/arendators/?page=' + page).then((resp) => {
+            getResults: function () {
+                axios.get('/account/arendators').then((resp) => {
 
-                    this.laravelData = resp.data
+                    this.arendators = resp.data.data
 
                 })
             },
-            foolName: function (arendator) {
-                return arendator.first_name + ' ' + arendator.last_name + ' ' + arendator.patronymic;
-            },
-
             address: function (arendator) {
                 var address = arendator.region + ' ' + arendator.city;
                 if (arendator.address) {
                     address += ' ' + arendator.address
                 }
+
                 return address;
             }
         }

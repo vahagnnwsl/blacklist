@@ -45,6 +45,7 @@ class UserRequest
         if ($user) {
             $type = $user->type;
         }
+        $type = (int)$type;
 
         $rules = [
             'inn' => ['required', 'string', 'max:255'],
@@ -56,7 +57,7 @@ class UserRequest
             'real_estate_count' => ['numeric', 'min:1', 'max:10000'],
         ];
 
-        if ($type === 2) {
+        if ($type === config('constants.user.individual')) {
             $rules = array_merge($rules, [
                 'passport' => ['required', 'string', 'max:255'],
                 'full_name' => ['required', 'string', 'max:255'],
@@ -74,7 +75,7 @@ class UserRequest
                 ]);
             }
 
-            if ($type === 3) {
+            if ($type === config('constants.user.juridical')) {
                 $rules = array_merge($rules, [
                     'psrn' => ['required', 'string', 'max:255'],
                 ]);

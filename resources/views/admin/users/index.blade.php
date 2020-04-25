@@ -52,7 +52,7 @@
                                         <td>{{$user->type}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->created_at->format('d M  Y')}}</td>
-                                        <td>{{$user->is_api_user}}</td>
+                                        <td>{{$user->client_id ? 1 : 0}}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="{{route('users.edit',$user->id)}}" class="btn btn-info mr-2"

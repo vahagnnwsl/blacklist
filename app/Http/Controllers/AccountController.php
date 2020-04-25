@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Http\Resources\User as UserJson;
 
 class AccountController extends Controller
 {
@@ -59,11 +60,10 @@ class AccountController extends Controller
 
         Auth::user()->update($data);
 
-//        session(['message' => ['text' => 'Успешно обновлено', 'status' => 'success']]);
         $resp = [];
 
         if ($method === 'basic') {
-            $resp = Auth::user()->basicData;
+            $resp = new UserJson(Auth::user(),true);
         }
 
         return response()->json($resp, 200);
@@ -85,7 +85,6 @@ class AccountController extends Controller
             Auth::user()->password = Hash::make($request->get('password'));;
             Auth::user()->save();
 
-//            session(['message' => ['text' => 'Успешно обновлено', 'status' => 'success']]);
             return response()->json([], 200);
         }
 

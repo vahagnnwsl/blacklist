@@ -3,9 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-
+            Auth::user())
             <card :user="{{Auth::user()}}" ></card>
-            <profile-content :auth_type="{{Auth::user()->type}}" :basic_data="{{ json_encode(Auth::user()->basicData) }}" :contact_data="{{ json_encode(Auth::user()->contactData) }}" ></profile-content>
+            <profile-content :auth_type="{{Auth::user()->type}}"
+                             :user="{{ json_encode(new \App\Http\Resources\User(Auth::user(),true)) }}"
+                             >
+
+            </profile-content>
 
         </div>
     </div>

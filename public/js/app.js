@@ -2420,13 +2420,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2435,14 +2428,13 @@ __webpack_require__.r(__webpack_exports__);
   name: "AddArendator",
   components: {
     NewArendator: _modals_NewArendator__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Pagination: laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default.a,
     Arendator: _includes_Arendator__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: ['user_id'],
   data: function data() {
     return {
       showModal: false,
-      laravelData: {},
+      arendators: {},
       violations: {},
       arendator: {}
     };
@@ -2476,13 +2468,9 @@ __webpack_require__.r(__webpack_exports__);
     getResults: function getResults() {
       var _this2 = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/account/arendators/?page=' + page).then(function (resp) {
-        _this2.laravelData = resp.data;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/account/arendators').then(function (resp) {
+        _this2.arendators = resp.data.data;
       });
-    },
-    foolName: function foolName(arendator) {
-      return arendator.first_name + ' ' + arendator.last_name + ' ' + arendator.patronymic;
     },
     address: function address(arendator) {
       var address = arendator.region + ' ' + arendator.city;
@@ -3327,6 +3315,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3368,7 +3358,7 @@ __webpack_require__.r(__webpack_exports__);
       this.less20 = false;
       this.noResult = false;
       axios.get('/account/arendators/search?region=' + this.form.region + '&key=' + this.form.key).then(function (resp) {
-        _this2.arendators = resp.data.items;
+        _this2.arendators = resp.data.data;
 
         if (resp.data.total > 20) {
           _this2.more20 = true;
@@ -4219,7 +4209,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Content",
-  props: ['contact_data', 'basic_data', 'auth_type'],
+  props: ['user', 'auth_type'],
   components: {
     Basic: _tabs_Basic__WEBPACK_IMPORTED_MODULE_0__["default"],
     Contact: _tabs_Contact__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -4229,9 +4219,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       showComponent: 'Basic'
     };
-  },
-  mounted: function mounted() {
-    console.log(this.contact_data);
   },
   methods: {
     showTab: function showTab(tab) {
@@ -4425,6 +4412,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    console.log(this.basic_data);
     this.form = this.basic_data;
     this.doc = this.basic_data.doc;
   },
@@ -4449,7 +4437,7 @@ __webpack_require__.r(__webpack_exports__);
               title: 'Успешно!',
               priority: 'success'
             });
-            _this.doc = resp.data.doc;
+            _this.doc = resp.data.basic.doc;
           });
         }
       });
@@ -53211,10 +53199,7 @@ var render = function() {
                       "a",
                       {
                         staticClass: "mt-2 text-secondary",
-                        attrs: {
-                          href: "/storage" + violation.document,
-                          target: "_blank"
-                        }
+                        attrs: { href: violation.document, target: "_blank" }
                       },
                       [_c("strong", [_vm._v("Документ")])]
                     )
@@ -53224,7 +53209,7 @@ var render = function() {
               _c("br")
             ]),
             _vm._v(" "),
-            violation.user_id === _vm.user_id
+            violation.user.id === _vm.user_id
               ? _c("div", { staticClass: "form-group  w-100  pt-0" }, [
                   _c(
                     "div",
@@ -53514,20 +53499,20 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _vm.laravelData.data
+        _vm.arendators
           ? _c("div", { staticClass: "col-md-12 mt-4" }, [
               _c("table", { staticClass: "table table-hover" }, [
                 _vm._m(0),
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.laravelData.data, function(arendator) {
+                  _vm._l(_vm.arendators, function(arendator) {
                     return _c("tr", { key: arendator.id }, [
                       _c("td", [
                         arendator.type === 1
                           ? _c("span", [
                               _c("strong", [
-                                _vm._v(_vm._s(_vm.foolName(arendator)))
+                                _vm._v(_vm._s(arendator.full_name))
                               ])
                             ])
                           : _c("span", [
@@ -53569,20 +53554,6 @@ var render = function() {
               ])
             ])
           : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-12 d-flex" }, [
-          _c(
-            "div",
-            { staticClass: "mx-auto" },
-            [
-              _c("pagination", {
-                attrs: { data: _vm.laravelData },
-                on: { "pagination-change-page": _vm.getResults }
-              })
-            ],
-            1
-          )
-        ]),
         _vm._v(" "),
         [
           _c(
@@ -57418,14 +57389,14 @@ var render = function() {
       [
         _vm.showComponent === "Basic"
           ? _c("Basic", {
-              attrs: { basic_data: _vm.basic_data, auth_type: _vm.auth_type }
+              attrs: { basic_data: _vm.user.basic, auth_type: _vm.auth_type }
             })
           : _vm._e(),
         _vm._v(" "),
         _vm.showComponent === "Contact"
           ? _c("Contact", {
               attrs: {
-                contact_data: _vm.contact_data,
+                contact_data: _vm.user.contact,
                 auth_type: _vm.auth_type
               }
             })

@@ -150,7 +150,7 @@
                            @click="collapse('collapse'+violation.id,$event)">
                             Читать дальше
                         </a><br>
-                        <a v-if="violation.document" :href="'/storage'+violation.document"
+                        <a v-if="violation.document" :href="violation.document"
                            target="_blank" class="mt-2 text-secondary">
                             <strong>Документ</strong>
                         </a>
@@ -158,7 +158,7 @@
                     </p>
                     <br>
                 </div>
-                <div class="form-group  w-100  pt-0" v-if="violation.user_id===user_id">
+                <div class="form-group  w-100  pt-0" v-if="violation.user.id === user_id">
 
                     <div class="custom-control custom-switch w-100">
                         <input type="checkbox" class="custom-control-input" :id="'switch'+key" :checked="Number(violation.status)===1" @change="updateStatus(violation.id,'switch'+key+violation.id)">
@@ -193,11 +193,9 @@
                 }
             },
             sortArray: function(array){
-
                 return array;
             },
             arrayMove: function(a, b){
-
                 return (b.user_id === this.user_id) - (a.user_id === this.user_id);
             },
             updateStatus: function(violationId,ref){

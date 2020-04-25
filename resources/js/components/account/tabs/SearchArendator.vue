@@ -54,10 +54,11 @@
                             <small
                                 style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
                         </span>
-
                     </div>
                     <div class="col-md-6 col-sm-12 text-center">
+
                         <h6 v-for="(item,key) in arendator.violations">
+
                             <span v-if="item.user.full_name">
                                 {{item.user.full_name}}
                             </span>
@@ -68,6 +69,7 @@
                                 </i>
                             </small>
                         </h6>
+
                     </div>
                     <div class="col-md-3 col-sm-12 text-right" style="position: relative" ref="aa">
                         <h6 class="dateCity">{{arendator.city}} <small><i>{{arendator.date}}</i></small></h6>
@@ -136,6 +138,7 @@
             },
 
             onSubmit: function () {
+
                 if (this.form.region === '' && this.form.key === '') {
                     return;
                 }
@@ -144,7 +147,7 @@
                 this.noResult = false;
                 axios.get('/account/arendators/search?region=' + this.form.region + '&key=' + this.form.key).then((resp) => {
 
-                    this.arendators = resp.data.items;
+                    this.arendators = resp.data.data;
 
                     if (resp.data.total > 20) {
                         this.more20 = true;

@@ -56,6 +56,7 @@ class ArendatorRequest
            'user.company_name' => ['required', 'string', 'max:255'],
            'user.address' => ['required', 'string', 'max:255'],
            'user.city' => ['required', 'string', 'max:255'],
+           'user.email' => ['required', 'string', 'max:255'],
 
            'arendator.type' => ['required','integer','between:1,2'],
            'arendator.first_name' => ['required', 'string', 'max:255'],

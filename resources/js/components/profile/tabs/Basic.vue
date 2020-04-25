@@ -172,6 +172,7 @@
             }
         },
         mounted() {
+            console.log(this.basic_data)
             this.form = this.basic_data;
             this.doc = this.basic_data.doc;
 
@@ -193,7 +194,7 @@
                             }
                         }).then((resp) => {
                             $.toaster({ message : 'Успешно обновлено', title : 'Успешно!', priority : 'success' });
-                            this.doc = resp.data.doc;
+                            this.doc = resp.data.basic.doc;
                         })
                     }
                 })

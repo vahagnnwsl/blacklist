@@ -46,49 +46,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function getContactDataAttribute()
-    {
-        $data = [
-            'email' => $this->email,
-            'about_business' => $this->about_business,
-            'contact_person_full_name' => $this->contact_person_full_name,
-            'contact_phone' => $this->contact_phone,
-        ];
-
-        if ($this->type !== 2) {
-            $data = array_merge($data, ['contact_person_position' => $this->contact_person_position]);
-        }
-        return $data;
-    }
-
-    public function getBasicDataAttribute()
-    {
-
-        $data = [
-            'inn' => $this->inn,
-            'country' => $this->country,
-            'city' => $this->city,
-            'address' => $this->address,
-            'doc' => $this->doc,
-            'web_site' => $this->web_site,
-            'advertising_number' => $this->advertising_number,
-            'real_estate_count' => $this->real_estate_count,
-        ];
-
-        if ($this->type === 2) {
-            $data = array_merge($data, ['passport' => $this->passport, 'full_name' => $this->full_name]);
-        } else {
-            $data = array_merge($data, ['brand' => $this->brand, 'company_name' => $this->company_name]);
-            if ($this->type === 3) {
-                $data = array_merge($data, ['psrn' => $this->psrn]);
-            } else {
-                $data = array_merge($data, ['psrnie' => $this->psrnie]);
-            }
-        }
-        return $data;
-    }
-
-
     public function sendEmailVerificationNotification()
     {
         $this->notify(new \App\Notifications\VerifyEmailNotification);

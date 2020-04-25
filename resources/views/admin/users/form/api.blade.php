@@ -43,17 +43,9 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
     <div class="form-group  col-sm-12 col-md-4 col-lg-4">
-        <button type="submit" class="btn btn-primary btn-block float-right" >
+        <label for="address" style="color:white">Адрес офиса (если есть) </label>
+        <button type="submit" class="btn btn-primary btn-block float-right" disabled>
             <i class="fa fa-check"></i>
         </button>
     </div>

@@ -50,7 +50,6 @@ Route::group(['middleware' => ['auth', 'verified', 'can:no_admin_user']], functi
             Route::get('/', 'ArendatorController@get');
             Route::get('/search', 'ArendatorController@search');
             Route::post('/{id}/violation/{violation_id}', 'ArendatorController@updateViolationStatus');
-            Route::get('/{id}/violations', 'ArendatorController@violations');
             Route::get('/{id}', 'ArendatorController@getSingle');
 
         });

@@ -28,93 +28,31 @@ class Arendator extends Model
         return $this->hasMany(ArendatorViolation::class)->orderBy('created_at', 'desc');
     }
 
-    public function getDataAttribute()
+    public function scopeOfPassport($query, $arg1, $arg2)
     {
-        $array = [
-            'id' => $this->id,
-            'type' => $this->type,
-            'full_name' => $this->fullName,
-            'register' => $this->register,
-            'address' => $this->address,
-            'region' => $this->region,
-            'city' => $this->city,
-            'company_name' => $this->company_name,
-            'inn' => $this->inn,
-            'position' => $this->position,
-            'passport' => $this->passport_serial . ' ' . $this->passport_number,
-            'contact_phone' => $this->contact_phone,
-            'birth_date' => $this->birth_date,
-            'date' => $this->created_at->format('d/m/Y')
-        ];
-
-        $array['violations'] = [];
-
-        foreach ($this->violations as $violation) {
-
-            $arr = [
-                'user' => [
-                    'full_name' => $violation->user->full_name,
-                    'contact_email' => $violation->user->email,
-                    'city' => $violation->user->city,
-                    'company_name' => $violation->user->company_name,
-                    'contact_phone' => $violation->user->contact_phone,
-                    'contact_person_full_name' => $violation->user->contact_person_full_name,
-                    'address' => $violation->user->address,
-                    'type' => $violation->user->type,
-                ],
-                'date' => $violation->date,
-                'description' => $violation->description,
-                'document' => $violation->document,
-                'status' => $violation->status,
-                'user_id' => $violation->user_id,
-                'id' => $violation->id,
-            ];
-
-
-            array_push($array['violations'], $arr);
-        }
-
-        if (Auth::check()) {
-            usort($array['violations'], function ($item1, $item2) {
-                if ($item1['user_id'] === Auth::id() && $item2['user_id'] === Auth::id()) return 0;
-                return $item1['user_id'] === Auth::id() && $item2['user_id'] !== Auth::id() ? -1 : 1;
-            });
-        }
-
-
-        return $array;
+        return $query->where('passport_serial', $arg1)->where('passport_number', $arg2);
     }
 
-
-
-    public static function boot()
+    public function scopeSearchAll($query, $region, $key)
     {
-        parent::boot();
-
-        static::created(function ($model) {
-
-
-            foreach (request()->get('violations') as $violation) {
-
-                if (Auth::check()) {
-                    if (Auth::id()) {
-                        $violation['user_id'] = Auth::id();
-                    }
-
-                    if (key_exists('document', $violation) && $violation['document'] !== null) {
-                        $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
-                    }
-
-
-                    $violation['arendator_id'] = $model->id;
-
-                    ArendatorViolation::create($violation);
-                }
-
-            }
-
-
-        });
+        return $query->when($region, function ($q) use ($region) {
+            return $q->where('region', $region);
+        })->when($key, function ($q) use ($key) {
+            return $q->where('search', 'LIKE', '%' . $key . '%');
+        })->whereHas('user')->where('status', 1);
     }
 
+    public function scopeExist($query, array $arg)
+    {
+        if ((int)$arg['type'] === 1) {
+            return $query->where([
+                'passport_serial' => $arg['passport_serial'],
+                'passport_number' => $arg['passport_number']
+            ]);
+        }
+        return $query->where([
+            'inn' => $arg['inn']
+        ]);
+
+    }
 }

@@ -34,6 +34,8 @@ class LoginController extends Controller
         }
         return RouteServiceProvider::HOME;
     }
+
+
     protected function validateLogin(Request $request)
     {
         $this->validate($request, [

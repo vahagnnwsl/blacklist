@@ -18,4 +18,7 @@ use Illuminate\Support\Facades\Route;
 //
 //});
 Route::post('/arendators', 'ArendatorController@store')->middleware('client');
-Route::get('/arendators', 'ArendatorController@index')->middleware('client');
+
+//Route::get('/arendators/search', 'ArendatorController@index')->middleware('client');
+
+Route::get('/arendators', 'ArendatorController@get')->middleware('client');
