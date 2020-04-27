@@ -5,7 +5,6 @@
     @else
         @if ($level === 'error')
             # @lang('Whoops!')
-        @else
 
         @endif
     @endif
@@ -43,8 +42,6 @@
     @if (! empty($salutation))
         {{ $salutation }}
     @else
-
-        <br>
         {{ 'Удалить' }}
     @endif
 
