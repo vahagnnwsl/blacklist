@@ -56,7 +56,7 @@
             <h5 class="mt-3">
                 <strong>Паспорт </strong><br>
                 <small>
-                    {{arendator.passport}}
+                    {{arendator.passport_serial}}  {{arendator.passport_number}}
                 </small>
             </h5>
 

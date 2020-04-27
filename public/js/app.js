@@ -52992,7 +52992,9 @@ var render = function() {
         _c("small", [
           _vm._v(
             "\n                " +
-              _vm._s(_vm.arendator.passport) +
+              _vm._s(_vm.arendator.passport_serial) +
+              "  " +
+              _vm._s(_vm.arendator.passport_number) +
               "\n            "
           )
         ])
