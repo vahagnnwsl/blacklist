@@ -54420,8 +54420,8 @@ var render = function() {
                               {
                                 name: "validate",
                                 rawName: "v-validate",
-                                value: "ext:jpg,png,pdf,jpeg",
-                                expression: "'ext:jpg,png,pdf,jpeg'"
+                                value: "ext:jpg,pdf,jpeg,gif,tiff",
+                                expression: "'ext:jpg,pdf,jpeg,gif,tiff'"
                               }
                             ],
                             ref: "document" + key,
@@ -54448,7 +54448,7 @@ var render = function() {
                                   _vm._v(
                                     "\n                                " +
                                       _vm._s(
-                                        "Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)"
+                                        "Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл. Размер файла должен состовлять не более 7мб"
                                       ) +
                                       "\n                            "
                                   )
@@ -55545,8 +55545,8 @@ var render = function() {
                               {
                                 name: "validate",
                                 rawName: "v-validate",
-                                value: "ext:jpg,png,pdf,jpeg",
-                                expression: "'ext:jpg,png,pdf,jpeg'"
+                                value: "ext:jpg,pdf,jpeg,gif,tiff",
+                                expression: "'ext:jpg,pdf,jpeg,gif,tiff'"
                               }
                             ],
                             ref: "document" + key,
@@ -55573,7 +55573,7 @@ var render = function() {
                                   _vm._v(
                                     "\n\n                                " +
                                       _vm._s(
-                                        "Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)"
+                                        "Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл. Размер файла должен состовлять не более 7мб"
                                       ) +
                                       "\n\n                            "
                                   )

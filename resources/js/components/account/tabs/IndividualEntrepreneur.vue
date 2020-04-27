@@ -192,12 +192,12 @@
                                        class="form-control  form-control-sm"
                                        :name="'violations['+key+'][document]'"
                                        data-vv-as="Документ" v-on:change="handleFileUpload(key)"
-                                       v-validate="'ext:jpg,png,pdf,jpeg'">
+                                       v-validate="'ext:jpg,pdf,jpeg,gif,tiff'">
 
                                 <small class="text-danger  float-right"
                                        v-if="errors.has('violations['+key+'][document]')">
 
-                                    {{'Поле Подтверждающие документы должно быть действительным файлом (jpg,pdf)'}}
+                                    {{'Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл. Размер файла должен состовлять не более 7мб'}}
 
                                 </small>
                             </div>
