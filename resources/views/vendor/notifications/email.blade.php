@@ -6,7 +6,7 @@
         @if ($level === 'error')
             # @lang('Whoops!')
         @else
-            # @lang('Hello!')
+
         @endif
     @endif
 
@@ -43,21 +43,23 @@
     @if (! empty($salutation))
         {{ $salutation }}
     @else
+
         <br>
         {{ 'Удалить' }}
+    @endif
 
-        {{-- Subcopy --}}
-        @isset($actionText)
-            @slot('subcopy')
-                @lang(
-                    "Для подтверждения e-mail адреса пройдите по ссылке [:displayableActionUrl](:actionURL)".
-                    'Если Вы не регистрировались на нашем сайте, то просто удалите это письмо',
-                    [
-                        'actionText' => $actionText,
-                        'actionURL' => $actionUrl,
-                        'displayableActionUrl' => $displayableActionUrl,
-                    ]
-                )
-            @endslot
-        @endisset
-        @endcomponent
+    {{-- Subcopy --}}
+    @isset($actionText)
+        @slot('subcopy')
+            @lang(
+                "Для подтверждения e-mail адреса пройдите по ссылке \":actionText\" \n",
+                [
+                    'actionText' => $actionText,
+                    'actionURL' => $actionUrl,
+                    'displayableActionUrl' => $displayableActionUrl,
+                ],
+                 'Если Вы не регистрировались на нашем сайте, то просто удалите это письмо: [:displayableActionUrl](:actionURL)';
+            )
+        @endslot
+    @endisset
+@endcomponent
