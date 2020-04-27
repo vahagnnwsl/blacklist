@@ -2198,7 +2198,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Arendator",
@@ -53173,38 +53172,46 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("p", { staticClass: "w-100 mt-2 text-right" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "mt-2 text-secondary font-weight-bold",
-                    staticStyle: { cursor: "pointer" },
-                    attrs: { role: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.collapse("collapse" + violation.id, $event)
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Читать дальше\n                    "
-                    )
-                  ]
-                ),
-                _c("br"),
-                _vm._v(" "),
-                violation.document
-                  ? _c(
+              violation.description.length > 278
+                ? _c("p", { staticClass: "w-100 mt-2 text-right" }, [
+                    _c(
                       "a",
                       {
-                        staticClass: "mt-2 text-secondary",
-                        attrs: { href: violation.document, target: "_blank" }
+                        staticClass: "mt-2 text-secondary font-weight-bold",
+                        staticStyle: { cursor: "pointer" },
+                        attrs: { role: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.collapse(
+                              "collapse" + violation.id,
+                              $event
+                            )
+                          }
+                        }
                       },
-                      [_c("strong", [_vm._v("Документ")])]
-                    )
-                  : _vm._e()
-              ]),
+                      [
+                        _vm._v(
+                          "\n                        Читать дальше\n                    "
+                        )
+                      ]
+                    ),
+                    _c("br"),
+                    _vm._v(" "),
+                    violation.document
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "mt-2 text-secondary",
+                            attrs: {
+                              href: violation.document,
+                              target: "_blank"
+                            }
+                          },
+                          [_c("strong", [_vm._v("Документ")])]
+                        )
+                      : _vm._e()
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("br")
             ]),

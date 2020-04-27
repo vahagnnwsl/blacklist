@@ -145,7 +145,7 @@
                     </p>
 
 
-                    <p class="w-100 mt-2 text-right">
+                    <p class="w-100 mt-2 text-right"  v-if="violation.description.length > 278">
                         <a role="button" class="mt-2 text-secondary font-weight-bold" style="cursor: pointer"
                            @click="collapse('collapse'+violation.id,$event)">
                             Читать дальше
@@ -154,7 +154,6 @@
                            target="_blank" class="mt-2 text-secondary">
                             <strong>Документ</strong>
                         </a>
-
                     </p>
                     <br>
                 </div>
@@ -179,7 +178,6 @@
     export default {
         name: "Arendator",
         props:['arendator','user_id'],
-
         methods: {
             collapse: function (ref,event) {
 
