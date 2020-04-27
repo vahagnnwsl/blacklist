@@ -101,7 +101,7 @@
 
     </main>
     <div class="footer bg-dark">
-        <p class="mt-2"><i>©20019-2020 BlackList</i></p>
+        <p class="mt-2"><i>©2019-2020 BlackList</i></p>
     </div>
 
 </div>
