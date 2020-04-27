@@ -1,0 +1,209 @@
+{
+    "variables": [],
+    "info": {
+        "name": "Laravel API",
+        "_postman_id": "2d84a426-7453-455f-92de-5f0f2302e30b",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "general",
+            "description": "",
+            "item": [
+                {
+                    "name": "api\/arendators",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "black.loc",
+                            "path": "api\/arendators",
+                            "query": [
+                                {
+                                    "key": "user.contact_phone",
+                                    "value": "ullam",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "user.company_name",
+                                    "value": "fuga",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "user.address",
+                                    "value": "eum",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "user.city",
+                                    "value": "error",
+                                    "description": "equired",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.type",
+                                    "value": "provident",
+                                    "description": "1 or 2",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.first_name",
+                                    "value": "qui",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.last_name",
+                                    "value": "tenetur",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.patronymic",
+                                    "value": "totam",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.contact_phone",
+                                    "value": "dignissimos",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.city",
+                                    "value": "odit",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.region",
+                                    "value": "totam",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.passport_number",
+                                    "value": "necessitatibus",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.passport_serial",
+                                    "value": "corrupti",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "violations.description",
+                                    "value": "aut",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "violations.status",
+                                    "value": "ab",
+                                    "description": "0 or 1",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "violations.date",
+                                    "value": "nihil",
+                                    "description": "date like 2020-04-15",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "violations.document",
+                                    "value": "aperiam",
+                                    "description": "optional base_64 string",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "api\/arendators",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "black.loc",
+                            "path": "api\/arendators",
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "quibusdam",
+                                    "description": "passport or inn",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "passport_serial",
+                                    "value": "dolore",
+                                    "description": "optional  if type equal passport required",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "passport_number",
+                                    "value": "et",
+                                    "description": "optional  if type equal passport required",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "inn",
+                                    "value": "inventore",
+                                    "description": "optional  if type equal inn required",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
+}

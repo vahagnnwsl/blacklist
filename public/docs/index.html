@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["php"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="php">php</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.
+<a href="http://black.loc/docs/collection.json">Get Postman Collection</a></p>
+<!-- END_INFO -->
+<h1>general</h1>
+<!-- START_97706d28f14d0a8cf5c04d5ec5479575 -->
+<h2>api/arendators</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://black.loc/api/arendators',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'Bearer {token}',
+        ],
+        'query' =&gt; [
+            'user[contact_phone]'=&gt; 'ullam',
+            'user[company_name]'=&gt; 'fuga',
+            'user[address]'=&gt; 'eum',
+            'user[city]'=&gt; 'error',
+            'arendator[type]'=&gt; 'provident',
+            'arendator[first_name]'=&gt; 'qui',
+            'arendator[last_name]'=&gt; 'tenetur',
+            'arendator[patronymic]'=&gt; 'totam',
+            'arendator[contact_phone]'=&gt; 'dignissimos',
+            'arendator[city]'=&gt; 'odit',
+            'arendator[region]'=&gt; 'totam',
+            'arendator[passport_number]'=&gt; 'necessitatibus',
+            'arendator[passport_serial]'=&gt; 'corrupti',
+            'violations[description]'=&gt; 'aut',
+            'violations[status]'=&gt; 'ab',
+            'violations[date]'=&gt; 'nihil',
+            'violations[document]'=&gt; 'aperiam',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "msg": "Success"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/arendators</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user.contact_phone</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>user.company_name</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>user.address</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>user.city</code></td>
+<td>optional</td>
+<td>equired</td>
+</tr>
+<tr>
+<td><code>arendator.type</code></td>
+<td>required</td>
+<td>1 or 2</td>
+</tr>
+<tr>
+<td><code>arendator.first_name</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>arendator.last_name</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>arendator.patronymic</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>arendator.contact_phone</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>arendator.city</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>arendator.region</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>arendator.passport_number</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>arendator.passport_serial</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>violations.description</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>violations.status</code></td>
+<td>required</td>
+<td>0 or 1</td>
+</tr>
+<tr>
+<td><code>violations.date</code></td>
+<td>required</td>
+<td>date like 2020-04-15</td>
+</tr>
+<tr>
+<td><code>violations.document</code></td>
+<td>optional</td>
+<td>optional base_64 string</td>
+</tr>
+</tbody>
+</table>
+<!-- END_97706d28f14d0a8cf5c04d5ec5479575 -->
+<!-- START_0edbb0df171b5a423ddb7fd4fc5f05be -->
+<h2>api/arendators</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://black.loc/api/arendators',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'Bearer {token}',
+        ],
+        'query' =&gt; [
+            'type'=&gt; 'quibusdam',
+            'passport_serial'=&gt; 'dolore',
+            'passport_number'=&gt; 'et',
+            'inn'=&gt; 'inventore',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": 205,
+        "first_name": "api",
+        "last_name": "api",
+        "patronymic": "api",
+        "passport_serial": "api",
+        "passport_number": "123",
+        "phone": "api",
+        "region": "api",
+        "city": "api",
+        "date": "2020-04-22",
+        "violetions": [
+            {
+                "id": 483,
+                "status": 1,
+                "date": "2020-04-03",
+                "description": "asdasdasd",
+                "user": {
+                    "id": 63,
+                    "email": "individual-entrepreneur@gmail.com",
+                    "country": "Armenia",
+                    "city": "Yerevan",
+                    "address": "Kievyan 8",
+                    "phone": "123123",
+                    "type": 4,
+                    "inn": "123",
+                    "company_name": "Map",
+                    "contact_person_full_name": "Aram Arami Aramyan",
+                    "contact_person_position": "Boss"
+                }
+            },
+            {
+                "id": 482,
+                "status": 1,
+                "date": "2020-04-15",
+                "description": "asd",
+                "user": {
+                    "id": 95,
+                    "email": "client_id_25_time_1587566017@api.com",
+                    "country": null,
+                    "city": "api",
+                    "address": "api",
+                    "phone": "api",
+                    "type": 5,
+                    "full_name": "api"
+                }
+            }
+        ],
+        "user": {
+            "id": 95,
+            "email": "client_id_25_time_1587566017@api.com",
+            "country": null,
+            "city": "api",
+            "address": "api",
+            "phone": "api",
+            "type": 5,
+            "full_name": "api"
+        },
+        "register": "api",
+        "birth_date": "2020-04-15"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/arendators</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>required</td>
+<td>passport or inn</td>
+</tr>
+<tr>
+<td><code>passport_serial</code></td>
+<td>optional</td>
+<td>optional  if type equal passport required</td>
+</tr>
+<tr>
+<td><code>passport_number</code></td>
+<td>optional</td>
+<td>optional  if type equal passport required</td>
+</tr>
+<tr>
+<td><code>inn</code></td>
+<td>optional</td>
+<td>optional  if type equal inn required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_0edbb0df171b5a423ddb7fd4fc5f05be -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="php">php</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>
