@@ -3,7 +3,7 @@
         <a class="nav-item nav-link {{$type==='individual'? 'active': ''}}" id="nav-natural-tab"  href="{{route('registration','individual')}}"
            aria-controls="nav-natural" aria-selected="true"> ФИЗИЧЕСКОЕ ЛИЦО</a>
         <a class="nav-item nav-link {{$type==='individual-entrepreneur'? 'active': ''}}" id="nav-individual-tab" href="{{route('registration','individual-entrepreneur')}}"
-           aria-controls="nav-individual" aria-selected="false"> ИНДИВИДУАЛЬНЫМ ПРЕДПРИНИМАТЕЛЬ</a>
+           aria-controls="nav-individual" aria-selected="false"> ИНДИВИДУАЛЬНЫЙ ПРЕДПРИНИМАТЕЛЬ</a>
         <a class="nav-item nav-link {{$type==='juridical'? 'active': ''}}" id="nav-juridical-tab" href="{{route('registration','juridical')}}"
            aria-controls="nav-juridical" aria-selected="false"> ЮРИДИЧЕСКОЕ ЛИЦО</a>
     </div>
