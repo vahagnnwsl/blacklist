@@ -53007,7 +53007,7 @@ var render = function() {
         _c("small", [
           _vm._v(
             "\n                " +
-              _vm._s(_vm.arendator.contact_phone) +
+              _vm._s(_vm.arendator.phone) +
               "\n            "
           )
         ])
@@ -53101,11 +53101,7 @@ var render = function() {
                       _c("br"),
                       _vm._v(" "),
                       _c("small", [
-                        _c("i", [
-                          _vm._v(
-                            _vm._s(violation.user.contact_person_full_name)
-                          )
-                        ])
+                        _c("i", [_vm._v(_vm._s(violation.user.full_name))])
                       ])
                     ]),
                     _vm._v(" "),
@@ -53114,7 +53110,7 @@ var render = function() {
                       _c("br"),
                       _vm._v(" "),
                       _c("small", [
-                        _c("i", [_vm._v(_vm._s(violation.user.contact_email))])
+                        _c("i", [_vm._v(_vm._s(violation.user.email))])
                       ])
                     ])
                   ]),
@@ -53125,9 +53121,7 @@ var render = function() {
                       _c("br"),
                       _vm._v(" "),
                       _c("small", [
-                        _c("i", [
-                          _vm._v(" " + _vm._s(violation.user.contact_phone))
-                        ])
+                        _c("i", [_vm._v(" " + _vm._s(violation.user.phone))])
                       ])
                     ]),
                     _vm._v(" "),

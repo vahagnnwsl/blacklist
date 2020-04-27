@@ -63,7 +63,7 @@
             <h5 class="mt-3">
                 <strong>Телефон</strong><br>
                 <small>
-                    {{arendator.contact_phone}}
+                    {{arendator.phone}}
                 </small>
             </h5>
 
@@ -101,13 +101,13 @@
                             <h6>
                                 ФИО <br>
                                 <small>
-                                    <i>{{violation.user.contact_person_full_name}}</i>
+                                    <i>{{violation.user.full_name}}</i>
                                 </small>
                             </h6>
                             <h6>
                                 Е-мейл<br>
                                 <small>
-                                    <i>{{violation.user.contact_email}}</i>
+                                    <i>{{violation.user.email}}</i>
                                 </small>
                             </h6>
                         </div>
@@ -115,7 +115,7 @@
                             <h6>
                                 Телефон<br>
                                 <small>
-                                    <i> {{violation.user.contact_phone}}</i>
+                                    <i> {{violation.user.phone}}</i>
                                 </small>
                             </h6>
                             <h6>
