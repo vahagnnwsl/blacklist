@@ -53174,9 +53174,9 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              violation.description.length > 278
-                ? _c("p", { staticClass: "w-100 mt-2 text-right" }, [
-                    _c(
+              _c("p", { staticClass: "w-100 mt-2 text-right" }, [
+                violation.description.length > 278
+                  ? _c(
                       "a",
                       {
                         staticClass: "mt-2 text-secondary font-weight-bold",
@@ -53196,24 +53196,21 @@ var render = function() {
                           "\n                        Читать дальше\n                    "
                         )
                       ]
-                    ),
-                    _c("br"),
-                    _vm._v(" "),
-                    violation.document
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "mt-2 text-secondary",
-                            attrs: {
-                              href: violation.document,
-                              target: "_blank"
-                            }
-                          },
-                          [_c("strong", [_vm._v("Документ")])]
-                        )
-                      : _vm._e()
-                  ])
-                : _vm._e(),
+                    )
+                  : _vm._e(),
+                _c("br"),
+                _vm._v(" "),
+                violation.document
+                  ? _c(
+                      "a",
+                      {
+                        staticClass: "mt-2 text-secondary",
+                        attrs: { href: violation.document, target: "_blank" }
+                      },
+                      [_c("strong", [_vm._v("Документ")])]
+                    )
+                  : _vm._e()
+              ]),
               _vm._v(" "),
               _c("br")
             ]),

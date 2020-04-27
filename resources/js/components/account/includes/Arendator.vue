@@ -145,8 +145,8 @@
                     </p>
 
 
-                    <p class="w-100 mt-2 text-right"  v-if="violation.description.length > 278">
-                        <a role="button" class="mt-2 text-secondary font-weight-bold" style="cursor: pointer"
+                    <p class="w-100 mt-2 text-right" >
+                        <a v-if="violation.description.length > 278" role="button" class="mt-2 text-secondary font-weight-bold" style="cursor: pointer"
                            @click="collapse('collapse'+violation.id,$event)">
                             Читать дальше
                         </a><br>
