@@ -1,60 +1,63 @@
 @component('mail::message')
-    {{-- Greeting --}}
-    @if (! empty($greeting))
-        # {{ $greeting }}
-    @else
-        @if ($level === 'error')
-            # @lang('Whoops!')
+{{-- Greeting --}}
+@if (! empty($greeting))
+# {{ $greeting }}
+@else
+@if ($level === 'error')
+# @lang('Whoops!')
+@else
 
-        @endif
-    @endif
+@endif
+@endif
 
-    {{-- Intro Lines --}}
-    @foreach ($introLines as $line)
-        {{ $line }}
+{{-- Intro Lines --}}
+@foreach ($introLines as $line)
+{{ $line }}
 
-    @endforeach
+@endforeach
 
-    {{-- Action Button --}}
-    @isset($actionText)
-        <?php
-        switch ($level) {
-            case 'success':
-            case 'error':
-                $color = $level;
-                break;
-            default:
-                $color = 'primary';
-        }
-        ?>
-        @component('mail::button', ['url' => $actionUrl, 'color' => $color])
-            {{ $actionText }}
-        @endcomponent
-    @endisset
+{{-- Action Button --}}
+@isset($actionText)
+<?php
+    switch ($level) {
+        case 'success':
+        case 'error':
+            $color = $level;
+            break;
+        default:
+            $color = 'primary';
+    }
+?>
+@component('mail::button', ['url' => $actionUrl, 'color' => $color])
+{{ $actionText }}
+@endcomponent
+@endisset
 
-    {{-- Outro Lines --}}
-    @foreach ($outroLines as $line)
-        {{ $line }}
+{{-- Outro Lines --}}
+@foreach ($outroLines as $line)
+{{ $line }}
 
-    @endforeach
+@endforeach
 
-    {{-- Salutation --}}
-    @if (! empty($salutation))
-        {{ $salutation }}
-    @else
-        {{ 'Удалить' }}
-    @endif
+{{-- Salutation --}}
+@if (! empty($salutation))
+{{ $salutation }}
+@else
+    {{ 'Удалить' }}
+@endif
 
-    {{-- Subcopy --}}
-    @isset($actionText)
-        @slot('subcopy')
-            @lang("Для подтверждения e-mail адреса пройдите по ссылке \":actionText\" \n", [
-                    'actionText' => $actionText,
-                    'actionURL' => $actionUrl,
-                    'displayableActionUrl' => $displayableActionUrl,
-                ],
-                 'Если Вы не регистрировались на нашем сайте, то просто удалите это письмо: [:displayableActionUrl](:actionURL)'
-            )
-        @endslot
-    @endisset
+{{-- Subcopy --}}
+@isset($actionText)
+@slot('subcopy')
+@lang(
+     "Для подтверждения e-mail адреса пройдите по ссылке \":actionText\" \n".
+    'Если Вы не регистрировались на нашем сайте, то просто удалите это письмо: [:displayableActionUrl](:actionURL)',
+    [
+        'actionText' => $actionText,
+        'actionURL' => $actionUrl,
+        'displayableActionUrl' => $displayableActionUrl,
+    ]
+)
+@endslot
+@endisset
 @endcomponent
