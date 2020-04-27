@@ -136,7 +136,7 @@ class RegisterController extends Controller
     {
 
         $data['type'] = $this->allowRegistrationRoles[$data['type']];
-        $data['status'] = 0;
+        $data['status'] = 1;
         $data['password'] =Hash::make($data['password']);
 
         if (Arr::exists($data, 'document')){
