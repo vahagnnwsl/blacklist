@@ -43,6 +43,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
+    {{ ' ' }}
 @endif
 
 {{-- Subcopy --}}
