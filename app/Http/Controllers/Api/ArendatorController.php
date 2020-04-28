@@ -77,6 +77,7 @@ class ArendatorController extends Controller
      * "id": 95,
      * "email": "client_id_25_time_1587566017@api.com",
      * "country": null,
+     * "email": null,
      * "city": "api",
      * "address": "api",
      * "phone": "api",
