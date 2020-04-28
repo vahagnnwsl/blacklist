@@ -12,7 +12,7 @@ return [
     /*
      * Static output folder: HTML documentation and assets will be generated in this folder.
      */
-   'output_folder' => 'public/docs',
+    'output_folder' => 'public/docs',
 
     /*
      * Settings for `laravel` type output.
@@ -238,7 +238,8 @@ return [
      * If you want to use this, please be aware of the following rules:
      * - the image size must be 230 x 52
      */
-    'logo' => false,
+    'logo' => public_path('/images/logo.png'),
+
 
     /*
      * Name for the group of routes which do not have a @group set.

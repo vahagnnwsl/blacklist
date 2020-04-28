@@ -25,7 +25,7 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-        <img src="images/logo.png" />
+        <img src="/images/logo.png" />
                     <div class="lang-selector">
                                   <a href="#" data-language-name="php">php</a>
                             </div>
@@ -64,23 +64,24 @@ $response = $client-&gt;post(
             'Authorization' =&gt; 'Bearer {token}',
         ],
         'query' =&gt; [
-            'user[contact_phone]'=&gt; 'ullam',
-            'user[company_name]'=&gt; 'fuga',
-            'user[address]'=&gt; 'eum',
-            'user[city]'=&gt; 'error',
-            'arendator[type]'=&gt; 'provident',
-            'arendator[first_name]'=&gt; 'qui',
-            'arendator[last_name]'=&gt; 'tenetur',
-            'arendator[patronymic]'=&gt; 'totam',
-            'arendator[contact_phone]'=&gt; 'dignissimos',
-            'arendator[city]'=&gt; 'odit',
-            'arendator[region]'=&gt; 'totam',
-            'arendator[passport_number]'=&gt; 'necessitatibus',
-            'arendator[passport_serial]'=&gt; 'corrupti',
-            'violations[description]'=&gt; 'aut',
-            'violations[status]'=&gt; 'ab',
-            'violations[date]'=&gt; 'nihil',
-            'violations[document]'=&gt; 'aperiam',
+            'user[contact_phone]'=&gt; 'incidunt',
+            'user[company_name]'=&gt; 'ad',
+            'user[address]'=&gt; 'voluptatem',
+            'user[email]'=&gt; 'provident',
+            'user[city]'=&gt; 'dolores',
+            'arendator[type]'=&gt; 'iusto',
+            'arendator[first_name]'=&gt; 'tempore',
+            'arendator[last_name]'=&gt; 'iure',
+            'arendator[patronymic]'=&gt; 'quaerat',
+            'arendator[contact_phone]'=&gt; 'ut',
+            'arendator[city]'=&gt; 'et',
+            'arendator[region]'=&gt; 'ex',
+            'arendator[passport_number]'=&gt; 'deserunt',
+            'arendator[passport_serial]'=&gt; 'dolores',
+            'violations[description]'=&gt; 'mollitia',
+            'violations[status]'=&gt; 'est',
+            'violations[date]'=&gt; 'et',
+            'violations[document]'=&gt; 'repellendus',
         ],
     ]
 );
@@ -114,6 +115,10 @@ print_r(json_decode((string) $body));</code></pre>
 </tr>
 <tr>
 <td><code>user.address</code></td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>user.email</code></td>
 <td>required</td>
 </tr>
 <tr>
@@ -196,10 +201,10 @@ $response = $client-&gt;get(
             'Authorization' =&gt; 'Bearer {token}',
         ],
         'query' =&gt; [
-            'type'=&gt; 'quibusdam',
-            'passport_serial'=&gt; 'dolore',
-            'passport_number'=&gt; 'et',
-            'inn'=&gt; 'inventore',
+            'type'=&gt; 'natus',
+            'passport_serial'=&gt; 'eaque',
+            'passport_number'=&gt; 'accusamus',
+            'inn'=&gt; 'adipisci',
         ],
     ]
 );
