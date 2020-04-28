@@ -46,7 +46,7 @@ class PasswordResetNotification extends Notification
         return (new MailMessage)
             ->subject('Здравствуйте!')
             ->line('Вы получаете это письмо, потому что мы получили запрос на сброс пароля для вашей учетной записи.')
-            ->action('СБРОС', route('password.reset', $this->resetToken))
+            ->action('Восстановить', route('password.reset', $this->resetToken))
             ->line('Срок действия ссылки для сброса пароля истекает через 60 минут.');
     }
 

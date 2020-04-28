@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">Сброс пароля адрес Е-мейл</div>
+                <div class="card-header text-center">Для восстановления пароля введите Е-мейл</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -34,7 +34,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    сброс
+                                    Восстановить
                                 </button>
                             </div>
                         </div>

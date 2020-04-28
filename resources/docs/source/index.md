@@ -38,23 +38,24 @@ $response = $client->post(
             'Authorization' => 'Bearer {token}',
         ],
         'query' => [
-            'user[contact_phone]'=> 'ullam',
-            'user[company_name]'=> 'fuga',
-            'user[address]'=> 'eum',
-            'user[city]'=> 'error',
-            'arendator[type]'=> 'provident',
-            'arendator[first_name]'=> 'qui',
-            'arendator[last_name]'=> 'tenetur',
-            'arendator[patronymic]'=> 'totam',
-            'arendator[contact_phone]'=> 'dignissimos',
-            'arendator[city]'=> 'odit',
-            'arendator[region]'=> 'totam',
-            'arendator[passport_number]'=> 'necessitatibus',
-            'arendator[passport_serial]'=> 'corrupti',
-            'violations[description]'=> 'aut',
-            'violations[status]'=> 'ab',
-            'violations[date]'=> 'nihil',
-            'violations[document]'=> 'aperiam',
+            'user[contact_phone]'=> 'unde',
+            'user[company_name]'=> 'perferendis',
+            'user[address]'=> 'praesentium',
+            'user[email]'=> 'possimus',
+            'user[city]'=> 'rerum',
+            'arendator[type]'=> 'illum',
+            'arendator[first_name]'=> 'inventore',
+            'arendator[last_name]'=> 'eveniet',
+            'arendator[patronymic]'=> 'labore',
+            'arendator[contact_phone]'=> 'rem',
+            'arendator[city]'=> 'neque',
+            'arendator[region]'=> 'quidem',
+            'arendator[passport_number]'=> 'dolor',
+            'arendator[passport_serial]'=> 'aliquid',
+            'violations[description]'=> 'iure',
+            'violations[status]'=> 'aut',
+            'violations[date]'=> 'iusto',
+            'violations[document]'=> 'ipsa',
         ],
     ]
 );
@@ -81,6 +82,7 @@ Parameter | Status | Description
     `user.contact_phone` |  required  | 
     `user.company_name` |  required  | 
     `user.address` |  required  | 
+    `user.email` |  required  | 
     `user.city` |  optional  | equired
     `arendator.type` |  required  | 1 or 2
     `arendator.first_name` |  required  | 
@@ -114,10 +116,10 @@ $response = $client->get(
             'Authorization' => 'Bearer {token}',
         ],
         'query' => [
-            'type'=> 'quibusdam',
-            'passport_serial'=> 'dolore',
-            'passport_number'=> 'et',
-            'inn'=> 'inventore',
+            'type'=> 'id',
+            'passport_serial'=> 'dolores',
+            'passport_number'=> 'quia',
+            'inn'=> 'nobis',
         ],
     ]
 );

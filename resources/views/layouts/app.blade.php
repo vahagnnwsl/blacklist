@@ -101,8 +101,8 @@
 
     </main>
     <div class="footer bg-dark">
-        <p class="mt-2"><i>©2019-2020 Arendolog.com</i>
-        <a href="mailto:support@arendolog.com" class="float-right mr-2 text-light">support@arendolog.com</a>
+        <p class="m-2 text-light"><i class="float-right">©2019-2020 Arendolog.com</i>
+        <a href="mailto:support@arendolog.com" class="float-left mr-2 text-light">support@arendolog.com</a>
         </p>
     </div>
 

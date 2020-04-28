@@ -50,14 +50,14 @@
 @isset($actionText)
 @slot('subcopy')
 @lang(
-     "Для подтверждения e-mail адреса пройдите по ссылке \":actionText\" \n".
-    'Если Вы не регистрировались на нашем сайте, то просто удалите это письмо: [:displayableActionUrl](:actionURL)',
+     "Для подтверждения  е-mail  адреса нажмите на кнопку \":actionText\" \n или пройдите по ссылке ниже",
     [
         'actionText' => $actionText,
         'actionURL' => $actionUrl,
         'displayableActionUrl' => $displayableActionUrl,
-    ]
-)
+    ],
+    'Если Вы не регистрировались на нашем сайте, то просто удалите это письмо: [:displayableActionUrl](:actionURL)'
+)q
 @endslot
 @endisset
 @endcomponent

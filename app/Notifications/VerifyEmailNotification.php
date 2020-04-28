@@ -46,7 +46,7 @@ class VerifyEmailNotification extends Notification
         $verifyUrl =$this->verificationUrl($notifiable);
 
         return (new MailMessage)
-            ->greeting('Здравствуйте '.$notifiable->contact_person_full_name.'!')
+            ->greeting('Здравствуйте, '.$notifiable->contact_person_full_name.'!')
             ->subject('Здравствуйте '.$notifiable->contact_person_full_name.'!')
             ->line('Пожалуйста, нажмите кнопку ниже, чтобы подтвердить свой адрес электронной почты.')
             ->action('ПОДТВЕРДИТЬ', url($verifyUrl))
