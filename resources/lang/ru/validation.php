@@ -165,6 +165,7 @@ return [
         'email' => 'Почта',
         'real_estate_count' => 'Количество объектов недвижимость',
         'contact_person_full_name' => 'ФИО',
+        'full_name' => 'ФИО',
         'contact_phone' => 'Контактный номер телефон',
         'contact_person_position' => 'Должность',
         'brand' => 'Торговая марка',
