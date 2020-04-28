@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Arendator;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,6 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $count = Arendator::count();
+        return view('home',compact('count'));
     }
 }

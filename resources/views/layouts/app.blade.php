@@ -37,7 +37,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-secondary shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                Arendolog
+                Arendolog.com
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -101,7 +101,9 @@
 
     </main>
     <div class="footer bg-dark">
-        <p class="mt-2"><i>©2019-2020 Arendolog</i></p>
+        <p class="mt-2"><i>©2019-2020 Arendolog.com</i>
+        <a href="mailto:support@arendolog.com" class="float-right mr-2 text-light">support@arendolog.com</a>
+        </p>
     </div>
 
 </div>
