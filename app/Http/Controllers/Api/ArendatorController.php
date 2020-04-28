@@ -77,7 +77,6 @@ class ArendatorController extends Controller
      * "id": 95,
      * "email": "client_id_25_time_1587566017@api.com",
      * "country": null,
-     * "email": null,
      * "city": "api",
      * "address": "api",
      * "phone": "api",
@@ -140,6 +139,7 @@ class ArendatorController extends Controller
      * @queryParam user.contact_phone required
      * @queryParam user.company_name required
      * @queryParam user.address required
+     * @queryParam user.email required
      * @queryParam user.city equired
      * @queryParam arendator.type required 1 or 2
      * @queryParam arendator.first_name required
