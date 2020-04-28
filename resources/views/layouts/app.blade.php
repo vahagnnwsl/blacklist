@@ -104,7 +104,7 @@
         <p class="m-2 text-light">
 
             <a href="mailto:support@arendolog.com" class="float-right mr-2 text-light">support@arendolog.com</a>
-            <i class="float-left">©2019-2020 Arendolog.com</i>
+            <a href="/" class="float-left  text-light">©2019-2020 Arendolog.com</a>
         </p>
     </div>
 
