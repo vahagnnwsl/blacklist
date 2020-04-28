@@ -64,24 +64,29 @@ $response = $client-&gt;post(
             'Authorization' =&gt; 'Bearer {token}',
         ],
         'query' =&gt; [
-            'user[contact_phone]'=&gt; 'unde',
-            'user[company_name]'=&gt; 'perferendis',
-            'user[address]'=&gt; 'praesentium',
-            'user[email]'=&gt; 'possimus',
-            'user[city]'=&gt; 'rerum',
-            'arendator[type]'=&gt; 'illum',
-            'arendator[first_name]'=&gt; 'inventore',
-            'arendator[last_name]'=&gt; 'eveniet',
-            'arendator[patronymic]'=&gt; 'labore',
-            'arendator[contact_phone]'=&gt; 'rem',
-            'arendator[city]'=&gt; 'neque',
-            'arendator[region]'=&gt; 'quidem',
-            'arendator[passport_number]'=&gt; 'dolor',
-            'arendator[passport_serial]'=&gt; 'aliquid',
-            'violations[description]'=&gt; 'iure',
-            'violations[status]'=&gt; 'aut',
-            'violations[date]'=&gt; 'iusto',
-            'violations[document]'=&gt; 'ipsa',
+            'user[contact_phone]'=&gt; 'ducimus',
+            'user[company_name]'=&gt; 'et',
+            'user[address]'=&gt; 'culpa',
+            'user[email]'=&gt; 'aut',
+            'user[city]'=&gt; 'eum',
+            'arendator[type]'=&gt; 'veritatis',
+            'arendator[first_name]'=&gt; 'deleniti',
+            'arendator[birth_date]'=&gt; 'numquam',
+            'arendator[register]'=&gt; 'quod',
+            'arendator[address]'=&gt; 'enim',
+            'arendator[inn]'=&gt; 'dolorem',
+            'arendator[company_name]'=&gt; 'modi',
+            'arendator[last_name]'=&gt; 'iure',
+            'arendator[patronymic]'=&gt; 'ullam',
+            'arendator[contact_phone]'=&gt; 'beatae',
+            'arendator[city]'=&gt; 'iusto',
+            'arendator[region]'=&gt; 'eum',
+            'arendator[passport_number]'=&gt; 'repudiandae',
+            'arendator[passport_serial]'=&gt; 'vel',
+            'violations[description]'=&gt; 'corporis',
+            'violations[status]'=&gt; 'ut',
+            'violations[date]'=&gt; 'quo',
+            'violations[document]'=&gt; 'ullam',
         ],
     ]
 );
@@ -134,6 +139,31 @@ print_r(json_decode((string) $body));</code></pre>
 <tr>
 <td><code>arendator.first_name</code></td>
 <td>required</td>
+</tr>
+<tr>
+<td><code>arendator.birth_date</code></td>
+<td>required</td>
+<td>if   arendator.type = 1</td>
+</tr>
+<tr>
+<td><code>arendator.register</code></td>
+<td>required</td>
+<td>if   arendator.type = 1</td>
+</tr>
+<tr>
+<td><code>arendator.address</code></td>
+<td>required</td>
+<td>if   arendator.type = 2</td>
+</tr>
+<tr>
+<td><code>arendator.inn</code></td>
+<td>required</td>
+<td>if   arendator.type = 2</td>
+</tr>
+<tr>
+<td><code>arendator.company_name</code></td>
+<td>required</td>
+<td>if   arendator.type = 2</td>
 </tr>
 <tr>
 <td><code>arendator.last_name</code></td>
@@ -201,10 +231,10 @@ $response = $client-&gt;get(
             'Authorization' =&gt; 'Bearer {token}',
         ],
         'query' =&gt; [
-            'type'=&gt; 'id',
-            'passport_serial'=&gt; 'dolores',
-            'passport_number'=&gt; 'quia',
-            'inn'=&gt; 'nobis',
+            'type'=&gt; 'itaque',
+            'passport_serial'=&gt; 'voluptas',
+            'passport_number'=&gt; 'dolorum',
+            'inn'=&gt; 'quia',
         ],
     ]
 );

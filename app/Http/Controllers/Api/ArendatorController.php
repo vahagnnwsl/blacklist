@@ -143,6 +143,11 @@ class ArendatorController extends Controller
      * @queryParam user.city equired
      * @queryParam arendator.type required 1 or 2
      * @queryParam arendator.first_name required
+     * @queryParam arendator.birth_date required if   arendator.type = 1
+     * @queryParam arendator.register required if   arendator.type = 1
+     * @queryParam arendator.address required if   arendator.type = 2
+     * @queryParam arendator.inn required if   arendator.type = 2
+     * @queryParam arendator.company_name required if   arendator.type = 2
      * @queryParam arendator.last_name required
      * @queryParam arendator.patronymic required
      * @queryParam arendator.contact_phone required

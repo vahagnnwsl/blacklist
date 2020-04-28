@@ -57,7 +57,11 @@
         'displayableActionUrl' => $displayableActionUrl,
     ],
     'Если Вы не регистрировались на нашем сайте, то просто удалите это письмо: [:displayableActionUrl](:actionURL)'
-)q
+)
+
 @endslot
+@component('mail::telegram')
+
+
 @endisset
 @endcomponent

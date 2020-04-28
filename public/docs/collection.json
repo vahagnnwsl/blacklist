@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "23b5b258-3eb8-4635-b157-547e6b9d510b",
+        "_postman_id": "da27a745-a163-4926-ae30-a6e72b9f21ff",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -21,109 +21,139 @@
                             "query": [
                                 {
                                     "key": "user.contact_phone",
-                                    "value": "unde",
+                                    "value": "ducimus",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "user.company_name",
-                                    "value": "perferendis",
+                                    "value": "et",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "user.address",
-                                    "value": "praesentium",
+                                    "value": "culpa",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "user.email",
-                                    "value": "possimus",
+                                    "value": "aut",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "user.city",
-                                    "value": "rerum",
+                                    "value": "eum",
                                     "description": "equired",
                                     "disabled": false
                                 },
                                 {
                                     "key": "arendator.type",
-                                    "value": "illum",
+                                    "value": "veritatis",
                                     "description": "1 or 2",
                                     "disabled": false
                                 },
                                 {
                                     "key": "arendator.first_name",
-                                    "value": "inventore",
+                                    "value": "deleniti",
                                     "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.birth_date",
+                                    "value": "numquam",
+                                    "description": "if   arendator.type = 1",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.register",
+                                    "value": "quod",
+                                    "description": "if   arendator.type = 1",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.address",
+                                    "value": "enim",
+                                    "description": "if   arendator.type = 2",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.inn",
+                                    "value": "dolorem",
+                                    "description": "if   arendator.type = 2",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.company_name",
+                                    "value": "modi",
+                                    "description": "if   arendator.type = 2",
                                     "disabled": false
                                 },
                                 {
                                     "key": "arendator.last_name",
-                                    "value": "eveniet",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "arendator.patronymic",
-                                    "value": "labore",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "arendator.contact_phone",
-                                    "value": "rem",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "arendator.city",
-                                    "value": "neque",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "arendator.region",
-                                    "value": "quidem",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "arendator.passport_number",
-                                    "value": "dolor",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "arendator.passport_serial",
-                                    "value": "aliquid",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "violations.description",
                                     "value": "iure",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
+                                    "key": "arendator.patronymic",
+                                    "value": "ullam",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.contact_phone",
+                                    "value": "beatae",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.city",
+                                    "value": "iusto",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.region",
+                                    "value": "eum",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.passport_number",
+                                    "value": "repudiandae",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "arendator.passport_serial",
+                                    "value": "vel",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "violations.description",
+                                    "value": "corporis",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
                                     "key": "violations.status",
-                                    "value": "aut",
+                                    "value": "ut",
                                     "description": "0 or 1",
                                     "disabled": false
                                 },
                                 {
                                     "key": "violations.date",
-                                    "value": "iusto",
+                                    "value": "quo",
                                     "description": "date like 2020-04-15",
                                     "disabled": false
                                 },
                                 {
                                     "key": "violations.document",
-                                    "value": "ipsa",
+                                    "value": "ullam",
                                     "description": "optional base_64 string",
                                     "disabled": false
                                 }
@@ -162,25 +192,25 @@
                             "query": [
                                 {
                                     "key": "type",
-                                    "value": "id",
+                                    "value": "itaque",
                                     "description": "passport or inn",
                                     "disabled": false
                                 },
                                 {
                                     "key": "passport_serial",
-                                    "value": "dolores",
+                                    "value": "voluptas",
                                     "description": "optional  if type equal passport required",
                                     "disabled": false
                                 },
                                 {
                                     "key": "passport_number",
-                                    "value": "quia",
+                                    "value": "dolorum",
                                     "description": "optional  if type equal passport required",
                                     "disabled": false
                                 },
                                 {
                                     "key": "inn",
-                                    "value": "nobis",
+                                    "value": "quia",
                                     "description": "optional  if type equal inn required",
                                     "disabled": false
                                 }

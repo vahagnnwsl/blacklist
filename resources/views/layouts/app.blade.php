@@ -100,11 +100,11 @@
         @yield('content')
 
     </main>
-    <div class="footer bg-dark">
-        <p class="m-2 text-light">
+    <div class="footer" style="background-color: #6C757D">
+        <p class="m-2 text-light ">
 
-            <a href="mailto:support@arendolog.com" class="float-right mr-2 text-light">support@arendolog.com</a>
-            <a href="/" class="float-left  text-light">©2019-2020 Arendolog.com</a>
+            <a href="mailto:support@arendolog.com" class="float-right mr-2 text-light mb-2">support@arendolog.com</a>
+            <a href="/" class="float-left  text-light mb-2">©2019-2020 Arendolog.com</a>
         </p>
     </div>
 

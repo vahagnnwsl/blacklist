@@ -38,24 +38,29 @@ $response = $client->post(
             'Authorization' => 'Bearer {token}',
         ],
         'query' => [
-            'user[contact_phone]'=> 'unde',
-            'user[company_name]'=> 'perferendis',
-            'user[address]'=> 'praesentium',
-            'user[email]'=> 'possimus',
-            'user[city]'=> 'rerum',
-            'arendator[type]'=> 'illum',
-            'arendator[first_name]'=> 'inventore',
-            'arendator[last_name]'=> 'eveniet',
-            'arendator[patronymic]'=> 'labore',
-            'arendator[contact_phone]'=> 'rem',
-            'arendator[city]'=> 'neque',
-            'arendator[region]'=> 'quidem',
-            'arendator[passport_number]'=> 'dolor',
-            'arendator[passport_serial]'=> 'aliquid',
-            'violations[description]'=> 'iure',
-            'violations[status]'=> 'aut',
-            'violations[date]'=> 'iusto',
-            'violations[document]'=> 'ipsa',
+            'user[contact_phone]'=> 'ducimus',
+            'user[company_name]'=> 'et',
+            'user[address]'=> 'culpa',
+            'user[email]'=> 'aut',
+            'user[city]'=> 'eum',
+            'arendator[type]'=> 'veritatis',
+            'arendator[first_name]'=> 'deleniti',
+            'arendator[birth_date]'=> 'numquam',
+            'arendator[register]'=> 'quod',
+            'arendator[address]'=> 'enim',
+            'arendator[inn]'=> 'dolorem',
+            'arendator[company_name]'=> 'modi',
+            'arendator[last_name]'=> 'iure',
+            'arendator[patronymic]'=> 'ullam',
+            'arendator[contact_phone]'=> 'beatae',
+            'arendator[city]'=> 'iusto',
+            'arendator[region]'=> 'eum',
+            'arendator[passport_number]'=> 'repudiandae',
+            'arendator[passport_serial]'=> 'vel',
+            'violations[description]'=> 'corporis',
+            'violations[status]'=> 'ut',
+            'violations[date]'=> 'quo',
+            'violations[document]'=> 'ullam',
         ],
     ]
 );
@@ -86,6 +91,11 @@ Parameter | Status | Description
     `user.city` |  optional  | equired
     `arendator.type` |  required  | 1 or 2
     `arendator.first_name` |  required  | 
+    `arendator.birth_date` |  required  | if   arendator.type = 1
+    `arendator.register` |  required  | if   arendator.type = 1
+    `arendator.address` |  required  | if   arendator.type = 2
+    `arendator.inn` |  required  | if   arendator.type = 2
+    `arendator.company_name` |  required  | if   arendator.type = 2
     `arendator.last_name` |  required  | 
     `arendator.patronymic` |  required  | 
     `arendator.contact_phone` |  required  | 
@@ -116,10 +126,10 @@ $response = $client->get(
             'Authorization' => 'Bearer {token}',
         ],
         'query' => [
-            'type'=> 'id',
-            'passport_serial'=> 'dolores',
-            'passport_number'=> 'quia',
-            'inn'=> 'nobis',
+            'type'=> 'itaque',
+            'passport_serial'=> 'voluptas',
+            'passport_number'=> 'dolorum',
+            'inn'=> 'quia',
         ],
     ]
 );
