@@ -32,6 +32,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <small class="form-text text-muted text-right">Минимум 8 знаков</small>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
