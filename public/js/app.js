@@ -55685,7 +55685,7 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 type: "text",
-                placeholder: "ФИО, телефон, паспорт, регион, город, прописка",
+                placeholder: "ФИО, телефон, паспорт, город, прописка",
                 "aria-describedby": "basic-addon2"
               },
               domProps: { value: _vm.form.key },

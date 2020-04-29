@@ -17,7 +17,7 @@
                                 <input id="inlineFormInput" name="region" type="text" placeholder="Все регионы" value="{{request('region')}}" class="mr-3 form-control w-100">
                             </div>
                             <div class="form-group col-lg-7  col-sm-12">
-                                <input id="inlineFormInputGroup"  name="key" type="text" value="{{request('key')}}" placeholder="ФИО, телефон, паспорт, регион, город, прописка" class="mr-3 form-control w-100">
+                                <input id="inlineFormInputGroup"  name="key" type="text" value="{{request('key')}}" placeholder="ФИО, телефон, паспорт, город, прописка" class="mr-3 form-control w-100">
                             </div>
                             <div class="form-group  col-sm-12 col-lg-1">
                                 <button type="submit" value="Submit" class="mr-3 btn btn-primary">

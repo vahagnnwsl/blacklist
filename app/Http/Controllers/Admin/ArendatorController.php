@@ -17,14 +17,7 @@ class ArendatorController extends Controller
     public function index(Request $request)
     {
 
-        $region = $request->get('region');
-        $key = $request->get('key');
-
-        $arendators = Arendator::when($region, function ($q) use ($region) {
-            return $q->where('region', $region);
-        })->when($key, function ($q) use ($key) {
-            return $q->where('search', 'LIKE', '%' . $key . '%');
-        })->whereHas('user')->paginate(20);
+        $arendators = Arendator::searchAll($request->get('region'), $request->get('key'))->paginate(20);
 
         return view('admin.arendators.index', compact('arendators'));
     }

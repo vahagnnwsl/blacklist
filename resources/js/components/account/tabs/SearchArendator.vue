@@ -7,7 +7,7 @@
                     <input type="text" class="form-control" placeholder="Все регионы" v-model="form.region">
                 </div>
                 <div class="input-group col-md-9 pr-0">
-                    <input type="text" class="form-control" placeholder="ФИО, телефон, паспорт, регион, город, прописка"
+                    <input type="text" class="form-control" placeholder="ФИО, телефон, паспорт, город, прописка"
                            v-model="form.key"
                            aria-describedby="basic-addon2">
                     <div class="input-group-append">
