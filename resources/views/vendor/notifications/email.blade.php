@@ -2,13 +2,8 @@
 {{-- Greeting --}}
 @if (! empty($greeting))
 # {{ $greeting }}
-@else
-@if ($level === 'error')
-# @lang('Whoops!')
-@else
+@endif
 
-@endif
-@endif
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
@@ -42,26 +37,21 @@
 {{-- Salutation --}}
 @if (! empty($salutation))
 {{ $salutation }}
-@else
-    {{ ' ' }}
 @endif
+
 
 {{-- Subcopy --}}
 @isset($actionText)
 @slot('subcopy')
 @lang(
-     "Для подтверждения  е-mail  адреса нажмите на кнопку \":actionText\" \n или пройдите по ссылке ниже",
+    "Для подтверждения  е-mail  адреса нажмите на кнопку \":actionText\" или пройдите по ссылке ниже  <br>
+     [:displayableActionUrl](:actionURL) <br>  Если Вы не регистрировались на нашем сайте, то просто удалите это письмо.",
     [
         'actionText' => $actionText,
         'actionURL' => $actionUrl,
         'displayableActionUrl' => $displayableActionUrl,
-    ],
-    'Если Вы не регистрировались на нашем сайте, то просто удалите это письмо: [:displayableActionUrl](:actionURL)'
+    ]
 )
-
 @endslot
-@component('mail::telegram')
-
-
 @endisset
 @endcomponent

@@ -78,7 +78,7 @@ class RegisterController extends Controller
         }
 
         $array = [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','regex:/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'],
             'country' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'address' => ['max:255'],

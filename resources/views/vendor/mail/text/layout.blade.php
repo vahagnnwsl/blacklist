@@ -6,4 +6,7 @@
 {!! strip_tags($subcopy) !!}
 @endisset
 
+
+
+
 {!! strip_tags($footer) !!}

@@ -18,6 +18,11 @@
 @endslot
 @endisset
 
+{{-- Telegram --}}
+
+
+
+
 {{-- Footer --}}
 @slot('footer')
 @component('mail::footer')
