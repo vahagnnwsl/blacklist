@@ -21,9 +21,9 @@ class ArendatorController extends Controller
 {
     /**
      * @queryParam type required  passport or inn
-     * @queryParam passport_serial optional  if type equal passport required
-     * @queryParam passport_number optional  if type equal passport required
-     * @queryParam inn optional  if type equal inn required
+     * @queryParam passport_serial   if type equal passport required
+     * @queryParam passport_number   if type equal passport required
+     * @queryParam inn   if type equal inn required
      * @response {
      *  "data": {
      * "id": 205,

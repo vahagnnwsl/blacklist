@@ -38,29 +38,29 @@ $response = $client->post(
             'Authorization' => 'Bearer {token}',
         ],
         'query' => [
-            'user[contact_phone]'=> 'ducimus',
-            'user[company_name]'=> 'et',
-            'user[address]'=> 'culpa',
-            'user[email]'=> 'aut',
-            'user[city]'=> 'eum',
-            'arendator[type]'=> 'veritatis',
-            'arendator[first_name]'=> 'deleniti',
-            'arendator[birth_date]'=> 'numquam',
-            'arendator[register]'=> 'quod',
-            'arendator[address]'=> 'enim',
-            'arendator[inn]'=> 'dolorem',
-            'arendator[company_name]'=> 'modi',
-            'arendator[last_name]'=> 'iure',
-            'arendator[patronymic]'=> 'ullam',
-            'arendator[contact_phone]'=> 'beatae',
-            'arendator[city]'=> 'iusto',
-            'arendator[region]'=> 'eum',
-            'arendator[passport_number]'=> 'repudiandae',
-            'arendator[passport_serial]'=> 'vel',
-            'violations[description]'=> 'corporis',
-            'violations[status]'=> 'ut',
-            'violations[date]'=> 'quo',
-            'violations[document]'=> 'ullam',
+            'user[contact_phone]'=> 'quam',
+            'user[company_name]'=> 'placeat',
+            'user[address]'=> 'necessitatibus',
+            'user[email]'=> 'maxime',
+            'user[city]'=> 'magnam',
+            'arendator[type]'=> 'commodi',
+            'arendator[first_name]'=> 'et',
+            'arendator[birth_date]'=> 'laborum',
+            'arendator[register]'=> 'et',
+            'arendator[address]'=> 'sit',
+            'arendator[inn]'=> 'molestiae',
+            'arendator[company_name]'=> 'aut',
+            'arendator[last_name]'=> 'quia',
+            'arendator[patronymic]'=> 'officiis',
+            'arendator[contact_phone]'=> 'ab',
+            'arendator[city]'=> 'dolores',
+            'arendator[region]'=> 'alias',
+            'arendator[passport_number]'=> 'ipsam',
+            'arendator[passport_serial]'=> 'qui',
+            'violations[description]'=> 'omnis',
+            'violations[status]'=> 'maiores',
+            'violations[date]'=> 'nihil',
+            'violations[document]'=> 'qui',
         ],
     ]
 );
@@ -126,10 +126,10 @@ $response = $client->get(
             'Authorization' => 'Bearer {token}',
         ],
         'query' => [
-            'type'=> 'itaque',
-            'passport_serial'=> 'voluptas',
-            'passport_number'=> 'dolorum',
-            'inn'=> 'quia',
+            'type'=> 'ex',
+            'passport_serial'=> 'optio',
+            'passport_number'=> 'vero',
+            'inn'=> 'corrupti',
         ],
     ]
 );
@@ -214,9 +214,9 @@ print_r(json_decode((string) $body));
 Parameter | Status | Description
 --------- | ------- | ------- | -----------
     `type` |  required  | passport or inn
-    `passport_serial` |  optional  | optional  if type equal passport required
-    `passport_number` |  optional  | optional  if type equal passport required
-    `inn` |  optional  | optional  if type equal inn required
+    `passport_serial` |  optional  | if type equal passport required
+    `passport_number` |  optional  | if type equal passport required
+    `inn` |  optional  | if type equal inn required
 
 <!-- END_0edbb0df171b5a423ddb7fd4fc5f05be -->
 
