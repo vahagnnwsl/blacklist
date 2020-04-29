@@ -96,13 +96,25 @@ class ArendatorController extends Controller
         if (!in_array($type, ['passport', 'inn'])) {
             return response()->json(['msg' => 'Invalid type'], 411);
         }
+        $validator = Validator::make($request->all(), ArendatorRequest::searchRules());
 
-        if ($type === 'passport') {
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 411);
+        }
+
+        if ($type === 'passport')
+        {
+
+
             $arendator = Arendator::ofPassport($request->get('passport_serial'), $request->get('passport_number'))->where('type', 1)->first();
 
         } else {
+
             $arendator = Arendator::where('inn', $request->get('inn'))->first();
         }
+
+
+
 
         if ($arendator) {
             return new ArendatorResource($arendator);
