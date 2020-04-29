@@ -33,11 +33,11 @@ class ArendatorController extends Controller
         $fields['search'] = implode(" ", Arr::except($fields, ['user_id', 'type', 'birth_date']));
 
         $arendator = Arendator::exist($fields)->first();
-        $msg = 'Добавлено';
+        $msg = 'Арендатор  уже существует,добавлено только нарушение';
 
         if (!$arendator) {
             $arendator = Arendator::create($fields);
-            $msg = 'Арендатор  уже существует,добавлено только нарушение';
+            $msg = 'Добавлено';
         }
 
         foreach ($request->get('violations') as $violation) {

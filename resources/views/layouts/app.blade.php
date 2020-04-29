@@ -16,18 +16,30 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @stack('css')
     <style>
+
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            margin-bottom: 60px;
+        }
+
+
         .footer {
-            position: fixed;
-            left: 0;
+            position: absolute;
             bottom: 0;
             width: 100%;
+            height:40px;
+            margin-top:-40px;
             color: white;
             text-align: center;
         }
     </style>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('css')
+
 
 </head>
 <body>
@@ -99,15 +111,15 @@
     </nav>
 
 
-    <main class="py-4">
+    <main class="py-4 mb-3">
         @yield('content')
 
     </main>
     <div class="footer" style="background-color: #212529">
         <p class="m-2 text-light ">
 
-            <a href="mailto:support@arendolog.com" class="float-right mr-2 text-light mb-2">Поддержка: support@arendolog.com</a>
-            <a href="/" class="float-left  text-light mb-2">©2019-2020 Arendolog.com</a>
+            <a href="mailto:support@arendolog.com" class="float-right mr-2 text-light mb-2 ">Поддержка: support@arendolog.com</a>
+            <a href="/" class="float-left  text-light mb-2  mt-2">©2019-2020 Arendolog.com</a>
         </p>
     </div>
 

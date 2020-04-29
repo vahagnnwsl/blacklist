@@ -6,6 +6,7 @@ use App\Services\FileUploaderService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Arendator extends Model
 {
@@ -35,10 +36,19 @@ class Arendator extends Model
 
     public function scopeSearchAll($query, $region, $key)
     {
+        $keys = false;
+        if ($key) {
+            $keys = explode(' ', $key);
+
+        }
         return $query->when($region, function ($q) use ($region) {
             return $q->where('region', $region);
-        })->when($key, function ($q) use ($key) {
-            return $q->where('search', 'LIKE', '%' . $key . '%');
+        })->when($keys, function ($q) use ($keys) {
+            foreach ($keys as $k => $val) {
+                $q->where('search', 'LIKE','%'.$val.'%');
+            }
+            return $q;
+
         })->whereHas('user')->where('status', 1);
     }
 

@@ -1,13 +1,6 @@
 <template>
     <div class="col-12 mt-3">
         <div class="row">
-            <div class="col-md-12">
-                <button class="btn btn-outline-secondary float-right" data-toggle="modal" data-target="#myModal">
-                    ДОБАВИТЬ АРЕНДАТОРА
-                </button>
-
-                <NewArendator @getResults="getResults"></NewArendator>
-            </div>
             <div class="col-md-12 mt-4" v-if="arendators">
                 <table class="table table-hover">
                     <thead>
@@ -76,14 +69,13 @@
 
 
     import axios from "axios";
-    import NewArendator from "../modals/NewArendator";
     import Pagination from "laravel-vue-pagination";
     import Arendator from '../includes/Arendator';
 
 
     export default {
         name: "AddArendator",
-        components: {NewArendator,Arendator},
+        components: {Arendator},
         props: ['user_id'],
         data() {
             return {
