@@ -55,6 +55,8 @@
                         href="{{route('arendators.index')}}"> <i class="icon-user"></i>Арендаторы</a></li>
                 <li class="{{ request()->is('dashboard/clients*') ? 'active': ''}} mt-1"><a
                         href="{{route('clients.index')}}"> <i class="icon-user"></i>Клиент</a></li>
+                <li class="{{ request()->is('dashboard/pages*') ? 'active': ''}} mt-1"><a
+                        href="{{route('pages.index')}}"> <i class="icon-user"></i>Страницы</a></li>
             </ul>
 
 

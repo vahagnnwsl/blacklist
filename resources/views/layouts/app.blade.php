@@ -34,7 +34,7 @@
 <div id="app">
 
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-secondary shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark shadow-sm"  style="background-color: #212529">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 Arendolog.com
@@ -54,6 +54,9 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
+                    <li class="nav-item mr-2">
+                        <a class="btn btn-outline-light"  href="{{ route('service') }}">О сервисе</a>
+                    </li>
                     @guest
 
                         <li class="nav-item mr-2">
@@ -100,7 +103,7 @@
         @yield('content')
 
     </main>
-    <div class="footer" style="background-color: #6C757D">
+    <div class="footer" style="background-color: #212529">
         <p class="m-2 text-light ">
 
             <a href="mailto:support@arendolog.com" class="float-right mr-2 text-light mb-2">Поддержка: support@arendolog.com</a>
