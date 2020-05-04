@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\FileUploaderService;
+use Illuminate\Support\Arr;
 
 class PageController extends Controller
 {
@@ -55,7 +56,10 @@ class PageController extends Controller
             'content' => 'required|string',
         ]);
 
-        $page->update($request->all());
+        $data = $request->all();
+        $filtered = Arr::except($data, ['files']);
+
+        $page->update($filtered);
 
         flash()->message('Успешно обновлено!')->success();
 

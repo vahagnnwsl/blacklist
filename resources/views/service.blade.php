@@ -3,11 +3,10 @@
 @section('content')
 
     <div class="container">
-        <div class="row justify-content-center">
-            @if($page)
-                {!! $page->content !!}
-            @endif
-        </div>
+
+        @if($page)
+            {!! $page->content !!}
+        @endif
     </div>
 
 @endsection

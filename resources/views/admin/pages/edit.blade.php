@@ -1,6 +1,8 @@
 @extends('admin.layout')
 
-
+@push('css')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-lite.min.css" rel="stylesheet">
+@endpush
 
 @section('content')
 
@@ -39,6 +41,7 @@
                                 <div class="form-group col-12">
                                     <label>Контент <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="content" id="content">{!! $page->content !!}</textarea>
+
                                     @error('content')
                                     <span class="invalid-feedback d-block" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -72,8 +75,12 @@
 
 
 @push('scripts')
-    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+
     <script>
-        CKEDITOR.replace('content');
+        $(document).ready(function() {
+            $('#content').summernote();
+        });
+
     </script>
 @endpush
