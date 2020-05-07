@@ -125,8 +125,9 @@
                         <label for="contact_person_full_name">ФИО <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="contact_person_full_name" name="contact_person_full_name"
                                value="{{old('contact_person_full_name')}}">
-                        <small class="form-text text-muted text-right">Подставляются автоматом из выше инфы, но может
-                            быть изменены</small>
+                        <small class="form-text text-muted text-right">
+                            ФИО подставляется автоматически из информации выше, но его можно изменить
+                        </small>
 
                         @error('contact_person_full_name')
                         <span class="invalid-feedback" role="alert">
@@ -172,13 +173,13 @@
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
 
                     <div class="form-group  col-sm-12 col-md-8 col-lg-8">
-                        <label for="about_business">Расскажите коратко о Вашем бизнесе в недвижимости</label>
+                        <label for="about_business">Расскажите коротко о Вашем бизнесе в недвижимости</label>
                         <textarea class="form-control" name="about_business" id="about_business" style="max-height: 50px">{{old('about_business')}}</textarea>
                         @error('about_business')
                         <span class="invalid-feedback" role="alert">

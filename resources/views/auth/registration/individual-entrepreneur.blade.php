@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container">
+
+
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <h3 class="text-center mt-3 mb-3">Регистрация</h3>
@@ -65,7 +67,7 @@
                         @enderror
                     </div>
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="brand">Торговая марка , бренд название <span class="text-danger">*</span></label>
+                        <label for="brand">Торговая марка, бренд название <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="brand" name="brand"
                                value="{{old('brand')}}">
                         @error('brand')
