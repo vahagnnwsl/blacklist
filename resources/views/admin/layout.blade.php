@@ -44,7 +44,7 @@
         <div class="sidenav-header d-flex align-items-center justify-content-center">
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
-                <h2 class="h5">Arendolog</h2>
+                <h2 class="h5">Arendolog.com</h2>
             </div>
             <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center">
                     <strong>A</strong><strong class="text-primary">L</strong></a></div>
