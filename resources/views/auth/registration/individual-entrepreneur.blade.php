@@ -141,6 +141,14 @@
                         <input type="file" class="form-control" id="document" name="documents[]" multiple>
                         <small class="form-text text-muted text-right">Свидетельство индивидуального предпринимателя в ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
 
+                        <span class="invalid-feedback" role="alert">
+                            <strong id="file_error"></strong>
+                        </span>
+                        @error('documents')
+                        <span class="invalid-feedback" role="alert">
+                                                        <strong>{{$message }}</strong>
+                                                    </span>
+                        @enderror
                         @error('documents.*')
 
                         @foreach($errors->get('documents.*') as $de)
@@ -238,3 +246,28 @@
     </div>
 @endsection
 
+
+@push('scripts')
+    <script>
+        $('#document').change(function () {
+            var msg = '';
+            if ($('#document')[0].files.length > 2) {
+                $('#document').val(null)
+                msg ='Количество элементов в поле documents не может превышать 2';
+                $('#file_error').text('Количество элементов в поле documents не может превышать 2')
+            } else {
+                var files = $('#document')[0].files;
+                for (var i in files) {
+
+                    if (files[i].size > 7000000) {
+
+                        msg += "Размер файла " + files[i].name + " не может быть более 7000 Килобайт(а) <br>";
+                        $('#document').val(null)
+
+                    }
+                }
+            }
+            $('#file_error').html(msg)
+        })
+    </script>
+@endpush
