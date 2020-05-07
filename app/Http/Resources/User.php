@@ -76,6 +76,7 @@ class User extends JsonResource
                 'address' => $this->address,
                 'doc' => $this->doc,
                 'web_site' => $this->web_site,
+                'documents' => $this->documents,
                 'advertising_number' => $this->advertising_number,
                 'real_estate_count' => $this->real_estate_count,
                 $this->mergeWhen((int)$this->type === config('constants.user.individual'), [

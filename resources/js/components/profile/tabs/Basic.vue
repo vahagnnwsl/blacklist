@@ -112,7 +112,13 @@
                     <small class="text-danger  float-right"
                            v-if="errors.has('document')">{{'Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл.'}}</small>
 
-                    <a  v-if='' :href="doc" target="_blank" class="float-right text-secondary"><strong>Документ</strong></a>
+                    <span v-if="doc">
+                        <a v-for='(d,key) in doc' :href="'/storage/documents/'+d.path" target="_blank" class="float-right text-secondary mr-2">
+                            <strong>
+                                Документ {{key+1}}
+                            </strong>
+                        </a>
+                    </span>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -168,13 +174,12 @@
                     full_name: '',
                     document: '',
                 },
-                doc: '',
+                doc: {},
             }
         },
         mounted() {
-            console.log(this.basic_data)
             this.form = this.basic_data;
-            this.doc = this.basic_data.doc;
+            this.doc = this.basic_data.documents;
 
         },
         methods: {
@@ -194,7 +199,7 @@
                             }
                         }).then((resp) => {
                             $.toaster({ message : 'Успешно обновлено', title : 'Успешно!', priority : 'success' });
-                            this.doc = resp.data.basic.doc;
+                            this.doc = resp.data.basic.documents;
                         })
                     }
                 })

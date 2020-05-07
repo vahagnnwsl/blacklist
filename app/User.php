@@ -61,6 +61,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return '/storage/documents/' . $this->document;
     }
 
+    public function documents()
+    {
+        return $this->hasMany(UserDocument::class);
+    }
+
     public function arendators()
     {
         return $this->hasMany(Arendator::class);

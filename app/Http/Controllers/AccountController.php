@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\FileUploaderService;
+use App\UserDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -54,8 +55,10 @@ class AccountController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('document')) {
-
-            $data['document'] = FileUploaderService::document($request->file('document'));
+            UserDocument::create([
+                'user_id' => Auth::user()->id,
+                'path' => FileUploaderService::document($request->file('document'))
+            ]);
         }
 
         Auth::user()->update($data);
@@ -63,7 +66,7 @@ class AccountController extends Controller
         $resp = [];
 
         if ($method === 'basic') {
-            $resp = new UserJson(Auth::user(),true);
+            $resp = new UserJson(Auth::user(), true);
         }
 
         return response()->json($resp, 200);

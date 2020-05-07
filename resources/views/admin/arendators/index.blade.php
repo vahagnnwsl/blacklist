@@ -5,7 +5,7 @@
     <div class="container-fluid">
 
         <header>
-            <h1 class="h3 display">Арендатори</h1>
+            <h1 class="h3 display">Арендаторы</h1>
         </header>
         <div class="row">
             <div class="col-lg-12">

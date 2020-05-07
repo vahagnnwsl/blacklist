@@ -128,7 +128,11 @@
         <div class="form-group  col-sm-12 col-md-6 col-lg-6">
             <label for="document">Подтверждающие документы  <span class="text-danger">*</span></label>
             <input type="file" class="form-control" id="document" name="document" >
-            <small class="form-text text-muted text-right">Свидетельство индивидуального предпринимателя в ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
+            <small class="form-text text-muted text-right mb-2">Свидетельство индивидуального предпринимателя в ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
+
+            @foreach($user->documents as $doc)
+                <a target="_blank" href="{{$doc->src}}" class="float-right">Документ {{$loop->index+1}}</a> <br>
+            @endforeach
 
             @error('document')
             <span class="invalid-feedback d-block" role="alert">

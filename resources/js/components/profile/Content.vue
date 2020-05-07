@@ -7,7 +7,7 @@
                    aria-controls="nav-one" aria-selected="true"> ОСНОВНЫЕ ДАННЫЕ</a>
                 <a class="nav-item nav-link " data-toggle="tab" role="tab" id="nav-three-tab"
                    @click="showTab('Contact')" href="#t"
-                   aria-controls="nav-three" aria-selected="true"> КОНТАКТНОЕ ДАННЫЕ</a>
+                   aria-controls="nav-three" aria-selected="true"> КОНТАКТНЫЕ ДАННЫЕ</a>
                 <a class="nav-item nav-link" data-toggle="tab" role="tab" id="nav-two-tab" @click="showTab('Security')"
                    href="#"
                    aria-controls="nav-two" aria-selected="false"> БЕЗОПАСНОСТЬ</a>
@@ -34,6 +34,9 @@
             return {
                 showComponent: 'Basic',
             }
+        },
+        mounted() {
+            console.log(this.user,5)
         },
         methods: {
             showTab: function (tab) {

@@ -4194,6 +4194,9 @@ __webpack_require__.r(__webpack_exports__);
       showComponent: 'Basic'
     };
   },
+  mounted: function mounted() {
+    console.log(this.user, 5);
+  },
   methods: {
     showTab: function showTab(tab) {
       this.showComponent = tab;
@@ -4214,6 +4217,12 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4382,13 +4391,12 @@ __webpack_require__.r(__webpack_exports__);
         full_name: '',
         document: ''
       },
-      doc: ''
+      doc: {}
     };
   },
   mounted: function mounted() {
-    console.log(this.basic_data);
     this.form = this.basic_data;
-    this.doc = this.basic_data.doc;
+    this.doc = this.basic_data.documents;
   },
   methods: {
     onSubmit: function onSubmit() {
@@ -4411,7 +4419,7 @@ __webpack_require__.r(__webpack_exports__);
               title: 'Успешно!',
               priority: 'success'
             });
-            _this.doc = resp.data.basic.doc;
+            _this.doc = resp.data.basic.documents;
           });
         }
       });
@@ -53783,7 +53791,9 @@ var render = function() {
             "div",
             { staticClass: "form-group col-xl-6 col-lg-6  col-md-6 col-sm-12" },
             [
-              _vm._m(5),
+              _c("label", { attrs: { for: "register" } }, [
+                _vm._v("Прописка на: Адрес регистрации ")
+              ]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -53796,8 +53806,8 @@ var render = function() {
                   {
                     name: "validate",
                     rawName: "v-validate",
-                    value: "required|max:200",
-                    expression: "'required|max:200'"
+                    value: "max:200",
+                    expression: "'max:200'"
                   }
                 ],
                 staticClass: "form-control  form-control-sm",
@@ -53830,7 +53840,7 @@ var render = function() {
             "div",
             { staticClass: "form-group col-xl-6 col-lg-6  col-md-6 col-sm-12" },
             [
-              _vm._m(6),
+              _vm._m(5),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -53877,7 +53887,7 @@ var render = function() {
             "div",
             { staticClass: "form-group col-xl-6 col-lg-6  col-md-6 col-sm-12" },
             [
-              _vm._m(7),
+              _vm._m(6),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -53926,7 +53936,7 @@ var render = function() {
               staticClass: "form-group  col-xl-6 col-lg-6  col-md-6 col-sm-12"
             },
             [
-              _vm._m(8),
+              _vm._m(7),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-5 form-group w-100" }, [
@@ -54078,7 +54088,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-sm-12 col-md-4 form-group " }, [
-                    _vm._m(9, true),
+                    _vm._m(8, true),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -54131,7 +54141,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-12 col-md-4 form-group" }, [
-                    _vm._m(10, true),
+                    _vm._m(9, true),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -54398,15 +54408,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "city" } }, [
       _vm._v("Город: "),
-      _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "register" } }, [
-      _vm._v("Прописка: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55431,7 +55432,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "register" } }, [
-      _vm._v("Адрес юр лица: "),
+      _vm._v("Адрес юр. лица или ИП: "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -55445,7 +55446,7 @@ var staticRenderFns = [
         staticClass: "form-group col-12 ",
         staticStyle: { "border-bottom": "1px solid lightgray" }
       },
-      [_c("h5", [_vm._v("Контактное данные")])]
+      [_c("h5", [_vm._v("Контактные данные")])]
     )
   },
   function() {
@@ -57144,7 +57145,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v(" КОНТАКТНОЕ ДАННЫЕ")]
+            [_vm._v(" КОНТАКТНЫЕ ДАННЫЕ")]
           ),
           _vm._v(" "),
           _c(
@@ -57823,14 +57824,33 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "float-right text-secondary",
-                    attrs: { href: _vm.doc, target: "_blank" }
-                  },
-                  [_c("strong", [_vm._v("Документ")])]
-                )
+                _vm.doc
+                  ? _c(
+                      "span",
+                      _vm._l(_vm.doc, function(d, key) {
+                        return _c(
+                          "a",
+                          {
+                            staticClass: "float-right text-secondary mr-2",
+                            attrs: {
+                              href: "/storage/documents/" + d.path,
+                              target: "_blank"
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                "\n                            Документ " +
+                                  _vm._s(key + 1) +
+                                  "\n                        "
+                              )
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  : _vm._e()
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -58154,8 +58174,8 @@ var render = function() {
                 {
                   name: "validate",
                   rawName: "v-validate",
-                  value: "required|max:100",
-                  expression: "'required|max:100'"
+                  value: "required|numeric",
+                  expression: "'required|numeric'"
                 }
               ],
               staticClass: "form-control",
@@ -58284,7 +58304,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group col-md-12" }, [
             _c("label", { attrs: { for: "about_business" } }, [
-              _vm._v("Расскажите коратко о Вашем бизнесе в недвижимости: ")
+              _vm._v("Расскажите коротко о Вашем бизнесе в недвижимости: ")
             ]),
             _vm._v(" "),
             _c("textarea", {

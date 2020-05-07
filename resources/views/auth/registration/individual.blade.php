@@ -16,6 +16,7 @@
                         <input type="text" class="form-control" id="full_name" name="full_name"
                                value="{{old('full_name')}}">
 
+                        <small class="form-text text-muted text-right"><strong>Пример:</strong> Иванов Иван Иванович</small>
 
                         @error('full_name')
                         <span class="invalid-feedback" role="alert">
@@ -80,7 +81,7 @@
                         <label for="advertising_number">Рекламный номер по вопросу аренды</label>
                         <input type="number"  min="1" class="form-control" id="advertising_number" name="advertising_number"
                                value="{{old('advertising_number')}}">
-                        <small class="form-text text-muted text-right">С кодом города, по одному в строке</small>
+                        <small class="form-text text-muted text-right">С кодом города</small>
 
                         @error('advertising_number')
                         <span class="invalid-feedback" role="alert">
@@ -107,7 +108,7 @@
                     </div>
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="real_estate_count">Количество объектов недвижимость <span
+                        <label for="real_estate_count">Количество объектов недвижимости <span
                                 class="text-danger">*</span></label>
                         <input type="number" min="" class="form-control" id="real_estate_count" name="real_estate_count"
                                value="{{old('real_estate_count')}}">
@@ -122,7 +123,7 @@
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
                         <label for="contact_person_full_name">ФИО <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="contact_person_full_name" name="contact_person_full_name" readonly
+                        <input type="text" class="form-control" id="contact_person_full_name" name="contact_person_full_name"
                                value="{{old('contact_person_full_name')}}">
                         <small class="form-text text-muted text-right">Подставляются автоматом из выше инфы, но может
                             быть изменены</small>
@@ -203,6 +204,10 @@
     <script>
         $('#full_name').change(function () {
             $('#contact_person_full_name').val($(this).val())
+        })
+
+        $('#contact_person_full_name').change(function () {
+            $('#full_name').val($(this).val())
         })
     </script>
 @endpush

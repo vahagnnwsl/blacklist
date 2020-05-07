@@ -15,6 +15,9 @@
                         <label for="company_name">Наименование ИП  <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="company_name" name="company_name"
                                value="{{old('company_name')}}">
+                        <small class="form-text text-muted text-right"> <strong>Пример:</strong> ИП Иванов Иван Иванович</small>
+
+
                         @error('company_name')
                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -62,7 +65,7 @@
                         @enderror
                     </div>
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="brand">Торговая марка,бренд название <span class="text-danger">*</span></label>
+                        <label for="brand">Торговая марка , бренд название <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="brand" name="brand"
                                value="{{old('brand')}}">
                         @error('brand')
@@ -89,7 +92,7 @@
                         <label for="advertising_number">Рекламный номер по вопросу аренды</label>
                         <input type="number" min="1" class="form-control" id="advertising_number" name="advertising_number"
                                value="{{old('advertising_number')}}">
-                        <small class="form-text text-muted text-right">С кодом города, по одному в строке</small>
+                        <small class="form-text text-muted text-right">С кодом города</small>
 
                         @error('advertising_number')
                         <span class="invalid-feedback" role="alert">
@@ -118,7 +121,7 @@
 
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
-                        <label for="real_estate_count">Количество объектов недвижимость <span
+                        <label for="real_estate_count">Количество объектов недвижимости <span
                                 class="text-danger">*</span></label>
                         <input type="number" min="1" class="form-control" id="real_estate_count" name="real_estate_count"
                                value="{{old('real_estate_count')}}">
@@ -133,13 +136,17 @@
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
                         <label for="document">Подтверждающие документы  <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" id="document" name="document" >
+                        <input type="file" class="form-control" id="document" name="documents[]" multiple>
                         <small class="form-text text-muted text-right">Свидетельство индивидуального предпринимателя в ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
 
-                        @error('document')
-                        <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
+                        @error('documents.*')
+
+                        @foreach($errors->get('documents.*') as $de)
+                            <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $de[0] }}</strong>
                                                     </span>
+                        @endforeach
+
                         @enderror
                     </div>
 
@@ -147,8 +154,7 @@
                         <label for="contact_person_full_name">ФИО <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="contact_person_full_name" name="contact_person_full_name"
                                value="{{old('contact_person_full_name')}}">
-                        <small class="form-text text-muted text-right">Подставляются автоматом из выше инфы, но может
-                            быть изменены</small>
+
 
                         @error('contact_person_full_name')
                         <span class="invalid-feedback" role="alert">
@@ -210,7 +216,7 @@
                         @enderror
                     </div>
                     <div class="form-group  col-sm-12 col-md-8 col-lg-8">
-                        <label for="about_business">Расскажите коратко о Вашем бизнесе в недвижимости</label>
+                        <label for="about_business">Расскажите коротко о Вашем бизнесе в недвижимости</label>
                         <textarea class="form-control" name="about_business" id="about_business" style="max-height: 50px">{{old('about_business')}}</textarea>
                         @error('about_business')
                         <span class="invalid-feedback" role="alert">

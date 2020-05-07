@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\UserDocument;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +35,7 @@ class RegisterController extends Controller
     public function showRegistrationForm($type)
     {
 
-        if (!array_key_exists (request()->route('type'), $this->allowRegistrationRoles)) {
+        if (!array_key_exists(request()->route('type'), $this->allowRegistrationRoles)) {
             abort(404);
         }
 
@@ -73,12 +74,12 @@ class RegisterController extends Controller
     {
         $type = $data['type'];
 
-        if (!array_key_exists($type,  $this->allowRegistrationRoles)) {
+        if (!array_key_exists($type, $this->allowRegistrationRoles)) {
             abort(404);
         }
 
         $array = [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','regex:/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'],
             'country' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'address' => ['max:255'],
@@ -105,7 +106,8 @@ class RegisterController extends Controller
                 'company_name' => ['required', 'string', 'max:255'],
                 'psrnie' => ['required', 'string', 'max:255'],
                 'brand' => ['required', 'string', 'max:255'],
-                'document' => ['required', 'mimes:jpg,png,pdf,jpeg,gif,tiff', 'max:7000'],
+                'documents' => ['required', 'array', 'min:1', 'max:2'],
+                'documents.*' => ['mimes:jpg,png,pdf,jpeg,gif,tiff', 'max:7000'],
                 'contact_person_position' => ['required', 'string', 'max:255'],
                 'inn' => ['required', 'string', 'max:255'],
 
@@ -116,7 +118,8 @@ class RegisterController extends Controller
                 'company_name' => ['required', 'string', 'max:255'],
                 'psrn' => ['required', 'string', 'max:255'],
                 'brand' => ['required', 'string', 'max:255'],
-                'document' => ['required', 'mimes:jpg,png,pdf,jpeg,gif,tiff', 'max:7000'],
+                'documents' => ['required', 'array', 'min:1', 'max:2'],
+                'documents.*' => ['mimes:jpg,png,pdf,jpeg,gif,tiff', 'max:7000'],
                 'contact_person_position' => ['required', 'string', 'max:255'],
                 'inn' => ['required', 'string', 'max:255'],
 
@@ -137,12 +140,20 @@ class RegisterController extends Controller
 
         $data['type'] = $this->allowRegistrationRoles[$data['type']];
         $data['status'] = 1;
-        $data['password'] =Hash::make($data['password']);
+        $data['password'] = Hash::make($data['password']);
+        $user = User::create($data);
 
-        if (Arr::exists($data, 'document')){
-            $data['document'] = FileUploaderService::document($data['document']);
+
+        if (Arr::exists($data, 'documents') && count($data['documents']) > 0) {
+            foreach ($data['documents'] as $file) {
+                UserDocument::create([
+                    'user_id' => $user->id,
+                    'path' => FileUploaderService::document($file)
+                ]);
+            }
         }
 
-        return User::create($data);
+        return $user;
+
     }
 }

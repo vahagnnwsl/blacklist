@@ -14,7 +14,7 @@
                     <label for="contact_phone">Контактный номер телефона: <span class="text-danger">*</span></label>
                     <input type="text" id="contact_phone" class="form-control" name="contact_phone"
                            v-model="form.contact_phone" data-vv-as="Контактный номер телефона"
-                           v-validate="'required|max:100'">
+                           v-validate="'required|numeric'">
                     <small class="form-text text-muted text-right">С кодом города</small>
                     <small class="text-danger  float-right" v-if="errors.has('contact_phone')">{{errors.first('contact_phone')}}</small>
                 </div>
@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="about_business">Расскажите коратко о Вашем бизнесе в недвижимости: </label>
+                    <label for="about_business">Расскажите коротко о Вашем бизнесе в недвижимости: </label>
                     <textarea type="password" id="about_business" class="form-control" name="about_business"
                               v-model="form.about_business" data-vv-as="о Вашем бизнесе"
                               v-validate="'max:1500'"></textarea>

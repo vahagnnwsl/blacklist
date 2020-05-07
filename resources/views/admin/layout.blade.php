@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Black LIST Dashboard</title>
+    <title>Arendolog Dashboard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -44,10 +44,10 @@
         <div class="sidenav-header d-flex align-items-center justify-content-center">
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
-                <h2 class="h5">BLACK LIST</h2>
+                <h2 class="h5">Arendolog</h2>
             </div>
             <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center">
-                    <strong>B</strong><strong class="text-primary">L</strong></a></div>
+                    <strong>A</strong><strong class="text-primary">L</strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
@@ -100,7 +100,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <p>Your company &copy; 2017-2019</p>
+                    <p>Arendolog.com &copy; 2020</p>
                 </div>
                 <div class="col-sm-6 text-right">
 

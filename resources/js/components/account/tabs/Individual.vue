@@ -49,11 +49,11 @@
                        v-if="errors.has('city')">{{errors.first('city')}}</small>
             </div>
             <div class="form-group col-xl-6 col-lg-6  col-md-6 col-sm-12">
-                <label for="register">Прописка: <span class="text-danger">*</span></label>
+                <label for="register">Прописка на: Адрес регистрации </label>
                 <input type="text" class="form-control  form-control-sm" name="register"
                        id="register"
                        v-model="form.register"
-                       data-vv-as="Прописка" v-validate="'required|max:200'">
+                       data-vv-as="Прописка" v-validate="'max:200'">
                 <small class="text-danger  float-right"
                        v-if="errors.has('register')">{{errors.first('register')}}</small>
             </div>

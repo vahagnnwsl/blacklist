@@ -24,7 +24,7 @@
                        v-if="backErrors.inn">{{backErrors.inn[0]}}</small>
             </div>
             <div class="form-group col-xl-6 col-lg-6  col-md-6 col-sm-12">
-                <label for="register">Адрес юр лица: <span class="text-danger">*</span></label>
+                <label for="register">Адрес юр. лица или ИП: <span class="text-danger">*</span></label>
                 <input type="text" class="form-control  form-control-sm" name="address"
                        id="register"
                        v-model="form.address"
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-group col-12 " style="border-bottom: 1px solid lightgray">
-                <h5>Контактное данные</h5>
+                <h5>Контактные данные</h5>
             </div>
 
             <div class="form-group col-xl-6 col-lg-6  col-md-6 col-sm-12">
