@@ -2348,11 +2348,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -53362,47 +53357,43 @@ var render = function() {
                 _c(
                   "tbody",
                   _vm._l(_vm.arendators, function(arendator) {
-                    return _c("tr", { key: arendator.id }, [
-                      _c("td", [
-                        arendator.type === 1
-                          ? _c("span", [
-                              _c("strong", [
-                                _vm._v(_vm._s(arendator.full_name))
+                    return _c(
+                      "tr",
+                      {
+                        key: arendator.id,
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.openModal(arendator.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("td", [
+                          arendator.type === 1
+                            ? _c("span", [
+                                _c("strong", [
+                                  _vm._v(_vm._s(arendator.full_name))
+                                ])
                               ])
-                            ])
-                          : _c("span", [
-                              _vm._m(1, true),
-                              _vm._v(" "),
-                              _c("strong", [
-                                _vm._v(_vm._s(arendator.company_name))
+                            : _c("span", [
+                                _vm._m(1, true),
+                                _vm._v(" "),
+                                _c("strong", [
+                                  _vm._v(_vm._s(arendator.company_name))
+                                ])
                               ])
-                            ])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.address(arendator)) +
-                            "\n\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("th", [
-                        _c(
-                          "button",
-                          {
-                            staticClass:
-                              "btn btn-outline-secondary float-right  btn-sm",
-                            on: {
-                              click: function($event) {
-                                return _vm.openModal(arendator.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-eye" })]
-                        )
-                      ])
-                    ])
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(_vm.address(arendator)) +
+                              "\n\n                    "
+                          )
+                        ])
+                      ]
+                    )
                   }),
                   0
                 )
@@ -53485,9 +53476,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("АРЕНДАТОР")]),
         _vm._v(" "),
-        _c("th", [_vm._v("АДРЕС")]),
-        _vm._v(" "),
-        _c("th")
+        _c("th", [_vm._v("АДРЕС")])
       ])
     ])
   },

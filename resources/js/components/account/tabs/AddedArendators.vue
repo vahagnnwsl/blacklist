@@ -7,11 +7,11 @@
                     <tr>
                         <th>АРЕНДАТОР</th>
                         <th>АДРЕС</th>
-                        <th></th>
+
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="arendator in arendators" :key="arendator.id">
+                    <tr v-for="arendator in arendators" :key="arendator.id"  @click="openModal(arendator.id)" style="cursor: pointer">
                         <td>
                             <span v-if="arendator.type===1">
                                     <strong>{{arendator.full_name}}</strong>
@@ -24,11 +24,6 @@
                             {{address(arendator)}}
 
                         </td>
-                        <th>
-                            <button class="btn btn-outline-secondary float-right  btn-sm"
-                                    @click="openModal(arendator.id)"><i class="fa fa-eye"></i>
-                            </button>
-                        </th>
                     </tr>
 
                     </tbody>
