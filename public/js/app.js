@@ -3287,10 +3287,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53792,7 +53788,7 @@ var render = function() {
             { staticClass: "form-group col-xl-6 col-lg-6  col-md-6 col-sm-12" },
             [
               _c("label", { attrs: { for: "register" } }, [
-                _vm._v("Прописка на: Адрес регистрации ")
+                _vm._v(" Адрес регистрации: ")
               ]),
               _vm._v(" "),
               _c("input", {
@@ -55734,7 +55730,13 @@ var render = function() {
             "div",
             {
               staticClass: "row p-2 mb-2",
-              staticStyle: { border: "1px solid lightgray" }
+              staticStyle: { border: "1px solid lightgray", cursor: "pointer" },
+              attrs: { s: "" },
+              on: {
+                click: function($event) {
+                  return _vm.openModal(arendator.id)
+                }
+              }
             },
             [
               _c(
@@ -55799,20 +55801,7 @@ var render = function() {
                   _c("h6", { staticClass: "dateCity" }, [
                     _vm._v(_vm._s(arendator.city) + " "),
                     _c("small", [_c("i", [_vm._v(_vm._s(arendator.date))])])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-secondary btn-sm  eyeBtn",
-                      on: {
-                        click: function($event) {
-                          return _vm.openModal(arendator.id)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-eye" })]
-                  )
+                  ])
                 ]
               )
             ]
@@ -58180,7 +58169,7 @@ var render = function() {
               ],
               staticClass: "form-control",
               attrs: {
-                type: "text",
+                type: "number",
                 id: "contact_phone",
                 name: "contact_phone",
                 "data-vv-as": "Контактный номер телефона"

@@ -45,7 +45,7 @@
 
         <div class="row mt-3">
             <div class="col-md-12">
-                <div class="row p-2 mb-2" style="border: 1px solid lightgray" v-for="(arendator,key) in arendators">
+                <div class="row p-2 mb-2" style="border: 1px solid lightgray;cursor: pointer" v-for="(arendator,key) in arendators"  @click="openModal(arendator.id)" s>
                     <div class="col-md-3 col-sm-12 text-center" style="vertical-align: middle">
                         <span v-if="arendator.type===1">
                             <strong>{{arendator.full_name}}</strong>
@@ -73,10 +73,6 @@
                     </div>
                     <div class="col-md-3 col-sm-12 text-right" style="position: relative" ref="aa">
                         <h6 class="dateCity">{{arendator.city}} <small><i>{{arendator.date}}</i></small></h6>
-                        <button class="btn btn-outline-secondary btn-sm  eyeBtn" @click="openModal(arendator.id)">
-                            <i class="fa fa-eye"></i>
-                        </button>
-
                     </div>
                 </div>
             </div>

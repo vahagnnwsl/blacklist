@@ -1,7 +1,7 @@
 <div class="row">
     <div class="form-group col-lg-3 col-md-3 col-sm-12">
         <label>ИНН <span class="text-danger">*</span></label>
-        <input type="text" required value="{{$arendator->inn}}" name="inn"
+        <input type="number" required value="{{$arendator->inn}}" name="inn"
                class="form-control">
         @error('inn')
         <span class="invalid-feedback d-block" role="alert">
@@ -61,7 +61,7 @@
     </div>
     <div class="form-group   col-lg-3 col-md-3 col-sm-12">
         <label>Контактный телефон <span class="text-danger">*</span></label>
-        <input type="text" required value="{{$arendator->contact_phone}}"
+        <input type="number" required value="{{$arendator->contact_phone}}"
                name="contact_phone"
                class="form-control">
         @error('contact_phone')

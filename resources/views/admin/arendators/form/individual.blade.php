@@ -32,7 +32,7 @@
     </div>
     <div class="form-group   col-lg-3 col-md-3 col-sm-12">
         <label>Контактный телефон <span class="text-danger">*</span></label>
-        <input type="text" required value="{{$arendator->contact_phone}}"
+        <input type="number" required value="{{$arendator->contact_phone}}"
                name="contact_phone"
                class="form-control">
         @error('contact_phone')

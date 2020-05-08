@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="contact_phone">Контактный номер телефона: <span class="text-danger">*</span></label>
-                    <input type="text" id="contact_phone" class="form-control" name="contact_phone"
+                    <input type="number" id="contact_phone" class="form-control" name="contact_phone"
                            v-model="form.contact_phone" data-vv-as="Контактный номер телефона"
                            v-validate="'required|numeric'">
                     <small class="form-text text-muted text-right">С кодом города</small>

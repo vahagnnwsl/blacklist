@@ -17,7 +17,7 @@
         </div>
         <div class="form-group col-sm-12 col-md-6 col-lg-6">
             <label for="inn">ИНН <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="inn" name="inn" value="{{$user->inn}}">
+            <input type="number" class="form-control" id="inn" name="inn" value="{{$user->inn}}">
             @error('inn')
             <span class="invalid-feedback d-block" role="alert">
                                                         <strong>{{ $message }}</strong>

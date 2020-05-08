@@ -49,7 +49,7 @@
                        v-if="errors.has('city')">{{errors.first('city')}}</small>
             </div>
             <div class="form-group col-xl-6 col-lg-6  col-md-6 col-sm-12">
-                <label for="register">Прописка на: Адрес регистрации </label>
+                <label for="register"> Адрес регистрации: </label>
                 <input type="text" class="form-control  form-control-sm" name="register"
                        id="register"
                        v-model="form.register"

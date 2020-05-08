@@ -32,7 +32,7 @@
     @endif
     <div class="form-group  col-sm-12 col-md-12 col-lg-12">
         <label for="contact_phone">Контактный номер телефона <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="contact_phone" name="contact_phone"
+        <input type="number" class="form-control" id="contact_phone" name="contact_phone"
                value="{{$user->contact_phone}}">
         <small class="form-text text-muted text-right">С кодом города</small>
         @error('contact_phone')
