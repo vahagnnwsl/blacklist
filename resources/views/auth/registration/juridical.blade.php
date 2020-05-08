@@ -265,16 +265,16 @@
         $('#document').change(function () {
             var msg = '';
             if ($('#document')[0].files.length > 2) {
-                $('#document').val(null)
                 msg ='Количество элементов в поле documents не может превышать 2';
-                $('#file_error').text('Количество элементов в поле documents не может превышать 2')
+                $('#document').val(null)
+
             } else {
                 var files = $('#document')[0].files;
                 for (var i in files) {
 
                     if (files[i].size > 7000000) {
 
-                        msg += "Размер файла " + files[i].name + " не может быть более 7000 Килобайт(а) <br>";
+                        msg += "Ошибка загрузки. Допустимый размер файла 7 мб <br>";
                         $('#document').val(null)
 
                     }
