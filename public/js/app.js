@@ -4488,6 +4488,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Contact",
@@ -58180,7 +58182,9 @@ var render = function() {
             _vm._v(" "),
             _vm.errors.has("contact_phone")
               ? _c("small", { staticClass: "text-danger  float-right" }, [
-                  _vm._v(_vm._s(_vm.errors.first("contact_phone")))
+                  _vm._v(
+                    "\n                    Поле Контактный номер телефона должно быть числовым\n                "
+                  )
                 ])
               : _vm._e()
           ]),

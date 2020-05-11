@@ -16,7 +16,9 @@
                            v-model="form.contact_phone" data-vv-as="Контактный номер телефона"
                            v-validate="'required|numeric'">
                     <small class="form-text text-muted text-right">С кодом города</small>
-                    <small class="text-danger  float-right" v-if="errors.has('contact_phone')">{{errors.first('contact_phone')}}</small>
+                    <small class="text-danger  float-right" v-if="errors.has('contact_phone')">
+                        Поле Контактный номер телефона должно быть числовым
+                    </small>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">Адрес электронной почты: <span class="text-danger">*</span></label>
