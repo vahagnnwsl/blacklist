@@ -14,7 +14,7 @@
             <div class="form-group col-xl-6 col-lg-6  col-md-6 col-sm-12" >
                 <label for="inn">ИНН: <span
                     class="text-danger">*</span></label>
-                <input type="text" class="form-control  form-control-sm" name="inn"
+                <input type="number" class="form-control  form-control-sm" name="inn"
                        id="inn"
                        v-model="form.inn"
                        data-vv-as="ИНН" v-validate="'required|numeric'">
@@ -139,86 +139,7 @@
                        v-if="errors.has('city')">{{errors.first('city')}}</small>
             </div>
 
-            <div class="col-md-12 ">
-                <h5 class="text-center w-100">Добавить нарушение</h5>
-                <button type="button"
-                        class="btn btn-outline-secondary btn-sm float-right"
-                        @click="addViolationInForm">
-                    <i class="fa fa-plus"></i>
-                </button>
-
-            </div>
-            <div style="border: 1px solid lightgray" class="form-group col-md-12  mt-2"
-                 v-for="(model,key) in form.violations" :key="key">
-                <div class="row">
-                    <div class="col-md-12">
-                        <button type="button"
-                                class="btn btn-outline-danger btn-sm  float-right mt-2"
-                                @click="removeViolationInForm(key)"><i
-                            class="fa fa-minus"></i>
-                        </button>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 col-md-4 form-group ">
-                        <label>Дата<span class="text-danger">*</span></label>
-                        <input type="date" class="form-control  form-control-sm"
-                               :name="'violations['+key+'][date]'"
-                               :id='"violation-date"+key'
-                               data-vv-as="Дата нарушения" v-validate="'required'"
-                               v-model="model.date">
-                        <small class="text-danger  float-right"
-                               v-if="errors.has('violations['+key+'][date]')">{{errors.first('violations['+key+'][date]')}}</small>
-                    </div>
-                    <div class="col-sm-12 col-md-4 form-group">
-                        <label>Статус <span class="text-danger">*</span></label>
-                        <select class="form-control form-control-sm" v-model="model.status"
-                                :name="'violations['+key+'][status]'"
-                                :id='"violation-status"+key' data-vv-as="Статус нарушения"
-                                v-validate="'required'">
-                            <option value="0">Не погашено</option>
-                            <option value="1">Погашено</option>
-                        </select>
-
-                        <small class="text-danger  float-right"
-                               v-if="errors.has('violations['+key+'][status]')">{{errors.first('violations['+key+'][status]')}}</small>
-                    </div>
-                    <div class="col-sm-12 col-md-4 form-group">
-                        <label>Документ </label>
-                        <input type="file" :id="'document'+key" :ref="'document'+key"
-                               class="form-control  form-control-sm"
-                               :name="'violations['+key+'][document]'"
-                               data-vv-as="Документ" v-on:change="handleFileUpload(key)"
-                               v-validate="'ext:jpg,pdf,jpeg,gif,tiff'">
-
-                        <small class="text-danger  float-right"
-                               v-if="errors.has('violations['+key+'][document]')">
-
-                            {{'Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл. Размер файла должен состовлять не более 7мб'}}
-
-                        </small>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 form-group">
-                        <label>Нарушение </label>
-                        <textarea class="form-control  form-control-sm"
-                                  :name="'violations['+key+'][description]'"
-                                  :id='"violation"+key'
-                                  data-vv-as="Нарушение" v-validate="'required'"
-                                  v-model="model.description">
-                                    >
-                                    </textarea>
-
-                        <small class="text-danger  float-right"
-                               v-if="errors.has('violations['+key+'][description]')">{{errors.first('violations['+key+'][description]')}}</small>
-                    </div>
-                </div>
-
-                <small class="text-danger  float-right w-100 text-right"
-                       v-if="violationsCountError">{{violationsCountError}}</small>
-            </div>
+           <ViolationFormComponent :violation="form.violation" ></ViolationFormComponent>
 
             <div class="form-group col-md-12">
                 <div class="btn-group float-right" role="group" aria-label="Basic example">
@@ -233,9 +154,13 @@
 </template>
 
 <script>
+
+    import ViolationFormComponent from "./ViolationFormComponent";
+
     export default {
-        name: "Individual",
+        name: "EntrepreneurArendatorFormComponent",
         props: ['user_id'],
+        components: {ViolationFormComponent},
         data() {
             return {
                 violationsCountError: '',
@@ -253,61 +178,20 @@
                     city: '',
                     region: '',
                     address: '',
-                    violations: [{
+                    violation: {
                         description: '',
                         document: '',
                         date: '',
                         status: 0
-                    }],
+                    },
                 },
                 backErrors: {}
             }
         },
 
         methods: {
-            addViolationInForm: function () {
 
 
-                if (this.form.violations.length < 2)
-                {
-                    this.form.violations.push({
-                        document: '',
-                        description: '',
-                        date: '',
-                        status: 0,
-                    });
-                }
-
-            },
-            removeViolationInForm: function (index) {
-
-                var form = this.form.violations;
-                if (form.length === 1) {
-                    return;
-                }
-
-                this.form.violations = form.filter(function (item, i) {
-                    return i !== index;
-                })
-
-            },
-            handleFileUpload: function (key) {
-                var self = this,
-                    file = this.$refs['document'+key][0].files[0],
-                    reader = new FileReader();
-
-                if (typeof file !== 'object') {
-                    self.form.violations[key].document = '';
-                    return;
-                }
-
-                reader.onloadend = function () {
-                    self.form.violations[key].document = reader.result;
-                };
-
-                reader.readAsDataURL(file);
-
-            },
 
             onSubmit: function () {
                 this.violationsCountError = '';
@@ -346,12 +230,12 @@
                     city: '',
                     region: '',
                     address: '',
-                    violations: [{
+                    violation: {
                         description: '',
                         document: '',
                         date: '',
                         status: 0
-                    }],
+                    },
                 }
             }
         }

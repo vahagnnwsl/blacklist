@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth', 'verified', 'can:no_admin_user']], functi
 
         Route::group(['prefix' => 'arendators'], function () {
             Route::post('/', 'ArendatorController@store');
-            Route::get('/', 'ArendatorController@get');
+            Route::get('/', 'ArendatorController@index');
             Route::get('/search', 'ArendatorController@search');
             Route::post('/{id}/violation/{violation_id}', 'ArendatorController@updateViolationStatus');
             Route::get('/{id}', 'ArendatorController@getSingle');
@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth', 'verified', 'can:no_admin_user']], functi
 
         Route::group(['prefix' => 'violations'], function () {
             Route::post('/{id}', 'ViolationController@update');
+            Route::post('/{arendator_id}/store', 'ViolationController@store');
 
         });
     });

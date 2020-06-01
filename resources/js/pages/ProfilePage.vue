@@ -2,41 +2,40 @@
     <div class="col-md-8">
         <nav>
             <div class="nav nav-tabs nav-fill" id="nav_tab" role="tablist">
-                <a class="nav-item nav-link active" data-toggle="tab" role="tab" @click="showTab('Basic')"
-                   id="nav-one-tab" href="#"
+
+                <a class="nav-item nav-link active" data-toggle="tab" role="tab" @click="showTab(1)"
                    aria-controls="nav-one" aria-selected="true"> ОСНОВНЫЕ ДАННЫЕ</a>
-                <a class="nav-item nav-link " data-toggle="tab" role="tab" id="nav-three-tab"
-                   @click="showTab('Contact')" href="#t"
+
+                <a class="nav-item nav-link " data-toggle="tab" role="tab"
+                   @click="showTab(2)"
                    aria-controls="nav-three" aria-selected="true"> КОНТАКТНЫЕ ДАННЫЕ</a>
-                <a class="nav-item nav-link" data-toggle="tab" role="tab" id="nav-two-tab" @click="showTab('Security')"
-                   href="#"
+
+                <a class="nav-item nav-link" data-toggle="tab" role="tab"  @click="showTab(3)"
                    aria-controls="nav-two" aria-selected="false"> БЕЗОПАСНОСТЬ</a>
+
             </div>
         </nav>
         <div class="row">
-            <Basic v-if="showComponent==='Basic'" :basic_data="user.basic" :auth_type='auth_type'></Basic>
-            <Contact v-if="showComponent==='Contact'" :contact_data="user.contact"  :auth_type='auth_type'></Contact>
-            <Security v-if="showComponent==='Security'"></Security>
+            <BasicComponent v-if="showComponent===1" :basic_data="user.basic" :auth_type='auth_type'></BasicComponent>
+            <ContactComponent v-if="showComponent===2" :contact_data="user.contact"  :auth_type='auth_type'></ContactComponent>
+            <SecurityComponent v-if="showComponent===3"></SecurityComponent>
         </div>
     </div>
 </template>
 
 <script>
-    import Basic from "./tabs/Basic";
-    import Contact from "./tabs/Contact";
-    import Security from "./tabs/Security";
+    import BasicComponent from "../components/BasicComponent";
+    import ContactComponent from "../components/ContactComponent";
+    import SecurityComponent from "../components/SecurityComponent";
 
     export default {
-        name: "Content",
+        name: "ProfilePage",
         props: ['user', 'auth_type'],
-        components: {Basic, Contact, Security},
+        components: {BasicComponent, ContactComponent, SecurityComponent},
         data() {
             return {
-                showComponent: 'Basic',
+                showComponent: 1,
             }
-        },
-        mounted() {
-            console.log(this.user,5)
         },
         methods: {
             showTab: function (tab) {
@@ -50,7 +49,9 @@
     .invalid-feedback {
         display: block !important;
     }
-
+    .nav-item {
+        cursor: pointer;
+    }
     #nav_tab a {
         color: #6C757D !important;
     }

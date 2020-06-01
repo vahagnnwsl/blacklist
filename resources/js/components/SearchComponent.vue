@@ -1,7 +1,7 @@
 <template>
-    <div class="col-md-12">
+    <div class="col-md-12 mt-3">
 
-        <form class="mt-3" @submit.prevent="onSubmit">
+        <form  @submit.prevent="onSubmit">
             <div class="row ">
                 <div class="input-group col-md-3 pl-0">
                     <input type="text" class="form-control" placeholder="Все регионы" v-model="form.region">
@@ -78,37 +78,19 @@
             </div>
         </div>
 
-        <div class="modal fade" id="arendatorModal" tabindex="-1" role="dialog" aria-hidden="true" ref="arendatorModal">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title w-100 text-left">
-                                 <span v-if="arendator.type===1">
-                                    <strong>{{arendator.full_name}}</strong>
-                                 </span>
-                            <span v-else>
-                                   <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
-                                 </span>
+        <ArendatorModal v-if="arendator"  :arendator="arendator" ref="modal"></ArendatorModal>
 
-                        </h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <Arendator :arendator="arendator" :user_id="0"></Arendator>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
-    import ArendatorModal from "../modals/Arendator";
-    import Arendator from '../includes/Arendator';
+    import ArendatorModal from "../modals/ArendatorModal";
 
     export default {
-        name: "SearchArendator",
-        components: {ArendatorModal,Arendator},
+        name: "SearchComponent",
+        components: {ArendatorModal},
+        inject: ['$validator'],
+
         data() {
             return {
                 form: {
@@ -119,7 +101,7 @@
                 less20: false,
                 noResult: false,
                 arendators: {},
-                arendator: {},
+                arendator: {}
 
             }
         },
@@ -129,7 +111,9 @@
             openModal: function (id) {
                 axios.get('/account/arendators/' + id).then((resp) => {
                     this.arendator = resp.data;
-                    $(this.$refs.arendatorModal).modal('show');
+
+                    $(this.$refs.modal.$refs.modal).modal('show');
+
                 })
             },
 
@@ -138,9 +122,11 @@
                 if (this.form.region === '' && this.form.key === '') {
                     return;
                 }
+
                 this.more20 = false;
                 this.less20 = false;
                 this.noResult = false;
+
                 axios.get('/account/arendators/search?region=' + this.form.region + '&key=' + this.form.key).then((resp) => {
 
                     this.arendators = resp.data.data;

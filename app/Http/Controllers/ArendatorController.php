@@ -16,6 +16,12 @@ use App\Http\Resources\Arendator as ArendatorJson;
 class ArendatorController extends Controller
 {
 
+    public function index()
+    {
+
+        return response()->json(new ArendatorCollection(Arendator::whereIn('id', Auth::user()->arendatorsByViolations())->where('status', 1)->get(),true));
+    }
+
     public function store(Request $request)
     {
 
@@ -29,10 +35,11 @@ class ArendatorController extends Controller
             return response()->json($validator->errors(), 411);
         }
 
-        $fields = Arr::except($req, ['violations']);
+        $fields = Arr::except($req, ['violation']);
         $fields['search'] = implode(" ", Arr::except($fields, ['user_id', 'type', 'birth_date']));
 
         $arendator = Arendator::exist($fields)->first();
+
         $msg = 'Арендатор  уже существует,добавлено только нарушение';
 
         if (!$arendator) {
@@ -40,26 +47,23 @@ class ArendatorController extends Controller
             $msg = 'Добавлено';
         }
 
-        foreach ($request->get('violations') as $violation) {
-            $violation['user_id'] = Auth::id();
-            if (key_exists('document', $violation) && $violation['document'] !== null) {
-                $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
-            }
 
-            $violation['arendator_id'] = $arendator->id;
-            ArendatorViolation::create($violation);
+        $violation = $request->get('violation');
+        $violation['user_id'] = Auth::id();
+
+        if (key_exists('document', $violation) && $violation['document'] !== null) {
+            $violation['document'] = FileUploaderService::arendatorViolationFile($violation['document']);
         }
+
+
+        $arendator->violations()->createMany([$violation]);
+
 
         return response()->json(['msg' => $msg]);
 
     }
 
-    public function get()
-    {
-        $arendators = Arendator::whereIn('id', Auth::user()->arendatorsByViolations())->where('status', 1)->get();
 
-        return response()->json(new ArendatorCollection($arendators,true));
-    }
 
     public function getSingle($id)
     {

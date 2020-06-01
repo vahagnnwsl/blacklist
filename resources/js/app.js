@@ -24,25 +24,11 @@ Validator.localize('ru', ru);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('card', require('./components/Card').default);
-Vue.component('profile-content', require('./components/profile/Content').default);
-Vue.component('account-content', require('./components/account/Content').default);
-Vue.component('test', require('./components/Test').default);
+// Vue.component('profile-content', require('./components/profile/Content').default);
+// Vue.component('account-content', require('./components/account/Content').default);
+Vue.component('profile-page', require('./pages/ProfilePage').default);
 
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue').default
-);
-
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue').default
-);
-
-Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue').default
-);
+Vue.component('arendator-page', require('./pages/ArendatorPage').default);
 
 
 /**

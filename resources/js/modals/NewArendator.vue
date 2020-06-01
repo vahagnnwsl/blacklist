@@ -27,8 +27,8 @@
 </template>
 
 <script>
-    import Individual from '../tabs/Individual';
-    import IndividualEntrepreneur from '../tabs/IndividualEntrepreneur';
+    import Individual from '../components/account/tabs/Individual';
+    import IndividualEntrepreneur from '../components/account/tabs/IndividualEntrepreneur';
 
     export default {
         name: "NewArendator",

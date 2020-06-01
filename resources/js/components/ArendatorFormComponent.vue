@@ -9,17 +9,17 @@
               </div>
           </div>
 
-         <individual v-if="showComponent==='individual'" @childEvent=""></individual>
-         <IndividualEntrepreneur v-if="showComponent==='IndividualEntrepreneur'"></IndividualEntrepreneur>
+         <IndividualArendatorFormComponent v-if="showComponent==='individual'" @childEvent=""></IndividualArendatorFormComponent>
+         <EntrepreneurArendatorFormComponent v-if="showComponent==='IndividualEntrepreneur'"></EntrepreneurArendatorFormComponent>
      </div>
 </template>
 
 <script>
-    import Individual from '../tabs/Individual';
-    import IndividualEntrepreneur from '../tabs/IndividualEntrepreneur';
+    import IndividualArendatorFormComponent from '../components/IndividualArendatorFormComponent';
+    import EntrepreneurArendatorFormComponent from '../components/EntrepreneurArendatorFormComponent';
     export default {
-        name: "NewArendator",
-        components: {Individual,IndividualEntrepreneur},
+        name: "ArendatorFormComponent",
+        components: {IndividualArendatorFormComponent,EntrepreneurArendatorFormComponent},
         data() {
             return {
                 showComponent: 'individual',

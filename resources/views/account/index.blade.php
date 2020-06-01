@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <account-content :user_id="{{Auth::id()}}"></account-content>
+            <arendator-page :user_id="{{Auth::id()}}"></arendator-page>
         </div>
     </div>
 @endsection

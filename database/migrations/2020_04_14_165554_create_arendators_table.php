@@ -29,7 +29,7 @@ class CreateArendatorsTable extends Migration
             $table->string('city')->nullable();
             $table->string('register')->nullable();
             $table->date('birth_date')->nullable();
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

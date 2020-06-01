@@ -73,6 +73,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function arendatorsByViolations()
     {
+
+
         return array_unique(ArendatorViolation::whereHas('arendator')->where('user_id',$this->id)->orderBy('created_at','desc')->pluck('arendator_id')->toArray());
 
     }

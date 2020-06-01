@@ -30,30 +30,7 @@
                 </table>
             </div>
 
-            <template>
-                <div class="modal fade" id="arendatorModal" tabindex="-1" role="dialog" aria-hidden="true"
-                     ref="arendatorModal">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title w-100 text-left">
-                                 <span v-if="arendator.type===1">
-                                    <strong>{{arendator.full_name}}</strong>
-                                 </span>
-                                    <span v-else>
-                                   <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
-                                 </span>
-
-                                </h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <Arendator :arendator="arendator" :user_id="user_id"></Arendator>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </template>
+            <ArendatorModal :arendator="arendator" :user_id="user_id" ref="modal"></ArendatorModal>
 
         </div>
     </div>
@@ -64,13 +41,13 @@
 
 
     import axios from "axios";
-    import Pagination from "laravel-vue-pagination";
-    import Arendator from '../includes/Arendator';
+
+    import ArendatorModal from '../modals/ArendatorModal';
 
 
     export default {
-        name: "AddArendator",
-        components: {Arendator},
+        name: "ArendatorsComponent",
+        components: {ArendatorModal},
         props: ['user_id'],
         data() {
             return {
@@ -106,7 +83,7 @@
             openModal: function (id) {
                 axios.get('/account/arendators/' + id).then((resp) => {
                     this.arendator = resp.data;
-                    $(this.$refs.arendatorModal).modal('show');
+                    $(this.$refs.modal.$refs.modal).modal('show');
                 })
             },
 

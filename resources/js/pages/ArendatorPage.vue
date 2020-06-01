@@ -2,35 +2,39 @@
     <div class="col-md-9">
         <nav>
             <div class="nav nav-tabs nav-fill" id="nav_tab" role="tablist">
-                <a class="nav-item nav-link active" data-toggle="tab" role="tab" @click="showTab('SearchArendator')"
-                   id="nav-one-tab" href="#"
+
+                <a class="nav-item nav-link active" data-toggle="tab" role="tab" @click="showTab(1)"
                    aria-controls="nav-one" aria-selected="true"> ПОИСК АРЕНДАТОРОВ В СЕРВИСЕ</a>
-                <a class="nav-item nav-link " data-toggle="tab" role="tab" id="nav-two-tab"
-                   @click="showTab('AddedArendators')" href="#"
+
+                <a class="nav-item nav-link " data-toggle="tab" role="tab"
+                   @click="showTab(2)"
                    aria-controls="nav-three" aria-selected="true"> МОИ АРЕНДАТОРЫ</a>
-                <a class="nav-item nav-link " data-toggle="tab" role="tab" id="nav-three-tab"
-                   @click="showTab('NewArendator')" href="#"
+
+                <a class="nav-item nav-link " data-toggle="tab" role="tab"
+                   @click="showTab(3)"
                    aria-controls="nav-three" aria-selected="true"> ДОБАВИТЬ НОВОГО АРЕНДАТОРА</a>
+
             </div>
         </nav>
-        <SearchArendator v-if="showComponent==='SearchArendator'" ></SearchArendator>
-        <AddedArendators v-if="showComponent==='AddedArendators'" :user_id="user_id"></AddedArendators>
-        <NewArendator v-if="showComponent==='NewArendator'" :user_id="user_id"></NewArendator>
+
+        <SearchComponent v-if="showComponent === 1"></SearchComponent>
+        <ArendatorsComponent v-if="showComponent === 2" :user_id="user_id"></ArendatorsComponent>
+        <ArendatorFormComponent v-if="showComponent === 3" :user_id="user_id"></ArendatorFormComponent>
     </div>
 </template>
 
 <script>
-    import AddedArendators from "./tabs/AddedArendators";
-    import SearchArendator from "./tabs/SearchArendator";
-    import NewArendator from "./tabs/NewArendator";
+    import ArendatorsComponent from "../components/ArendatorsComponent";
+    import SearchComponent from "../components/SearchComponent";
+    import ArendatorFormComponent from "../components/ArendatorFormComponent";
 
     export default {
         name: "Content",
-        components: {AddedArendators, SearchArendator,NewArendator},
+        components: {ArendatorsComponent, SearchComponent, ArendatorFormComponent},
         props: ["user_id"],
         data() {
             return {
-                showComponent: 'SearchArendator',
+                showComponent: 1,
             }
         },
         methods: {
@@ -43,8 +47,8 @@
 
 <style scoped>
 
-    .invalid-feedback {
-        display: block !important;
+    .nav-item {
+        cursor: pointer;
     }
 
     #nav_tab a {
