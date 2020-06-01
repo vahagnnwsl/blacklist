@@ -282,10 +282,8 @@
                         axios.post(`/account/violations/${this.arendator.id}/store`, this.violation).then((resp) => {
 
                             $.toaster({message: ' добавлено', title: 'Успешно ', priority: 'success'});
-                            const violation = resp.data.violation;
-                            console.log( this.$parent.arendator)
 
-                            this.$parent.arendator.violations.push(violation);
+                            this.$emit('refreshArendator');
 
                             this.violation = {
                                 description: '',

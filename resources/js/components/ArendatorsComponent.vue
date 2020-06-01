@@ -30,7 +30,7 @@
                 </table>
             </div>
 
-            <ArendatorModal :arendator="arendator" :user_id="user_id" ref="modal"></ArendatorModal>
+            <ArendatorModal :arendator="arendator" :user_id="user_id" ref="modal" @refreshArendator="getArendator"></ArendatorModal>
 
         </div>
     </div>
@@ -66,7 +66,11 @@
         },
 
         methods: {
-
+            getArendator: function () {
+                axios.get(`/account/arendators/${this.arendator.id}`).then((resp) => {
+                    this.arendator = resp.data;
+                })
+            },
             date: function(dt){
 
                 var date = new Date(dt);

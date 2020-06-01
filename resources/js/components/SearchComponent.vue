@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-12 mt-3">
 
-        <form  @submit.prevent="onSubmit">
+        <form @submit.prevent="onSubmit">
             <div class="row ">
                 <div class="input-group col-md-3 pl-0">
                     <input type="text" class="form-control" placeholder="Все регионы" v-model="form.region">
@@ -45,7 +45,8 @@
 
         <div class="row mt-3">
             <div class="col-md-12">
-                <div class="row p-2 mb-2" style="border: 1px solid lightgray;cursor: pointer" v-for="(arendator,key) in arendators"  @click="openModal(arendator.id)" s>
+                <div class="row p-2 mb-2" style="border: 1px solid lightgray;cursor: pointer"
+                     v-for="(arendator,key) in arendators" @click="openModal(arendator.id)" s>
                     <div class="col-md-3 col-sm-12 text-center" style="vertical-align: middle">
                         <span v-if="arendator.type===1">
                             <strong>{{arendator.full_name}}</strong>
@@ -78,7 +79,7 @@
             </div>
         </div>
 
-        <ArendatorModal v-if="arendator"  :arendator="arendator" ref="modal"></ArendatorModal>
+        <ArendatorModal v-if="arendator" :arendator="arendator" ref="modal" @refreshArendator="getArendator"></ArendatorModal>
 
     </div>
 </template>
@@ -107,13 +108,17 @@
         },
 
 
+
         methods: {
             openModal: function (id) {
                 axios.get('/account/arendators/' + id).then((resp) => {
                     this.arendator = resp.data;
-
                     $(this.$refs.modal.$refs.modal).modal('show');
-
+                })
+            },
+            getArendator: function () {
+                axios.get(`/account/arendators/${this.arendator.id}`).then((resp) => {
+                    this.arendator = resp.data;
                 })
             },
 
