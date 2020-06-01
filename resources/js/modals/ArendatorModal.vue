@@ -22,7 +22,7 @@
                         </h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="max-height: 600px;overflow-y: auto">
                         <div class="row">
                             <div class="col-lg-4 col-sm-12">
 

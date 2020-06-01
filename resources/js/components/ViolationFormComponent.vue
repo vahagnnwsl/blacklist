@@ -44,7 +44,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 form-group">
-                    <label>Нарушение </label>
+                    <label>Нарушение <span class="text-danger">*</span></label>
                     <textarea class="form-control  form-control-sm"
                               name="description"
 
