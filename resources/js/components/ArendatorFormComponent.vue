@@ -27,6 +27,7 @@
                 btnClassTwo : 'btn btn-light'
             }
         },
+
         methods: {
 
             showTab: function (tab) {

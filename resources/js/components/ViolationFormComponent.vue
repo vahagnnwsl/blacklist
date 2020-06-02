@@ -27,18 +27,17 @@
                            v-if="errors.has('status')">{{errors.first('status')}}</small>
                 </div>
                 <div class="col-sm-12 col-md-4 form-group">
-                    <label>Документ </label>
+                    <label>Фото арендатора </label>
                     <input type="file"
                            id="document"
                            ref="document"
                            class="form-control form-control-sm"
                            name="document"
                            data-vv-as="Документ" v-on:change="handleFileUpload"
-                           v-validate="'ext:jpg,pdf,jpeg,gif,tiff'">
+                           v-validate="'ext:jpg,pdf,jpeg,gif,tiff|size:3000'">
 
                     <small class="text-danger  float-right" v-if="errors.has('document')">
-                        {{
-                        'Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл.Размер файла должен состовлять не более 7мб'}}
+                        {{errors.first('document')}}
                     </small>
                 </div>
             </div>
@@ -75,6 +74,24 @@
 
             }
         },
+        mounted() {
+
+            const dict = {
+                custom: {
+                    document: {
+                        ext: 'Тип загруженного файла не поддерживается. Загрузите, пожалуйста, jpg, gif, tiff или pdf файл.'
+                    },
+
+                    date: {
+                        required : 'Поле Дата нарушения должно быть в формате mm/dd/yyyy'
+                    }
+                }
+            };
+            this.$validator.localize('ru', dict);
+
+
+        },
+
         methods: {
             handleFileUpload: function () {
 

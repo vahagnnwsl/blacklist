@@ -31,14 +31,14 @@ class ArendatorRequest
         } else {
             $rules['birth_date'] = ['required', 'date'];
 
-            $rules['register'] = ['required', 'string', 'max:255'];
+            $rules['register'] = ['max:255'];
         }
 
         if ($action === 'store') {
 
-            $rules['violations.*.description'] = ['required', 'string'];
-            $rules['violations.*.status'] = ['required'];
-            $rules['violations.*.date'] = ['required', 'date'];
+            $rules['violation.description'] = ['required', 'string'];
+            $rules['violation.status'] = ['required'];
+            $rules['violation.date'] = ['required', 'date'];
 
         }
 

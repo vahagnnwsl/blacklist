@@ -10,6 +10,8 @@ import ru from 'vee-validate/dist/locale/ru';
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+
 Vue.use(VeeValidate);
 Validator.localize('ru', ru);
 

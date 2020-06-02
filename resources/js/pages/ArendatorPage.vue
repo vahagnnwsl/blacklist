@@ -37,9 +37,11 @@
                 showComponent: 1,
             }
         },
+
         methods: {
             showTab: function (tab) {
                 this.showComponent = tab;
+
             }
         }
     }

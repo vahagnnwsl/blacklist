@@ -15,7 +15,7 @@
                                  </span>
 
                             <button type="button" class="btn btn-outline-danger float-right" data-toggle="modal"
-                                    href="#stack2">Добавить отзыв
+                                    href="#stack2">Добавить нарушение
                             </button>
 
 
@@ -204,7 +204,7 @@
             </div>
         </div>
 
-        <div id="stack2" class="modal fade" ref="stack2" tabindex="-1" data-focus-on="input:first" style="display: none;">
+        <div id="stack2" class="modal fade" ref="stack2" tabindex="-2" data-focus-on="input:first" style="display: none;">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
 
