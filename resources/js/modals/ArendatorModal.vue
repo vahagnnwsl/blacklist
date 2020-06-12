@@ -183,8 +183,11 @@
                                         </p>
                                         <br>
                                     </div>
-                                    <div class="form-group  w-100  pt-0" v-if="violation.user.id === user_id">
+                                    <div class="form-group  w-100  pt-0" v-if="!user_id">
+                                        {{Number(violation.status)===1 ? 'Погашено': 'Не погашено'}}
+                                    </div>
 
+                                    <div class="form-group  w-100  pt-0" v-if="violation.user.id === user_id">
                                         <div class="custom-control custom-switch w-100">
                                             <input type="checkbox" class="custom-control-input" :id="'switch'+key"
                                                    :checked="Number(violation.status)===1"
@@ -254,6 +257,7 @@
                 }
             }
         },
+
         methods: {
             collapse: function (ref, event) {
 
