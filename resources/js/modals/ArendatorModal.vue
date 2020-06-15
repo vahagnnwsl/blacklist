@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="modal fade" id="responsive" tabindex="-1" role="dialog" data-focus-on="input:first"
+        <div class="modal fade" id="responsive" ref="modal"  tabindex="-1" role="dialog" data-focus-on="input:first"
              aria-hidden="true"
-             ref="modal" data-width="760">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
+              data-width="760">
+            <div class="modal-dialog modal-xl" >
+                <div class="modal-content" ref="modal1Content" >
                     <div class="modal-header">
                         <h4 class="modal-title w-100 text-left">
                                  <span v-if="arendator.type===1">
@@ -14,8 +14,8 @@
                                    <small style="font-size: 0.7rem"><i>ИП/ООО</i></small>    <strong>{{arendator.company_name}}</strong>
                                  </span>
 
-                            <button type="button" class="btn btn-outline-danger float-right" data-toggle="modal"
-                                    href="#stack2">Добавить нарушение
+                            <button type="button" class="btn btn-outline-danger float-right"
+                                    href="#" @click="openStack2Modal">Добавить нарушение
                             </button>
 
 
@@ -207,9 +207,11 @@
             </div>
         </div>
 
-        <div id="stack2" class="modal fade" ref="stack2" tabindex="-2" data-focus-on="input:first" style="display: none;">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
+
+        <div id="stack2" class="modal fade" ref="stack2" tabindex="-2" data-focus-on="input:first"
+             style="display: none;">
+            <div class="modal-dialog modal-xl" >
+                <div class="modal-content" ref="modal2Content"  v-bind:style="modal2ContentStyle"  >
 
                     <div class="modal-header">
                         <h4 class="modal-title"><strong>Добавить </strong></h4>
@@ -253,11 +255,13 @@
                     description: '',
                     document: '',
                     date: '',
-                    status: 0
+                    status: 0,
+                },
+                modal2ContentStyle: {
+                    height: ''
                 }
             }
         },
-
         methods: {
             collapse: function (ref, event) {
 
@@ -270,7 +274,19 @@
 
                 }
             },
+            openStack2Modal :function(){
 
+                let self = this;
+                console.log(self.$refs)
+
+                $("#stack2").modal('show').on('show.bs.modal', function ( ) {
+                    self.modal2ContentStyle.height = `${self.$refs.modal1Content.clientHeight}px`
+                });
+
+                self.modal2ContentStyle.height = `${self.$refs.modal1Content.clientHeight}px`
+
+
+            },
             sortArray: function (array) {
                 return array;
             },
@@ -300,7 +316,7 @@
                             $(this.$refs.stack2).modal('hide');
 
                         }).catch((error) => {
-                           console.log(error)
+                            console.log(error)
                         })
                     }
                 })
