@@ -33,6 +33,7 @@
                            ref="document"
                            class="form-control form-control-sm"
                            name="document"
+                           style="padding: .10rem .15rem"
                            data-vv-as="Документ" v-on:change="handleFileUpload"
                            v-validate="'ext:jpg,pdf,jpeg,gif,tiff|size:3000'">
 
