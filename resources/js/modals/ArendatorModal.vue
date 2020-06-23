@@ -207,7 +207,7 @@
 
         <div class="modal fade" id="stack2"  ref="stack2" tabindex="-1" style="display: none" aria-hidden="true" data-width="764">
             <div class="modal-dialog modal-xl">
-                <div class="modal-content" ref="modal2Content" >
+                <div class="modal-content" ref="modal2Content" v-bind:style="modal2ContentStyle">
 
                     <div class="modal-header">
                         <h4 class="modal-title"><strong>Добавить </strong></h4>
@@ -257,6 +257,9 @@
                     height: ''
                 }
             }
+        },
+        mounted() {
+          console.log(654)
         },
         methods: {
             collapse: function (ref, event) {
