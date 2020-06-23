@@ -1,10 +1,8 @@
 <template>
     <div>
-        <div class="modal fade" id="responsive" ref="modal"  tabindex="-1" role="dialog" data-focus-on="input:first"
-             aria-hidden="true"
-              data-width="760">
-            <div class="modal-dialog modal-xl" >
-                <div class="modal-content" ref="modal1Content" >
+        <div class="modal fade" id="responsive" ref="modal" tabindex="-1" role="dialog" aria-hidden="true" data-width="760" >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content" ref="modal1Content">
                     <div class="modal-header">
                         <h4 class="modal-title w-100 text-left">
                                  <span v-if="arendator.type===1">
@@ -207,11 +205,9 @@
             </div>
         </div>
 
-
-        <div id="stack2" class="modal fade" ref="stack2" tabindex="-2" data-focus-on="input:first"
-             style="display: none;">
-            <div class="modal-dialog modal-xl" >
-                <div class="modal-content" ref="modal2Content"  v-bind:style="modal2ContentStyle"  >
+        <div class="modal fade" id="stack2"  ref="stack2" tabindex="-1" style="display: none" aria-hidden="true" data-width="764">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content" ref="modal2Content" >
 
                     <div class="modal-header">
                         <h4 class="modal-title"><strong>Добавить </strong></h4>
@@ -274,12 +270,11 @@
 
                 }
             },
-            openStack2Modal :function(){
+            openStack2Modal: function () {
 
                 let self = this;
-                console.log(self.$refs)
 
-                $("#stack2").modal('show').on('show.bs.modal', function ( ) {
+                $("#stack2").modal('show').on('show.bs.modal', function () {
                     self.modal2ContentStyle.height = `${self.$refs.modal1Content.clientHeight}px`
                 });
 

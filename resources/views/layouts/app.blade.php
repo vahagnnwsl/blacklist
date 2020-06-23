@@ -22,9 +22,10 @@
             position: relative;
             min-height: 100%;
         }
-        body {
-            margin-bottom: 60px;
-        }
+
+        .modal {
+             padding-right: 0px !important;
+         }
 
 
         .footer {

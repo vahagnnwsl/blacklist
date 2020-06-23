@@ -138,7 +138,7 @@
 
                     <div class="form-group  col-sm-12 col-md-6 col-lg-4">
                         <label for="document">Подтверждающие документы  <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" id="document" name="documents[]" multiple>
+                        <input type="file" class="form-control" id="document" name="documents[]" multiple style="padding: 0.1rem 0.15rem;">
                         <small class="form-text text-muted text-right">Свидетельство индивидуального предпринимателя в ЕГРИП, о постановке на налоговый учет (с ИНН)</small>
 
                         <span class="invalid-feedback" role="alert">
@@ -258,9 +258,9 @@
                 var files = $('#document')[0].files;
                 for (var i in files) {
 
-                    if (files[i].size > 7000000) {
+                    if (files[i].size > 3000000) {
 
-                        msg += "Ошибка загрузки. Допустимый размер файла 7 мб <br>";
+                        msg += "Размер файла должен составлять не более 3мб <br>";
                         $('#document').val(null)
 
                     }
