@@ -35,7 +35,7 @@
                            name="document"
                            style="padding: .10rem .15rem"
                            data-vv-as="Документ" v-on:change="handleFileUpload"
-                           v-validate="'ext:jpg,pdf,jpeg,gif,tiff|size:3000'">
+                           v-validate="'size:3072|ext:jpg,pdf,jpeg,gif,tiff'">
 
                     <small class="text-dark  float-right mb-1" >
                         Загрузите, пожалуйста, фотографию арендатора. Размер файла должен составлять не более 3мб
